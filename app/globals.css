@@ -1,0 +1,196 @@
+@import 'tailwindcss';
+
+:root {
+  color-scheme: dark;
+  --background: #090e0c;
+  --foreground: #eef3ef;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* Everything is sized in rem, so bumping the root scales the whole dashboard on big/4K screens. */
+@media (min-width: 2000px) { html { font-size: 18px; } }
+@media (min-width: 3000px) { html { font-size: 22px; } }
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+a { color: inherit; text-decoration: none; }
+::selection { background: #f7c972; color: #111a16; }
+
+.ops-shell {
+  background:
+    radial-gradient(circle at 76% -8%, rgb(50 119 82 / 16%), transparent 34rem),
+    radial-gradient(circle at 36% 42%, rgb(91 118 154 / 5%), transparent 30rem),
+    #090e0c;
+}
+
+.section-kicker {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(238 243 239 / 64%);
+}
+
+.section-title {
+  margin-top: 0.28rem;
+  font-size: clamp(1.5rem, 2.3vw, 2rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+}
+
+.attention-card,
+.sheet-card {
+  border: 1px solid rgb(255 255 255 / 8%);
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 4.8%), rgb(255 255 255 / 2.4%));
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 5%) inset,
+    0 18px 50px rgb(0 0 0 / 12%);
+}
+
+.attention-card {
+  border-radius: 1.35rem;
+  padding: 1.25rem;
+}
+
+/* min-width: 0 lets a card shrink to its grid column on phones instead of widening the page. */
+.sheet-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow-wrap: break-word;
+  border-radius: 1.6rem;
+  padding: 1.35rem;
+}
+
+/* Pins each card's footnote to the bottom so cards of different heights still line up. */
+.sheet-card > .card-footnote {
+  margin-top: auto;
+  padding-top: 1.25rem;
+}
+
+/* Stat tiles and breakdown bars sit at the bottom of each card, just above the footnote. */
+.sheet-card > .card-stats {
+  margin-top: auto;
+}
+
+.sheet-card > :has(+ .card-stats) {
+  margin-bottom: 1.25rem;
+}
+
+.sheet-card > .card-stats + .card-footnote {
+  margin-top: 0;
+}
+
+.stat-tile {
+  display: flex;
+  min-height: 5.1rem;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 1rem;
+  border: 1px solid rgb(255 255 255 / 5%);
+  background: rgb(255 255 255 / 3.8%);
+  padding: 0.85rem;
+}
+
+.stat-tile strong {
+  font-size: 1.7rem;
+  font-weight: 650;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.stat-tile span {
+  font-size: 0.75rem;
+  color: rgb(238 243 239 / 68%);
+}
+
+summary::-webkit-details-marker { display: none; }
+button, summary, a { -webkit-tap-highlight-color: transparent; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .attention-card,
+  .sheet-card {
+    transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  }
+
+  .attention-card:hover,
+  .sheet-card:hover {
+    transform: translateY(-2px);
+    border-color: rgb(255 255 255 / 13%);
+    background: rgb(255 255 255 / 6%);
+    box-shadow: 0 22px 60px rgb(0 0 0 / 24%);
+  }
+}
+
+/* Expanded lane: the card spans the whole row; only list blocks (.lane-wide) use the extra width. */
+.sheet-card.lane-expanded > :not(.lane-wide):not(.card-footnote):not(:first-child) {
+  max-width: 34rem;
+}
+
+/* Phones show one lane at a time; the rest sit as buttons in the lane row above it. */
+@media (max-width: 767px) {
+  .sheet-card.lane-phone-hidden {
+    display: none;
+  }
+}
+
+.lane-cols {
+  column-gap: 2.25rem;
+}
+
+@media (min-width: 1024px) {
+  .lane-cols { columns: 2; }
+}
+
+@media (min-width: 1536px) {
+  .lane-cols { columns: 3; }
+}
+
+/* With Pulse beside it the expanded card is only three columns wide, so two list columns read better than three. */
+@media (min-width: 1280px) {
+  .lane-beside .lane-cols { columns: 2; }
+}
+
+.lane-cols > li,
+.lane-cols > .lane-block {
+  break-inside: avoid;
+}
+
+/* The same column counts as .lane-cols, but filled across then down, for ranked lists (Science jobs, Deals) that
+   should read left to right in rank order. */
+.lane-rows {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: 2.25rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .lane-rows { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1536px) {
+  .lane-rows { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1280px) {
+  .lane-beside .lane-rows { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Scrolls with the wheel or touch, without a visible bar. */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }

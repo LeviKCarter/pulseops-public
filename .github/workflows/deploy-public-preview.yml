@@ -1,0 +1,56 @@
+name: Deploy public preview to Cloudflare Pages
+
+# Builds the sanitized static preview (see public-preview/README.md) and deploys it to the
+# Cloudflare Pages project `leviops-public-preview` (https://leviops-public-preview.pages.dev).
+# Runs after every PR merge (auto-merge.yml dispatches it, since its GITHUB_TOKEN merge fires no `push`)
+# and on direct pushes to main; a manual run from another branch deploys a preview URL, not production.
+# The deploy step is skipped (build still runs) until the CLOUDFLARE_API_TOKEN repo secret exists.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: public-preview
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: YOUR_CLOUDFLARE_ACCOUNT_ID
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build sanitized static preview
+        run: npm run build:public-preview
+
+      - name: Refuse to deploy if a private Google Sheet link survived
+        run: |
+          if grep -rlE 'docs\.google\.com/spreadsheets' public-preview-dist; then
+            echo "::error::public-preview-dist still links a Google Sheet; not deploying."
+            exit 1
+          fi
+
+      - name: Deploy to Cloudflare Pages
+        if: env.CLOUDFLARE_API_TOKEN != ''
+        run: >-
+          npx wrangler pages deploy public-preview-dist
+          --project-name leviops-public-preview
+          --branch "${{ github.ref_name }}"
+          --commit-hash "${{ github.sha }}"
+
+      - name: Note the skipped deploy
+        if: env.CLOUDFLARE_API_TOKEN == ''
+        run: echo "::notice::CLOUDFLARE_API_TOKEN is not set, so the preview was built but not deployed."

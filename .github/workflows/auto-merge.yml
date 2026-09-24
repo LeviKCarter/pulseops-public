@@ -1,0 +1,78 @@
+name: Auto-Merge PRs
+
+# Merges each PR on open/update (squash), gated on the build check below.
+# This repo is private on the GitHub Free plan, which doesn't support the
+# built-in "auto-merge" toggle or required status checks (Pro/public-repo
+# only), so the build gate is enforced in-workflow instead of via branch
+# protection -- there is no human review pause.
+# A PR that edits a workflow file merges only when its branch already has the
+# base's current workflows (GITHUB_TOKEN cannot write new workflow content);
+# otherwise it gets a comment with the fix. See the Merge this PR step.
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # The build does not type-check, so type errors were merging unnoticed.
+      - run: npx tsc --noEmit -p .
+      # React hooks rules (setState in effects, impure calls during render) are only caught by lint.
+      - run: npm run lint
+      - run: npm run build
+
+  auto-merge:
+    needs: build
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PR: ${{ github.event.pull_request.number }}
+      REPO: ${{ github.repository }}
+      BASE: ${{ github.event.pull_request.base.ref }}
+      HEAD: ${{ github.event.pull_request.head.ref }}
+    steps:
+      # GITHUB_TOKEN can't get the `workflows` permission, so it may only land workflow-file content a person already
+      # pushed. A PR that edits a workflow still merges while its branch has the base's current workflows (#32, #41,
+      # #49, #48); when the branch is behind them, the squash would write new workflow content and GitHub refuses it
+      # (#42). Then, instead of a red run, the PR gets one comment with both ways forward. A manual merge uses your own
+      # token, so its `push` deploys the preview by itself.
+      - name: Merge this PR
+        id: merge
+        run: |
+          if gh pr merge --squash "$PR" --repo "$REPO" 2> merge.err; then exit 0; fi
+          cat merge.err >&2
+          grep -q 'without `workflows` permission' merge.err || exit 1
+          echo "workflow_refused=true" >> "$GITHUB_OUTPUT"
+          marker='<!-- workflow-merge-guard -->'
+          if gh api --paginate "repos/$REPO/issues/$PR/comments" --jq '.[].body' | grep -qF "$marker"; then
+            echo "Workflow-merge comment already posted."
+          else
+            gh pr comment "$PR" --repo "$REPO" --body "$marker
+          Build passed, but auto-merge couldn't merge this PR: it changes files under \`.github/workflows/\` and \`$HEAD\` is behind \`$BASE\`'s copy of them, so the squash would write workflow content the auto-merge token isn't allowed to create. Either:
+
+          - merge \`$BASE\` into \`$HEAD\` and push; the new run then merges it, or
+          - merge it yourself:
+
+          \`\`\`
+          gh pr merge --squash $PR --repo $REPO
+          \`\`\`"
+          fi
+      # A merge made with GITHUB_TOKEN does not fire `push` workflows, so start the public
+      # preview deploy explicitly (workflow_dispatch is the one event GITHUB_TOKEN may trigger).
+      - name: Deploy the public preview from main
+        if: steps.merge.outputs.workflow_refused != 'true'
+        run: gh workflow run deploy-public-preview.yml --ref main --repo "$REPO"

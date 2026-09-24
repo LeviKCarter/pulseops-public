@@ -1,0 +1,12 @@
+{
+  "name": "levi-ops-live-feed",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-27",
+  "workers_dev": true,
+  "kv_namespaces": [
+    {
+      "binding": "SNAPSHOT",
+      "id": "941bb0fc6de14f4599c5ec66ecface40"
+    }
+  ]
+}
