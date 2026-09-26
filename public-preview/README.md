@@ -50,12 +50,12 @@ npx serve public-preview-dist
 `GH_PAGES_BASE_PATH=/<sub-path>` builds for hosting under a sub-path; the Cloudflare Pages deploy
 serves from the root, so it leaves this unset.
 
-## Deploying (automatic on every push to main)
+## Building on every push to main; deployment requires a token
 
 [`.github/workflows/deploy-public-preview.yml`](../.github/workflows/deploy-public-preview.yml)
 builds this on every push to `main` (and on a manual **Run workflow**), refuses to continue if any
 `docs.google.com/spreadsheets` link survived the sanitizing, and deploys `public-preview-dist/` to the
-Cloudflare Pages project `leviops-public-preview`: https://leviops-public-preview.pages.dev.
+Cloudflare Pages project `pulseops-public-preview`: https://pulseops-public-preview.pages.dev.
 A manual run from a branch other than `main` gets a preview URL, not production.
 
 This repository is a sanitized public mirror. The existing preview uses Cloudflare Pages;
