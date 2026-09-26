@@ -17,7 +17,7 @@ Tailwind 4. The same code runs in two places:
 | Where | How it's reached | What works |
 |---|---|---|
 | **Local server** (this PC, `vinext start` on `:3000`) | `localhost`, the LAN, or Tailscale (MagicDNS short names, `*.ts.net`, `100.64.0.0/10`, `fd7a:115c:a1e0::/48`) | Everything, including the local-only API routes |
-| **Published copy** (Cloudflare, `your-site.example.com`) | The public web | The page and the live feed. Local-only routes refuse the request and the page falls back (browser-only dismissals and stages, a fixed central-Denver Open-Meteo forecast) |
+| **Published copy** (Cloudflare, `pulse-ops-center.levikcarter.chatgpt.site`) | The public web | The page and the live feed. Local-only routes refuse the request and the page falls back (browser-only dismissals and stages, a fixed central-Denver Open-Meteo forecast) |
 
 ## What each lane shows
 
