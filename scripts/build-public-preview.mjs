@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Builds a sanitized, static GitHub Pages preview of the LeviOps dashboard.
+// Builds a sanitized, static GitHub Pages preview of the Pulse Ops dashboard.
 //
 // This NEVER touches the canonical app in place. It copies the repo into a throwaway staging
 // directory, swaps in sanitized fixture data and an export-mode Next config, deletes the
@@ -106,11 +106,11 @@ async function main() {
     `    if (!liveFeedUrl()) return;\n`,
   );
 
-  const footerRe = /Levi Ops · owner-only operations snapshot/;
+  const footerRe = /Pulse Ops · owner-only operations snapshot/;
   if (!footerRe.test(pageSrc)) {
     throw new Error('Could not find the footer text in app/page.tsx — the file shape changed; update scripts/build-public-preview.mjs.');
   }
-  pageSrc = pageSrc.replace(footerRe, 'Levi Ops · public preview · sample data, not live');
+  pageSrc = pageSrc.replace(footerRe, 'Pulse Ops · public preview · sample data, not live');
   writeFileSync(pagePath, pageSrc, 'utf8');
 
   log('Installing the export-mode Next config (output: "export")');

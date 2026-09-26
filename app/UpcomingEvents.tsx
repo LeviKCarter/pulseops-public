@@ -111,7 +111,7 @@ function calendarUrl(event: EventItem): string {
     dates,
     ctz: 'America/Denver',
     location: [event.venue, tidyAddress(event.address)].filter(Boolean).join(', '),
-    details: [safeUrl(event.sourceUrl), event.suggestion ? 'From Songkick, via Levi Ops.' : 'From the Levi Ops event ledger.'].filter(Boolean).join('\n'),
+    details: [safeUrl(event.sourceUrl), event.suggestion ? 'From Songkick, via Pulse Ops.' : 'From the Pulse Ops event ledger.'].filter(Boolean).join('\n'),
   });
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
 }

@@ -913,7 +913,7 @@ export default function Home() {
                 <div className="flex flex-col gap-6">
                   <section id="queue" className="flex flex-1 flex-col scroll-mt-6 rounded-[28px] border border-white/[0.09] bg-[#0f1713] p-4 shadow-[0_24px_80px_rgba(0,0,0,.18)] sm:p-6">
                     <div className="flex flex-col gap-4 border-b border-white/[0.08] pb-5 sm:flex-row sm:items-end sm:justify-between">
-                      <div><p className="section-kicker">LeviAgent queue</p><h2 className="section-title">Latest save activity</h2><p className="mt-2 text-xs text-white/62">Task prompts, results, errors, commands, and transport IDs stay out of this view.</p></div>
+                      <div><p className="section-kicker">Pulse Agent queue</p><h2 className="section-title">Latest save activity</h2><p className="mt-2 text-xs text-white/62">Task prompts, results, errors, commands, and transport IDs stay out of this view.</p></div>
                       <SourceButton href={sourceLinks.queue}>Open full queue</SourceButton>
                     </div>
 
@@ -980,7 +980,7 @@ export default function Home() {
                   <div className="border-b border-white/[0.08] pb-5">
                     <p className="section-kicker">System activity</p>
                     <h2 className="section-title">Live Operations</h2>
-                    <p className="mt-2 text-xs text-white/62">What LeviAgent is doing now, what just entered, worker health, and retained terminal history in one place.</p>
+                    <p className="mt-2 text-xs text-white/62">What Pulse Agent is doing now, what just entered, worker health, and retained terminal history in one place.</p>
                   </div>
                   <div className="mt-6 grid gap-4">
                     <div className="grid gap-3">
@@ -1519,8 +1519,8 @@ export default function Home() {
             <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-6">
                 <div className="flex items-center gap-3">
-                  <span className="grid h-9 w-9 place-items-center rounded-xl bg-[#1a4933] text-xs font-black text-[#f7c972]">L</span>
-                  <div><p className="text-sm font-bold">Levi Ops</p><p className="text-[0.75rem] text-white/62 lg:hidden">{isLive ? 'Live dashboard feed' : 'Private snapshot'}</p><p className="hidden text-[0.75rem] text-white/62 lg:block">Command center</p></div>
+                  <span className="grid h-9 w-9 place-items-center rounded-xl bg-[#1a4933] text-xs font-black text-[#f7c972]">P</span>
+                  <div><p className="text-sm font-bold">Pulse Ops</p><p className="text-[0.75rem] text-white/62 lg:hidden">{isLive ? 'Live dashboard feed' : 'Private snapshot'}</p><p className="hidden text-[0.75rem] text-white/62 lg:block">Command center</p></div>
                 </div>
                 <div className="hidden items-center gap-3 lg:flex">
                   <FeedClock isLive={isLive} updatedAt={snapshot.updatedAt} lastCheckedAt={lastCheckedAt} />
@@ -1529,7 +1529,7 @@ export default function Home() {
               <SourceButton href={sourceLinks.queue}>Open live queue</SourceButton>
             </div>
             <div className="flex flex-col gap-2 border-t border-white/[0.08] pt-6 text-[0.8125rem] text-white/62 sm:flex-row sm:items-center sm:justify-between">
-              <p>Levi Ops · owner-only operations snapshot</p>
+              <p>Pulse Ops · owner-only operations snapshot</p>
               <p>Captured {snapshot.updatedLabel}</p>
             </div>
           </footer>
