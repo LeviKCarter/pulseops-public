@@ -19,6 +19,50 @@ Tailwind 4. The same code runs in two places:
 | **Local server** (this PC, `vinext start` on `:3000`) | `localhost`, the LAN, or Tailscale (MagicDNS short names, `*.ts.net`, `100.64.0.0/10`, `fd7a:115c:a1e0::/48`) | Everything, including the local-only API routes |
 | **Published copy** (Cloudflare, `pulse-ops-center.levikcarter.chatgpt.site`) | The public web | The page and the live feed. Local-only routes refuse the request and the page falls back (browser-only dismissals and stages, a fixed central-Denver Open-Meteo forecast) |
 
+## What it looks like
+
+Captured from the live dashboard on 2026-10-05, 1720 px wide on the PC and 390 px on the phone. The app has moved on
+since the rest of this README was written: the lanes are now **Pulse, Events, Deals and Work** (Deals was Food, and
+Jobs became the Careers tab of Work), and the PC opens on a music-video wallpaper with the lanes as glass over it.
+
+**The wallpaper** (F). The music video fills the screen. The clock, the weather and what's playing sit on the left;
+the music player, the lane icons, the Now thought and the Mail, To Do and Lights pills sit on the right.
+
+![The bare wallpaper: clock, weather, music player, lane icons and the Now thought over the music video](docs/screenshots/wallpaper.jpg)
+
+**Wheel down for the feed, a key for a lane.** The wheel slides the feed in. W and E open Events and Deals as one
+pane beside it, and Esc puts everything away.
+
+![Wheel down brings the feed in, W opens Events, E swaps to Deals, Esc returns to the wallpaper](docs/screenshots/wallpaper-feed-and-lanes.gif)
+
+**A story opens in place.** It grows out of the feed's lane, V and B scroll it, and Esc shrinks it back.
+
+![A story opened from the feed grows out of the lane, scrolls, and closes back into the lane](docs/screenshots/feed-story.gif)
+
+**Three views.** F switches between the wallpaper and the hybrid view (all four lanes as glass over the video). M
+switches the hybrid view to the classic dashboard and back.
+
+![F toggles the wallpaper and the hybrid view; M toggles the hybrid view and the classic dashboard](docs/screenshots/views.gif)
+
+| The hybrid view (the PC default) | To Do pinned open (4) |
+|---|---|
+| ![The four lanes as glass over the music video](docs/screenshots/hybrid.jpg) | ![The To Do list open over the hybrid view, with its add box](docs/screenshots/todo.jpg) |
+
+| Events beside the feed (W) | Deals beside the feed (E) |
+|---|---|
+| ![The Events lane as a pane between the docked feed and the Now column](docs/screenshots/lane-events.jpg) | ![The Deals lane with food deals and the gear watch](docs/screenshots/lane-deals.jpg) |
+
+**The classic dashboard** (M), without the video behind the lanes.
+
+![The classic dashboard without the video behind the lanes](docs/screenshots/classic.jpg)
+
+**On a phone.** It starts on the wallpaper with the Now card. The four buttons at the top open the lanes.
+
+<p>
+  <img src="docs/screenshots/phone-wallpaper.jpg" width="260" alt="The phone wallpaper: lane buttons, clock and weather, the Now card, the Mail and To Do pills and the music bar">
+  <img src="docs/screenshots/phone-events.jpg" width="260" alt="The Events lane opened on the phone">
+</p>
+
 ## What each lane shows
 
 - **Pulse**: the morning brief and evening recap that Pulse Agent's `pulse_local.py` publishes (weather, air quality,
