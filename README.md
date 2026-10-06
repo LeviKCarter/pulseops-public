@@ -130,7 +130,7 @@ is a short scroll below. A lane opens as glass over the wallpaper; the Work lane
 ## The four lanes
 
 The lanes are **Pulse, Events, Deals and Work**. On a PC the default hybrid Vibe view lays them out as glass over the
-music video. **M** switches between this and the classic dashboard. **F** opens the bare wallpaper with the clock,
+music video. **M** switches between this and the classic dashboard. **F** opens the bare wallpaper with the date,
 weather, music and the Now card; its setting survives reloads. On the primary monitor the lanes read Pulse, Events,
 Deals, Work, and Q/W/E/R follow that order. **Shift+F** mirrors the lanes, and their keys with them, for a monitor on
 the other side of the desk; the choice is kept per screen.
@@ -139,20 +139,21 @@ On the wallpaper (1200 px or wider) the lanes are a row of icons under the music
 **Brief**, which opens the daily briefing over the Now card. An icon or its key opens the lane as one pane over the
 wallpaper. The same icon or key closes it, another one swaps it, and Esc or the mouse's Back button closes it. Wheel
 down anywhere on the wallpaper, or Tab, slides the feed into the middle of the screen; wheel up from its top, Tab again
-or Esc slides it back out. From 1700 px the clock stays beside the feed, and an open lane sits between the feed (docked at the left
+or Esc slides it back out. From 1700 px the date stays beside the feed, and an open lane sits between the feed (docked at the left
 edge) and the Now column. Narrower than that, the lane takes the feed's place. Wheel up from the top closes an open
 lane and the feed beside it.
 
 Pulse has no pane on the wallpaper, because its pieces already live there: the weather and the scent pick under the
-clock, mail in the Mail pill, the stories in the feed, the briefing behind Brief, and the workout in the Now card. Its
+date, mail in the Mail pill, the stories in the feed, the briefing behind Brief, and the workout in the Now card. Its
 key brings the feed up and puts it away. Under 1200 px there is no feed over the wallpaper, so Pulse keeps its icon
 and pane. A story opened from the feed is not a pop-up: it grows out of the feed's lane to fill the room up to the
 Now column, and Back (the button, Esc, or the mouse's Back button) shrinks it into the lane again.
 
-A phone starts on the full-screen Vibe wallpaper, which shows off the video like the PC's: the clock is bare text at
+A phone starts on the full-screen Vibe wallpaper, which shows off the video like the PC's: the date is bare text at
 the bottom left, and the weather is one line (an icon, the temperature, the day's temperature graph, the high and
-low). The Now card with its thought starts just below the fold, so a short scroll shows it. Four touch buttons at the
-top open the lanes over the wallpaper, and the music bar sits along the bottom with the Mail and To Do pills above it.
+low). The Now card with its thought starts just below the fold, so a short scroll shows it. The four lane buttons
+float in a column at the right edge, under a thumb, while the page is at its top, with **Drive Home** (a house) on
+top of them away from home; the music bar sits along the bottom with the Mail and To Do pills above it.
 Closing a lane or using Back returns to the wallpaper; a swipe down closes it too. A lane always opens at its header.
 A swipe up scrolls to the Now card, and the same swipe carried on past it slides the feed up as a sheet; one swipe
 down puts it away. A saved classic view
@@ -165,15 +166,18 @@ workout around its planned start (a lift from two hours before to three after; a
 after, the end of the usual time to run), or on the phone the morning rundown. Nothing that is not now gets a card:
 tomorrow's session is not shown the night before, and a session whose time has gone by is not raised again that day.
 Every card has one shape: a line that says when ("4:00 PM · in 40 min", "Right now"), the thing itself as the lead,
-then quiet lines with what is needed for it. **I’m hungry** brings in food choices, ranked from a fresh
-device location or recent Tasker phone fix; no nearby restaurant is guessed when location is unavailable.
+then quiet lines with what is needed for it. **I’m hungry** puts where to eat on the card: the one place
+[Eat](#eat-where-should-i-eat) picks for where you are and the time, with what it serves, the drive and how late it
+is open, **Directions** and **Order ahead**. It is the pick the Deals lane's card shows, never whichever deal happens
+to be on. With no location there is no pick; an old location, or home, is used and said.
 **What should I do right now?** requests a fresh, quick contextual answer. **Another** skips the current recommendation
-for 90 minutes, including other offers from the same restaurant, starts the conversation over and asks for a more
+for 90 minutes (a place to eat is turned down along with the places shown beside it, and a different one is offered), starts the conversation over and asks for a more
 considered answer with a compact explanation (it replaced the separate Think deeper and New thought buttons). **I ate / I’m done** clears the current request. Hunger also expires after 90 minutes.
 Choices are saved on the local server and shared by PC and phone. Patterns across at least three different days at
 similar times and in the same area can favor food or deeper answers; repeated restaurant dismissals lower that
 restaurant's rank. An imminent calendar commitment keeps priority. This is separate from the disabled music/Hue
-habit learners. Distances use the existing approximate venue locations, not route or travel times.
+habit learners. The drive to a place to eat is TomTom's for the places shown; without it, it is worked out from the
+distance and said as "about N min".
 During the scheduled run window, Now shows the run as its name, one line of targets (duration, heart-rate zone), the
 plan's note and the weather at its start; on the PC's wallpaper the air, the best window to run and the week follow.
 The detail waits behind a click anywhere on the card (the chevron in its corner): the last recorded run's time,
@@ -185,7 +189,7 @@ header, content and action grid, with hidden scrollbars while keeping wheel and 
 The bare wallpaper also shows how the weather feels and rain timing, with no row of hours. On the PC's wallpaper the
 thought is a card of its own on top of the Now card, there only while it has something to say: it rests two lines tall
 and opens upward on hover, with B or while you talk to it. The Now card there shows only the moment, and with no moment
-there is no card. Talking to it is the **Ask** button at the foot of the column, in one bar with To do and Lights: a
+there is no card. Talking to it is the **Ask** button at the foot of the column, in one bar with To do and Vibe: a
 click listens (and the next click sends what you said), and resting the mouse on it, or B, brings up Hungry / What
 now? / Another. The PC's wallpaper has no morning rundown either, since everything in it is already on screen.
 While a lane is open over the PC's wallpaper, the Now card's place holds that lane's own week. Beside **Events** it is
@@ -236,15 +240,16 @@ In either list, 2/3 moves down/up, V views the selected source in the popout, an
 The Mail pill is not drawn while nothing is waiting. The To Do list has an add box, and a to-do can also be spoken
 ("remind me to call mom tomorrow", "add milk to my to-do list") into the Now microphone or the ask box; it is saved to
 Google Tasks without a model call. A new to-do shows at once as a pending row, and a slow Google Tasks read is
-answered from the last list kept on the PC, so the list never waits on it. The **Lights** pill on the PC (and the Pulse header on a phone) has the Hue
-controls for clicking.
+answered from the last list kept on the PC, so the list never waits on it. The **Vibe** button on the PC, the Lights pill
+until 2026-10-06 (on a phone, the controls in the Pulse header), has the Hue controls for clicking, under two rows
+for what is behind everything: the PC's desktop background and a playing band's art (see the Vibe button below).
 
 | Lane | What's in it |
 |---|---|
 | **Pulse** | The 6:30 AM update and evening recap from Pulse Agent's `pulse_local.py`. Live weather and air quality for the phone's location, with a week forecast that opens automatically on days with rain, storms or snow. The training card (today's session, the week, lift targets, body composition). The collapsed home view shows a written summary of RSS and newsletter stories, plus unread newsletter highlights; opening it reveals the source links. The feed below is one list of stories, newsletter mail and Instagram posts, newest first, with no filters; each can be read in place, dismissed or (for mail) unsubscribed from. The briefing card reads the day aloud. The scent card (below). The music player. |
 | **Events** | Upcoming Denver events from the Event Ledger, with 3/8/15 mi distance chips, a Free filter and categories. Can be overlaid with your own ICS calendars, Google Tasks (with a Done button), tracked-artist concerts from Songkick (a concert's ticket button opens the TicketData price comparison), and DoMORE tickets (claimed tickets, bonus and last-minute extras, the next drop, and clashes with your plans calendar). Events that the week's forecast says will get rained on are marked. Rows can be dismissed and restored. |
 | **Work** | Two tabs. **Driving** is the Uber log, with nothing typed in: earnings, hours, trips and pay per hour for the week, from the orders accepted in Uber Driver and its time online, both reported by [Pulse Mobile](#pulse-mobile-android-app). A status line shows whether Uber Driver is offline, online, on an offer or on a delivery. Opened in full it adds the graphs and the map, and every offer against the grader's Good and Skip lines, which follow your own picks by themselves, a little a day. **Careers** is the science and geospatial roles from the job pipeline, grouped into a few areas, each with an application stage (Saved, Applied, Interviewing, …). Stages are shared between devices. A warning appears if the pipeline hasn't run in the last day. |
-| **Deals** | Verified and recurring food deals, shown only while they're running (weekday, date range and happy-hour windows from the sheet) and while the restaurant is open: a place that is shut, or closing within 30 minutes, is left out, and one closing within the hour is marked. Rockies game-day deals show the day after a qualifying game, checked against MLB's Stats API. Every deal that isn't dine-in only has **Order ahead**, and **Order elsewhere** beside the Food / Sales switch takes a typed place and what you want: Muse builds the cart and nothing is paid until you say go (see [Ordering ahead, through Muse](#claude-connector-mcp)). Also here: food emails that were moved out of the feeds card, the gear watch, and dismiss/restore. |
+| **Deals** | At the top of the Food half, **Where to eat**: one recommended place and up to two alternatives, picked from every restaurant around you and not only the ones with a deal (see [Eat](#eat-where-should-i-eat)). Under it, verified and recurring food deals, shown only while they're running (weekday, date range and happy-hour windows from the sheet) and while the restaurant is open: a place that is shut, or closing within 30 minutes, is left out, and one closing within the hour is marked. Rockies game-day deals show the day after a qualifying game, checked against MLB's Stats API. Every deal that isn't dine-in only has **Order ahead**, the place Eat picks always has it, and **Order elsewhere** beside the Food / Sales switch takes a typed place and what you want: Muse builds the cart and nothing is paid until you say go (see [Ordering ahead, through Muse](#claude-connector-mcp)). Also here: food emails that were moved out of the feeds card, the gear watch, and dismiss/restore. |
 
 Some Pulse pieces need a little more explanation:
 
@@ -332,13 +337,16 @@ Some Pulse pieces need a little more explanation:
   In Pulse Mobile the phone's music plays only over Bluetooth: off Bluetooth, Play holds, with no message, instead of
   starting; Bluetooth dropping mid-song pauses the music, and its return within 30 minutes picks it up again. In a
   browser the output is unknown and music plays as before.
+  A concert act's songs, and the acts of a genre or of your likes, start on the ones not played lately. What has
+  played is kept on the PC (`%LOCALAPPDATA%\PulseOps\music-heard.json`) and not in the server's memory, so a deploy,
+  which restarts the server, no longer starts every act over on the same songs.
 - **Hue lights.** H switches music colours on at the remembered strength, steps through the video's colour sets on
   each further press, then switches them off; Shift+Z / Shift+X adjust that strength in 5% steps without resetting
   brightness. Z / X dim or brighten the lit rooms 5 points a press (hold to keep going).
   A third mode, Breathe, slides the lights very slowly along a gradient of the video's colors and back (the stretch of the
   color wheel that holds the video's hues; the bulbs sit half of it apart and move at most 30° of hue every three minutes),
   for as long as it is on; in Dominant and Contrast the colors are painted once per stream and J takes another pick. Breathe has no pick
-  (J does nothing there, and the Lights controls drop their ↻ button): it goes through all of the colors by itself.
+  (J does nothing there, and the light controls drop their ↻ button): it goes through all of the colors by itself.
   The modes stay available while a frame loads. Contrast pairs the dominant hue with a distinct hue from
   the frame, or its complementary color when the scene has only one color or closely related hues. Music colours switch
   in about 1 s, including stream changes, scheduled music-colour updates and restoring colours when switched off. The plain
@@ -357,11 +365,23 @@ Some Pulse pieces need a little more explanation:
   The playing tab still takes priority over a paused tab, and manual room overrides remain respected.
   While a concert act plays, the page's tint, the wallpaper's light and the Hue lights follow the act's video or
   album art instead of the paused station, and go back to the station afterwards.
+- **Vibe button.** On the PC it is the pill at the end of the wallpaper's tool bar, the Lights pill until 2026-10-06;
+  on a phone the same rows sit above the lights in the Pulse header's controls. Above the light controls it has two
+  rows for what is behind everything. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
+  slideshow of the pictures in `Pictures\Blackbody\desktop`, 30 minutes a slide), **Bing** (Bing Wallpaper's daily
+  picture) or **Auto**, the default, which is Bing from sunrise to sunset and Blackbody through the night. With Auto
+  on, the one the sun has up is outlined; picking Blackbody or Bing by hand ends Auto until Auto is pressed again. The
+  scheduled task **Pulse Ops Desktop Wallpaper**, registered once from `scripts/` like the other tasks
+  ([`CLAUDE.md`](CLAUDE.md) names each script), asks the server every 5 minutes. The server switches once at each sunrise and sunset and runs nothing in between, so a picture set
+  by hand in Windows stays until the next crossing. **Art** is there only while a concert act plays: ‹ and › step
+  through the act's other videos and album covers without changing the song. A new song keeps the move; a new act
+  forgets it.
 - **Phone directions.** Tap a deal in the phone overview, or its restaurant name in the Deals lane, to open Google
   Maps. A deal tied to a street address requests driving navigation; a chain-wide deal opens a search so you can pick
   the right branch. Home is `HOME_POINT` in the PC's `.env.local` (never in tracked code).
-  **Drive Home** appears when the phone reports that it is more than a quarter mile away, or when its current location
-  is unavailable. Google Maps controls whether it starts navigation immediately and whether a floating navigation
+  **Drive Home**, the house on top of the phone's lane buttons, appears when the phone reports that it is more than a
+  quarter mile away, or when its current location is unavailable. A tap is directions home; a hold opens Google Maps
+  itself with nowhere set, for any other drive. Google Maps controls whether it starts navigation immediately and whether a floating navigation
   view appears after you leave Maps.
 - **Phone alerts.** Open the Pulse header's controls → **Phone alerts** → **Set up alerts**. This saves a random
   ntfy topic on the PC without editing `.env.local` or restarting the server. Install the ntfy Android app with
@@ -378,6 +398,53 @@ Some Pulse pieces need a little more explanation:
 
 After a deploy, an open tab reloads itself onto the new build (`app/BuildWatcher.tsx`). It waits
 while you're typing or music is playing.
+
+### Eat: where should I eat?
+
+The Deals lane answers what is discounted. Eat answers where to eat: one place, for where you are, the time, what is
+open, what is a real meal, what you tend to pick and how far you will drive. A deal is one small part of the score
+and never makes up the list. The whole design is in `docs/eat.md`.
+
+One recommendation path (`app/eatServer.ts`) answers every asker, so they always agree:
+
+- **The Where to eat card**, at the top of the Deals lane's Food half: one pick with a quiet line (the food, the
+  drive, open until) and its deal only when the deal counts. Under it, **Directions**, **Its site**, **Order ahead**
+  and **Another** (with Undo for 20 seconds), up to two alternatives, and **Why**, which lists every part of the
+  score and where each figure came from. **Quick**, **Cheap**, **New** and **Later** change the question.
+- **I’m hungry on the Now card**: the same pick, with Directions and Order ahead.
+- **Ask and the Now microphone**: "where should I eat?", "something quick", "somewhere new", "where should I eat
+  later", "what should I get near this event" and "not that, give me another" are answered from it with no model
+  call. No model is ever asked for a fact about a place.
+
+How it decides:
+
+- **Places** are every restaurant TomTom Search and OpenStreetMap report within 6 miles, read when you ask from
+  somewhere not read in the last 20 hours, plus the deals sheet's own restaurants, looked up by name and address.
+- **Gates run before any score.** A place is out when it is closed at the minute you would arrive, closes within 30
+  minutes of that, has no hours that can be believed, is not a meal (an ice cream shop, a bar with no kitchen), is
+  over 15 minutes away (8 for "quick"), or was turned down in the last 90 minutes.
+- **The score** is nine named parts, each held to its own limits and written to the log with the pick: your own
+  choices, meal fit, how sure it is the place is there, the drive, novelty, value, closeness to an event, and, taken
+  off, uncertainty and repetition. A deal counts only when it is a meal, is not rated "meh", names that address and
+  is on when you arrive. It adds 1 at most, so it can break a tie and never rescue a closed or poor place.
+- **Alternatives** each trade something the data can show: Closer, Better value, A favorite, Somewhere new or
+  Different food. No trade, no alternative.
+- **Hours are never guessed.** Each source has its own expiry: the restaurant's own site 35 days, TomTom's dated
+  hours 48 hours, an OpenStreetMap tag by when it was read and last edited. Stale hours are a second tier, used only
+  when nothing current is left and said to be unchecked. Missing or expired hours are unknown, and an unknown place
+  is never called open.
+- **Location** is the device's own fix, else the phone's last report. One up to 6 hours old is used and said; after
+  that home is used and said; with neither there is no pick.
+- **It learns only from what you do**: directions, opening its site, an order, Another, and a visit worked out from
+  the phone's own location reports. Nothing learned is stored: it is worked out from the log on every read, fades (a
+  liking halves in 45 days, a turn-down in 21) and is capped, so nothing becomes a sure thing or impossible to
+  surface. A card that was only shown is not a vote.
+
+The places and the log are kept on the PC (`%LOCALAPPDATA%\PulseOps\eat-places.json` and `eat-events.json`); deleting
+either is safe. `GET /api/eat/debug/recommendation?q=something+quick` shows every ranked and rejected place with its
+reasons, and `GET /api/eat/events` says how the picks are doing. The outside calls (TomTom Search and Routing,
+OpenStreetMap's Overpass and Nominatim) have daily caps in `docs/outside-calls.md`;
+`CALL_CAP_TOMTOM_SEARCH=0` and `CALL_CAP_OVERPASS=0` in `.env.local` stop the place reads.
 
 ## Where it runs
 
@@ -484,7 +551,7 @@ Local settings go in `.env.local`, which is gitignored. All of them are optional
 | `HOME_POINT`, `HOME_ADDRESS` | unset | Home as `lat,lon` (and an optional address) for Drive Home |
 | `PULSE_HTTPS_ORIGIN` | unset | The https address `tailscale serve` publishes; plain-http Tailscale visitors are sent there so the microphone works |
 | `EIA_API_KEY`, `GAS_PRICE`, `UBER_MPG` | unset | Grading Uber offers. Gas is the EIA's weekly Denver price, read off its public page with no key (`EIA_API_KEY` uses its API instead, `GAS_PRICE` fixes it); mpg is 22, the car's city figure, unless `UBER_MPG` says otherwise |
-| `TOMTOM_API_KEY` | unset | Grading Uber offers with TomTom's traffic forecast for the trip's own roads (`app/routeTraffic.ts`) instead of the city-wide time-of-day curve. A free key from [my.tomtom.com/keys](https://my.tomtom.com/keys); restart the server after adding it, then `GET /api/uber-offer` shows `"route":{"source":"tomtom","ok":true}`. Unset, over the daily cap or on a slow answer, the grader keeps the curve |
+| `TOMTOM_API_KEY` | unset | Grading Uber offers with TomTom's traffic forecast for the trip's own roads (`app/routeTraffic.ts`) instead of the city-wide time-of-day curve. A free key from [my.tomtom.com/keys](https://my.tomtom.com/keys); restart the server after adding it, then `GET /api/uber-offer` shows `"route":{"source":"tomtom","ok":true}`. Unset, over the daily cap or on a slow answer, the grader keeps the curve. The same key lets [Eat](#eat-where-should-i-eat) read the restaurants around you with their dated opening hours (TomTom Search) and the drive to its picks; without it Eat has OpenStreetMap's places and hours alone |
 | `GH_PATH` | `gh` | GitHub CLI that `/api/mobile-update` uses to read the Pulse Mobile release |
 | `NTFY_TOPIC`, `NTFY_SERVER` | unset | Phone alerts through ntfy; normally set from the page instead (see Phone alerts) |
 | `CALL_CAP_<PROVIDER>` | see `docs/outside-calls.md` | Overrides one outside provider's daily call cap (`0` blocks it) |
@@ -498,12 +565,16 @@ Local settings go in `.env.local`, which is gitignored. All of them are optional
 | `SITE_ORIGIN` | `http://localhost:3000` | Base URL for page metadata |
 
 State the server keeps outside the repo lives in `%LOCALAPPDATA%\PulseOps` (Now choices and research progress, the
-work log, Uber offers, phone location, phone alerts, Block Filter sync, Instagram pictures, artist genres, what you
-last ordered at each place). Each file
+work log, Uber offers and their history, the grader's lines, the rain log, the gas price, phone location, phone
+alerts, Block Filter sync, Instagram pictures, artist genres, the act songs played lately, what you last ordered at
+each place, and the places Eat knows with its log of picks). Each file
 has an override for isolated previews and tests: `NOW_INTENT_FILE`, `NOW_THOUGHT_RESEARCH_FILE`, `WORK_LOG_FILE`,
-`UBER_OFFERS_FILE`, `PHONE_LOCATION_FILE`, `PHONE_ALERTS_FILE`, `BLOCK_SYNC_FILE`, `ARTIST_GENRE_FILE`,
-`ORDER_USUAL_FILE`. The ones kept
+`UBER_OFFERS_FILE`, `UBER_OFFER_HISTORY_FILE`, `GRADER_LINES_FILE`, `RAIN_LOG_FILE`, `GAS_PRICE_FILE`,
+`PHONE_LOCATION_FILE`, `PHONE_ALERTS_FILE`, `BLOCK_SYNC_FILE`, `ARTIST_GENRE_FILE`, `MUSIC_HEARD_FILE`,
+`ORDER_USUAL_FILE`, `EAT_PLACES_FILE`, `EAT_EVENTS_FILE`. The ones kept
 in the Pulse Agent checkout's `data` folder have `DEAL_STORES_FILE`, `HABIT_LOG_FILE` and `SCENT_SHARE_DIR`.
+`RESTAURANT_HOURS_FILE` points Eat at another copy of Pulse Agent's own-site opening hours. Whether the desktop
+background follows the sun is kept beside the app, in the git-ignored `.desktop_wallpaper.json`.
 
 `refresh_snapshot.py`, `push_live_snapshot.py` and `push_private_digest.py` read the sheets through PulseAgent's
 `pulseagent_core.local_sheets` (the control-plane Postgres) and the Worker's write token from `%LOCALAPPDATA%\PulseAgent\`.
@@ -532,7 +603,7 @@ the design system. Impeccable is configured to build directly in code, with Live
 | `npm run build`, `npm run start` | Production build, and the Node server that the live dashboard runs |
 | `npm run lint` | ESLint |
 | `npx tsc --noEmit -p .` | Type check (the build doesn't type-check) |
-| `npm test` | Unit tests with Node's built-in runner (the `scripts/*.test.mjs` files listed in `package.json`; a new test file must be added there): spoken text, `/api/ask`, music commands, email rules, scents, event clashes, job areas, hotkeys, the Now card, the wallpaper feed, the work log, the Worker's MCP, private-digest, shelf and ingest code, and Pulse Mobile's offer logic when a JDK is present |
+| `npm test` | Unit tests with Node's built-in runner (the `scripts/*.test.mjs` files listed in `package.json`; a new test file must be added there): spoken text, `/api/ask`, music commands, email rules, scents, event clashes, job areas, hotkeys, the Now card, the wallpaper feed, the work log, Eat (its whole loop, offline), the desktop background, the Worker's MCP, private-digest, shelf and ingest code, and Pulse Mobile's offer logic when a JDK is present |
 | `npm run refresh:snapshot` | Regenerate `app/queueSnapshot.ts` from the sheets |
 | `npm run build:public-preview` | Sanitized static build filled with invented data |
 | `npm run publish:handoff` | Refresh, build, lint and package a hashed bundle in `handoff/` for publishing |
@@ -552,7 +623,8 @@ The routes that change something also refuse cross-origin requests. Every server
 | `scents`, `scents/identify`, `scents/share` | Read and write the scent shelf; look a bottle up by name or photo on the local models; take a bottle photo from the phone's Share sheet |
 | `deal-stores` | The Sales tab's muted, pinned and shop-here stores, kept on the PC so the briefing follows them |
 | `shelf-command` | Run one scent-shelf change for the Claude connector (called by `scripts/poll_shelf_commands.py`) |
-| `order-ahead` | The pickup order Muse is building: read it, ask for one (a food deal, or a typed place and what you want), give its go or cancel it |
+| `order-ahead` | The pickup order Muse is building: read it, ask for one (a food deal, the place Eat picked, or a typed place and what you want), give its go or cancel it |
+| `eat/recommendation`, `eat/events`, `eat/debug/recommendation` | Where to eat: one pick with up to two alternatives; what you did with a pick (directions, its site, an order, another, undo) and how the picks are doing; the same answer with every ranked and rejected place and its reasons, never logged as a showing |
 | `forecast` | Open-Meteo weather + air quality for the phone's location (`app/openMeteoEnvironment.ts`, one shared reading per 5 minutes via `app/environmentReading.ts`). `?detail=1` returns the week of hours |
 | `origin` | Phone location, rounded to about 1 km, for the distance chips |
 | `phone-location`, `now-location`, `home` | Pulse Mobile's background location in; the freshest location for the Now card; the Home point |
@@ -572,6 +644,7 @@ The routes that change something also refuse cross-origin requests. Every server
 | `music/genre`, `music/visuals`, `spotify` | A concert act's genre (iTunes, MusicBrainz), its visuals (a muted music-video loop, else album art) and its Spotify artist id for the in-page player |
 | `music/audio`, `music/loop` | PC-relayed MP3 audio and cached backdrop loop for the phone |
 | `hue-dim` | Read light state, adjust brightness or music colours, restore colours, or reset to the schedule |
+| `desktop-wallpaper` | The PC's own desktop background, for the Vibe button: read it, switch to Blackbody or Bing, turn Auto on, and answer the scheduled task's 5-minute check against the sun |
 | `run-window` | Today's best run window from weather, air quality, daylight and personal plans |
 | `feed-digest`, `feed-briefing`, `feed-speech` | Linked written feed summary, narrative spoken brief, and neural voice audio for Listen |
 | `briefing` | The daily briefing (the calendar, what needs you, what is coming up) shown behind Brief and read by 5; the card adds headlines from its feed digest. Calls no model |
@@ -641,6 +714,9 @@ and `&reset=1` starts over. The prompt and digest are in `app/askLevi.ts`; the p
 
 - **Music commands** ("pause", "louder", "play synthwave", "what's playing") run straight away without calling Claude,
   so they don't reach a model at all. Looser phrasing goes to the model, which has a music tool.
+- **Where to eat** ("where should I eat?", "something quick", "somewhere new", "not that, give me another") is
+  answered from [Eat](#eat-where-should-i-eat), the same recommendation the Deals lane's card shows, with no model
+  call.
 - **Scent shelf changes** ("add Dior Sauvage, a sample", "I ran out of CK One", "put CK One back") are tools that the
   model can use on POST only, never on GET. Dashboard text is treated as data, so a line planted in a scraped page can at
   worst add a bottle or mark one run out. The card's "All scents" list undoes either. The tools are in
@@ -725,7 +801,8 @@ counts (no subjects or senders). To stop it, remove the
   Muse last handed over with `submit_email_digest` (`edge-feed/src/email.js`,
   `app/museEmail.ts`). Muse has to be asked, or scheduled, to send it.
 - **Ordering ahead, through Muse.** Muse has a browser, so it can fill a restaurant's cart while you drive there.
-  **Order ahead** on a food deal, or **Order elsewhere** with a typed place and what you want, opens Maps and
+  **Order ahead** on a food deal or on the place Eat picks (its card in the Deals lane, and Where to eat on the Now
+  card), or **Order elsewhere** with a typed place and what you want, opens Maps and
   leaves one order on the Worker (`edge-feed/src/order.js`, `/orders` with the write
   token: its own KV key, one order at a time, never served by `/snapshot` or the Claude connectors). Three tools,
   on the Muse entrance only, move it along:
@@ -750,7 +827,8 @@ counts (no subjects or senders). To stop it, remove the
 
   A deal's link goes along as the ordering page only when it is one (Toast, so far); otherwise Muse finds the
   restaurant's own pickup ordering, not a delivery app, or reports failed. Deals tagged dine-in only have no
-  Order ahead. What you had is kept per place in `%LOCALAPPDATA%\PulseOps\order-usual.json` and sent with the
+  Order ahead. A pick from Eat always has it: its deal at one tap when it has one that can be picked up, otherwise
+  one field for what you want, sent as a typed order with the place's address. What you had is kept per place in `%LOCALAPPDATA%\PulseOps\order-usual.json` and sent with the
   next order there.
 
   Nothing outside Muse can start it, only a message from you. In Pulse Mobile the tap opens Muse with "order
@@ -801,6 +879,12 @@ and runs when a JDK is present.
   Nothing of it shows on the dashboard, and the extension's source is outside this repo.
 
 ## CI
+
+GitHub has not started Actions jobs for this repository since 2026-10-05, so none of the three workflows below runs
+at present. Until they do, the same checks are run on the PC before a merge
+(`npx tsc --noEmit -p . && npm test && npm run lint && npm run build`), the PR is squash-merged by hand, and the
+deploy poll deploys the public preview from the PC (`scripts/deploy_public_preview.ps1`,
+logged as `PREVIEW_OK <sha>` in `scripts\deploy_poll.log`).
 
 - **Auto-Merge PRs** ([`auto-merge.yml`](.github/workflows/auto-merge.yml)): every PR runs `npm ci`, a type check,
   `npm test`, lint and `npm run build`. Non-draft PRs then squash-merge themselves. There's no human review step, so
