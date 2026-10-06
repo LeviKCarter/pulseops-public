@@ -34,8 +34,8 @@ The canonical copy runs on Levi's PC at `:3000`. Phones reach that copy over Tai
 Captured from the live dashboard on 2026-10-05, 1720 px wide on the PC and 390 px on the phone.
 
 **The wallpaper** (F). The music video fills the screen. The date, the weather and what's playing sit on the left;
-the Now card, the music player, the lane icons, the Now thought and the To Do and Lights pills sit on the right (and
-the Mail pill, while mail is waiting).
+on the right is one column: the Now card, with the thought on top of it when it has something to say, then the music
+player, the lane icons and a tool bar (Ask, To do, Lights). Mail hangs from the top of that column while mail is waiting.
 
 ![The bare wallpaper: the date, the weather, the Now card, the music player, the lane icons and the Now thought over the music video](docs/screenshots/wallpaper.jpg)
 
@@ -83,8 +83,9 @@ up, by genre, each one playable. 2 and 3 move a pick through the rows.
 |---|---|
 | ![The Music view on Stations: the daily moods and the genres](docs/screenshots/music-stations.jpg) | ![The Music view on Concerts: acts by genre with ticket, calendar and like buttons](docs/screenshots/music-concerts.jpg) |
 
-**Beside the lanes.** R opens the briefing over the Now card. The thought opens upward with Hungry, What now? and
-Another and the microphone. Lights opens the Hue controls, and 4 opens To Do with its add box.
+**Beside the lanes.** R opens the briefing over the Now card. At the foot of the column is one tool bar: Ask is the
+microphone, and resting the mouse on it (or B) brings up Hungry, What now? and Another; Lights opens the Hue controls,
+and To Do (4) opens the list with its add box.
 
 | The briefing (R) | The thought, opened |
 |---|---|
@@ -168,10 +169,11 @@ Body-composition and mixed workout heart-rate charts remain in the morning rundo
 Load sparklines sit beside lift targets when the health brief carries enough history. The Now card uses an aligned
 header, content and action grid, with hidden scrollbars while keeping wheel and touch scrolling available.
 The bare wallpaper also shows how the weather feels and rain timing, with no row of hours. On the PC's wallpaper the
-thought is its own block under the lane icons, not part of the Now card: it rests a few lines tall and opens upward on
-hover, with B or with the microphone, and Hungry / What now? / Another run along its foot while it is open. The Now
-card there shows only the moment, and with no moment there is no card. The PC's wallpaper has no morning rundown
-either, since everything in it is already on screen.
+thought is a card of its own on top of the Now card, there only while it has something to say: it rests two lines tall
+and opens upward on hover, with B or while you talk to it. The Now card there shows only the moment, and with no moment
+there is no card. Talking to it is the **Ask** button at the foot of the column, in one bar with To do and Lights: a
+click listens (and the next click sends what you said), and resting the mouse on it, or B, brings up Hungry / What
+now? / Another. The PC's wallpaper has no morning rundown either, since everything in it is already on screen.
 While a lane is open over the PC's wallpaper, the Now card's place holds that lane's own week. Beside **Events** it is
 the week's weather, with the rainy days opened hour by hour. Beside **Deals** it is the week in food deals: today as a
 timeline (what is on by when it ends, what starts later by when it starts), then each day with a bar of when its deals
@@ -186,7 +188,7 @@ The thought is never the Now card over again: it says the one useful thing the s
 tomorrow, an overdue to-do, mail that needs you, something on the calendar through tomorrow), or nothing when nothing
 qualifies. It is written as a short lead with at most one quiet line under it, headed by where the thing lives
 (Calendar, To do, Bills, Packages, Mail, Training, Food), by the time of day when there is no thought, or by the
-conversation once you speak (`app/nowThought.ts`). The **microphone** at the card's top corner makes the thought a back-and-forth: say
+conversation once you speak (`app/nowThought.ts`). The **microphone** (the Ask button on the PC's wallpaper, the right end of the card's actions elsewhere) makes the thought a back-and-forth: say
 something (Chrome or Edge) and Pulse answers it from the same snapshot, with the thought and the earlier turns as
 context. What was said and each answer are listed under the thought. Nothing is saved: the conversation lives in the
 open page and **Another** starts it over. On a PC, **B** opens the thought (B again or Esc closes it) and holding **B**
