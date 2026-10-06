@@ -31,13 +31,14 @@ The canonical copy runs on Levi's PC at `:3000`. Phones reach that copy over Tai
 
 ## What it looks like
 
-Captured from the live dashboard on 2026-10-05 and 2026-10-06, 1720 px wide on the PC and 390 px on the phone.
+Captured from the dashboard on 2026-10-06, 1720 px wide on the PC and 390 px on the phone.
 
 **The wallpaper** (F). The music video fills the screen. The date, the weather and what's playing sit on the left;
-on the right is one column: the Now card, with the thought on top of it when it has something to say, then the music
-player, the lane icons and a tool bar (Ask, To do, Lights). Mail hangs from the top of that column while mail is waiting.
+on the right is one column: the Now card (here where to eat, after Hungry), with the thought on top of it, then the
+music player, the lane icons and a tool bar (Ask, To do, Vibe). Mail hangs from the top of that column while mail is
+waiting.
 
-![The bare wallpaper: the date, the weather, the Now card, the music player, the lane icons and the tool bar (Ask, To do, Lights) over the music video](docs/screenshots/wallpaper.jpg)
+![The bare wallpaper: the date, the weather, the thought, the Now card with where to eat, the music player, the lane icons and the tool bar (Ask, To do, Vibe) over the music video](docs/screenshots/wallpaper.jpg)
 
 **Wheel down for the feed, a key for a lane.** The wheel slides the feed in. Q and W open Events and Deals as one
 pane beside it, and Esc puts everything away.
@@ -50,7 +51,8 @@ pane beside it, and Esc puts everything away.
 
 **Events and Deals.** A lane is one pane over the wallpaper, with its own week in the Now card's place: the forecast
 beside Events, the week in deals beside Deals. Each lane has two halves, and a hold on its icon or its key switches
-to the other one: Events with or without concerts, Deals as Food or Sales.
+to the other one: Events with or without concerts, Deals as Food or Sales. At the top of Deals' Food half is Where
+to eat: one place, the two that trade something against it, and Directions, Its site, Order ahead and Another.
 
 | Events (Q) | Events with concerts |
 |---|---|
@@ -58,7 +60,7 @@ to the other one: Events with or without concerts, Deals as Food or Sales.
 
 | Deals: Food (W) | Deals: Sales |
 |---|---|
-| ![The Deals lane with food deals, the gear watch and the week in deals beside it](docs/screenshots/lane-deals.jpg) | ![The Deals lane on Sales: the stores with a sale on, and the gear watch](docs/screenshots/lane-deals-sales.jpg) |
+| ![The Deals lane: Where to eat on top with its pick and two alternatives, the food deals under it, and the week in deals beside it](docs/screenshots/lane-deals.jpg) | ![The Deals lane on Sales: the stores with a sale on, and the gear watch](docs/screenshots/lane-deals-sales.jpg) |
 
 **The Work lane** (E), here on made-up driving data. It reads down from the week's figures and a bar for each day to
 the map of where offers come from, every offer against the grader's Good and Skip lines, when offers come, and
@@ -92,16 +94,16 @@ up, by genre, each one playable. 2 and 3 move a pick through the rows.
 | ![The Music view on Stations: the daily moods and the genres](docs/screenshots/music-stations.jpg) | ![The Music view on Concerts: acts by genre with ticket, calendar and like buttons](docs/screenshots/music-concerts.jpg) |
 
 **Beside the lanes.** R opens the briefing over the Now card. At the foot of the column is one tool bar: Ask is the
-microphone, and resting the mouse on it (or B) brings up Hungry, What now? and Another; Lights opens the Hue controls,
-and To Do (4) opens the list with its add box.
+microphone, and resting the mouse on it (or B) brings up Hungry, What now? and Another; Vibe opens the desktop
+background's row over the Hue controls, and To Do (4) opens the list with its add box.
 
 | The briefing (R) | Ask's actions |
 |---|---|
-| ![The daily briefing over the Now card: what needs him, what is coming up, the headlines](docs/screenshots/brief.jpg) | ![The mouse resting on Ask: Hungry, What now? and Another above the tool bar](docs/screenshots/now-thought.jpg) |
+| ![The daily briefing over the Now card: what needs him, what is coming up, the headlines](docs/screenshots/brief.jpg) | ![The mouse resting on Ask: Hungry, What now?, Another and I ate above the tool bar, under the Now card's where to eat](docs/screenshots/now-thought.jpg) |
 
-| Lights | To Do (4) |
+| Vibe | To Do (4) |
 |---|---|
-| ![The Lights panel: the colour sets, the colour strength, all lights dimmer or brighter, each room](docs/screenshots/lights.jpg) | ![The To Do list open over the wallpaper, with its add box](docs/screenshots/todo.jpg) |
+| ![The Vibe panel: the desktop background (Auto, Blackbody, Bing), then the lights: the colour sets, the colour strength, all lights dimmer or brighter, each room](docs/screenshots/lights.jpg) | ![The To Do list open over the wallpaper, with its add box](docs/screenshots/todo.jpg) |
 
 **Three views.** F switches between the wallpaper and the hybrid view (all four lanes as glass over the video). M
 switches the hybrid view to the classic dashboard and back.
@@ -117,13 +119,13 @@ The key list (?):
 ![The keyboard shortcut list, a wide panel that scrolls inside the screen](docs/screenshots/shortcuts.jpg)
 
 **On a phone.** It starts on the wallpaper, as bare as the PC's: the date and one line of weather with the day's
-temperature graph at the bottom left, and the lane buttons in a column at the right edge, under a thumb. The Now card
-is a short scroll below. A lane opens as glass over the wallpaper; the Work lane here is on made-up driving data.
+temperature graph at the bottom left, and the lane buttons in a column at the right edge, under a thumb, with Drive
+Home's house on top of them. The Now card is a short scroll below. A lane opens as glass over the wallpaper; the Work lane here is on made-up driving data.
 
 <p>
-  <img src="docs/screenshots/phone-wallpaper.jpg" width="200" alt="The phone wallpaper: the date, the day's temperature graph, the lane buttons at the right edge, the To Do pill and the music bar">
+  <img src="docs/screenshots/phone-wallpaper.jpg" width="200" alt="The phone wallpaper: the date, the day's temperature graph, Drive Home's house on top of the lane buttons at the right edge, the thought and To Do pills and the music bar">
   <img src="docs/screenshots/phone-events.jpg" width="200" alt="The Events lane opened on the phone">
-  <img src="docs/screenshots/phone-deals.jpg" width="200" alt="The Deals lane opened on the phone">
+  <img src="docs/screenshots/phone-deals.jpg" width="200" alt="The Deals lane opened on the phone, with Where to eat on top">
   <img src="docs/screenshots/phone-work.jpg" width="200" alt="The Work lane opened on the phone">
 </p>
 
