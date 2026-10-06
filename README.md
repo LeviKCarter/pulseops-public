@@ -64,6 +64,14 @@ to the other one: Events with or without concerts, Deals as Food or Sales.
 the map of where offers come from, every offer against the grader's Good and Skip lines, when offers come, and
 whether rain changes what driving pays. Beside it, when to drive.
 
+The Good and Skip lines set themselves. Sliders move them by hand, but once there are 30 graded offers over three
+days (eight taken, eight passed) they follow your own picks: once a day, before the first offer, they are held
+against the last 30 days and moved toward where they would call Good what you take two times in three and Skip what
+you pass two times in three. A line moves $2 an hour or 15¢ a mile a day at most and never mid-shift, so the badge
+means the same thing all evening. Each move is listed under the sliders with what it fixed ("you took 10 offers the
+old lines called Skip") and a button that puts it back; another turns the whole thing off
+(`app/graderTune.ts`).
+
 ![The Work lane opened and read down: the week, the day as a timeline, the map, offers against the lines, rain against dry, trips, areas and restaurants](docs/screenshots/work-lane.gif)
 
 | The week and the days | Where it happens |
@@ -235,7 +243,7 @@ controls for clicking.
 |---|---|
 | **Pulse** | The 6:30 AM update and evening recap from Pulse Agent's `pulse_local.py`. Live weather and air quality for the phone's location, with a week forecast that opens automatically on days with rain, storms or snow. The training card (today's session, the week, lift targets, body composition). The collapsed home view shows a written summary of RSS and newsletter stories, plus unread newsletter highlights; opening it reveals the source links. The feed below is one list of stories, newsletter mail and Instagram posts, newest first, with no filters; each can be read in place, dismissed or (for mail) unsubscribed from. The briefing card reads the day aloud. The scent card (below). The music player. |
 | **Events** | Upcoming Denver events from the Event Ledger, with 3/8/15 mi distance chips, a Free filter and categories. Can be overlaid with your own ICS calendars, Google Tasks (with a Done button), tracked-artist concerts from Songkick (a concert's ticket button opens the TicketData price comparison), and DoMORE tickets (claimed tickets, bonus and last-minute extras, the next drop, and clashes with your plans calendar). Events that the week's forecast says will get rained on are marked. Rows can be dismissed and restored. |
-| **Work** | Two tabs. **Driving** is the Uber log, with nothing typed in: earnings, hours, trips and pay per hour for the week, from the orders accepted in Uber Driver and its time online, both reported by [Pulse Mobile](#pulse-mobile-android-app). A status line shows whether Uber Driver is offline, online, on an offer or on a delivery. **Careers** is the science and geospatial roles from the job pipeline, grouped into a few areas, each with an application stage (Saved, Applied, Interviewing, …). Stages are shared between devices. A warning appears if the pipeline hasn't run in the last day. |
+| **Work** | Two tabs. **Driving** is the Uber log, with nothing typed in: earnings, hours, trips and pay per hour for the week, from the orders accepted in Uber Driver and its time online, both reported by [Pulse Mobile](#pulse-mobile-android-app). A status line shows whether Uber Driver is offline, online, on an offer or on a delivery. Opened in full it adds the graphs and the map, and every offer against the grader's Good and Skip lines, which follow your own picks by themselves, a little a day. **Careers** is the science and geospatial roles from the job pipeline, grouped into a few areas, each with an application stage (Saved, Applied, Interviewing, …). Stages are shared between devices. A warning appears if the pipeline hasn't run in the last day. |
 | **Deals** | Verified and recurring food deals, shown only while they're running (weekday, date range and happy-hour windows from the sheet) and while the restaurant is open: a place that is shut, or closing within 30 minutes, is left out, and one closing within the hour is marked. Rockies game-day deals show the day after a qualifying game, checked against MLB's Stats API. Every deal that isn't dine-in only has **Order ahead**, and **Order elsewhere** beside the Food / Sales switch takes a typed place and what you want: Muse builds the cart and nothing is paid until you say go (see [Ordering ahead, through Muse](#claude-connector-mcp)). Also here: food emails that were moved out of the feeds card, the gear watch, and dismiss/restore. |
 
 Some Pulse pieces need a little more explanation:
@@ -555,7 +563,7 @@ The routes that change something also refuse cross-origin requests. Every server
 | `rss-article` | A story's page as text and pictures for the reader |
 | `now-thought`, `now-intent` | The Now card's thought and conversation; its Hungry / Another / I ate choices |
 | `notify`, `notify/setup` | Send a phone alert through ntfy; set the topic up from the page |
-| `work-log`, `uber-offer` | The Uber driving log; grade an Uber Driver offer for Pulse Mobile |
+| `work-log`, `uber-offer`, `grader-lines` | The Uber driving log; grade an Uber Driver offer for Pulse Mobile; the grader's Good and Skip lines, whether they move by themselves, and their last move put back |
 | `mobile-update` | The newest Pulse Mobile build, read with the PC's `gh` |
 | `block-sync` | The Block Filter's shared list (see Extras) |
 | `secure-address` | The https address a plain-http Tailscale visitor is sent to |
@@ -766,7 +774,8 @@ can't do:
 - **The Uber driving log.** It reads Uber Driver's notifications and, through a read-only accessibility service, its
   offer cards. Each offer is sent to `/api/uber-offer` and graded (`app/uberOffer.ts`: pay against
   time, distance, gas and how far the drop-off is from a busy area) and shown as a Good / OK / Skip badge; time or
-  distance it could not read is "not graded", never guessed. The badge is never silent: it says "Order grader on"
+  distance it could not read is "not graded", never guessed. Where Good and Skip begin follows which offers you take
+  and pass (see the Work lane above). The badge is never silent: it says "Order grader on"
   when Android starts the service, "Grading..." the moment an offer is recognised, and "Can't reach the PC" at the
   first failed try. Accepted orders and time online go to the Work lane's
   log, each order once.
