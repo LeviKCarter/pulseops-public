@@ -251,7 +251,7 @@ for what is behind everything: the PC's desktop background and a playing band's 
 | **Pulse** | The 6:30 AM update and evening recap from Pulse Agent's `pulse_local.py`. Live weather and air quality for the phone's location, with a week forecast that opens automatically on days with rain, storms or snow. The training card (today's session, the week, lift targets, body composition). The collapsed home view shows a written summary of RSS and newsletter stories, plus unread newsletter highlights; opening it reveals the source links. The feed below is one list of stories, newsletter mail and Instagram posts, newest first, with no filters; each can be read in place, dismissed or (for mail) unsubscribed from. The briefing card reads the day aloud. The scent card (below). The music player. |
 | **Events** | Upcoming Denver events from the Event Ledger, with 3/8/15 mi distance chips, a Free filter and categories. Can be overlaid with your own ICS calendars, Google Tasks (with a Done button), tracked-artist concerts from Songkick (a concert's ticket button opens the TicketData price comparison), and DoMORE tickets (claimed tickets, bonus and last-minute extras, the next drop, and clashes with your plans calendar). Events that the week's forecast says will get rained on are marked. Rows can be dismissed and restored. |
 | **Work** | Two tabs. **Driving** is the Uber log, with nothing typed in: earnings, hours, trips and pay per hour for the week, from the orders accepted in Uber Driver and its time online, both reported by [Pulse Mobile](#pulse-mobile-android-app). A status line shows whether Uber Driver is offline, online, on an offer or on a delivery. Opened in full it adds the graphs and the map, and every offer against the grader's Good and Skip lines, which follow your own picks by themselves, a little a day. **Careers** is the science and geospatial roles from the job pipeline, grouped into a few areas, each with an application stage (Saved, Applied, Interviewing, …). Stages are shared between devices. A warning appears if the pipeline hasn't run in the last day. |
-| **Deals** | At the top of the Food half, **Where to eat**: one recommended place and up to two alternatives, picked from every restaurant around you and not only the ones with a deal (see [Eat](#eat-where-should-i-eat)). Under it, verified and recurring food deals, shown only while they're running (weekday, date range and happy-hour windows from the sheet) and while the restaurant is open: a place that is shut, or closing within 30 minutes, is left out, and one closing within the hour is marked. Rockies game-day deals show the day after a qualifying game, checked against MLB's Stats API. Every deal that isn't dine-in only has **Order ahead**, the place Eat picks always has it, and **Order elsewhere** beside the Food / Sales switch takes a typed place and what you want: Muse builds the cart and nothing is paid until you say go (see [Ordering ahead, through Muse](#claude-connector-mcp)). Also here: food emails that were moved out of the feeds card, the gear watch, and dismiss/restore. |
+| **Deals** | At the top of the Food half, **Where to eat**: one recommended place and up to two alternatives, picked from every restaurant around you and not only the ones with a deal (see [Eat](#eat-where-should-i-eat)). Under it, verified and recurring food deals, shown only while they're running (weekday, date range and happy-hour windows from the sheet) and while the restaurant is open: a place that is shut, or closing within 30 minutes, is left out, and one closing within the hour is marked. Rockies game-day deals show the day after a qualifying game, checked against MLB's Stats API. Every deal that isn't dine-in only has **Order ahead**, the place Eat picks always has it, and **Order elsewhere** beside the Food / Sales switch takes a typed place: Muse decides what to order and builds the cart, you say go or veto it, and nothing is paid until you say go (see [Ordering ahead, through Muse](#claude-connector-mcp)). Also here: food emails that were moved out of the feeds card, the gear watch, and dismiss/restore. |
 
 Some Pulse pieces need a little more explanation:
 
@@ -625,7 +625,7 @@ The routes that change something also refuse cross-origin requests. Every server
 | `scents`, `scents/identify`, `scents/share` | Read and write the scent shelf; look a bottle up by name or photo on the local models; take a bottle photo from the phone's Share sheet |
 | `deal-stores` | The Sales tab's muted, pinned and shop-here stores, kept on the PC so the briefing follows them |
 | `shelf-command` | Run one scent-shelf change for the Claude connector (called by `scripts/poll_shelf_commands.py`) |
-| `order-ahead` | The pickup order Muse is building: read it, ask for one (a food deal, the place Eat picked, or a typed place and what you want), give its go or cancel it |
+| `order-ahead` | The pickup order Muse is building: read it, ask for one (a food deal, the place Eat picked, or a typed place), give its go, veto the cart Muse chose, or cancel it |
 | `eat/recommendation`, `eat/events`, `eat/debug/recommendation` | Where to eat: one pick with up to two alternatives; what you did with a pick (directions, its site, an order, another, undo) and how the picks are doing; the same answer with every ranked and rejected place and its reasons, never logged as a showing |
 | `forecast` | Open-Meteo weather + air quality for the phone's location (`app/openMeteoEnvironment.ts`, one shared reading per 5 minutes via `app/environmentReading.ts`). `?detail=1` returns the week of hours |
 | `origin` | Phone location, rounded to about 1 km, for the distance chips |
@@ -804,33 +804,42 @@ counts (no subjects or senders). To stop it, remove the
   `app/museEmail.ts`). Muse has to be asked, or scheduled, to send it.
 - **Ordering ahead, through Muse.** Muse has a browser, so it can fill a restaurant's cart while you drive there.
   **Order ahead** on a food deal or on the place Eat picks (its card in the Deals lane, and Where to eat on the Now
-  card), or **Order elsewhere** with a typed place and what you want, opens Maps and
+  card), or **Order elsewhere** with a typed place, opens Maps and
   leaves one order on the Worker (`edge-feed/src/order.js`, `/orders` with the write
   token: its own KV key, one order at a time, never served by `/snapshot` or the Claude connectors). Three tools,
   on the Muse entrance only, move it along:
 
   | Tool | Does |
   |---|---|
-  | `get_order_request` | The waiting order (restaurant, the deal or what you want, the ordering page when one is on file), where it stands and Muse's one next step |
-  | `report_order` | Muse's status: `building`, `ready` with the total the pay screen shows, `placed` with the total charged and the pickup time, or `failed` with a one-line reason |
-  | `wait_for_go` | Watches about 25 seconds and answers GO, WAIT (call again) or STOP (cancelled or timed out: don't pay, empty the cart) |
+  | `get_order_request` | The waiting order (restaurant, the deal or what you want, or that the choice is Muse's, the ordering page when one is on file, anything you vetoed), where it stands and Muse's one next step |
+  | `report_order` | Muse's status: `building`, `ready` with what is in the cart and the total the pay screen shows, `placed` with the total charged and the pickup time, or `failed` with a one-line reason |
+  | `wait_for_go` | Watches about 25 seconds and answers GO, WAIT (call again), VETO (build a different order at the same place) or STOP (cancelled or timed out: don't pay, empty the cart) |
 
-  **Nothing is paid without your go.** Muse stops at the last screen before paying and reports the total; that is
-  the number you approve. Only this PC can write the go (`api/order-ahead`): the full-screen GO card, "go" said to
-  the Now microphone or the ask box, or the GO button on the phone alert. No tool can write it, `wait_for_go` is
-  the only thing that releases the payment, and a `placed` report is refused unless the go was given. Muse is told
-  to report `failed`, not pay, if the total on screen has changed, and never to swap in another item, deal or
-  code. Deal text is passed as data, one clipped line per field.
+  **Muse decides what to order; you say go or veto.** A deal is ordered as the deal, a typed order goes by what
+  you typed, and a place with nothing named (the pick from Eat, or Order elsewhere with the second field left
+  empty) is Muse's to choose from: one meal for one person, going by what you had there last time. Whatever is
+  left open, Muse picks. The GO card shows what it chose and the total. **Veto** under the GO button, "veto" or
+  "something else" said aloud, or the VETO button on the phone alert turns that cart down: Muse takes it out,
+  builds a different order at the same place and shows you the new one, which alerts again. It never shows you
+  a cart you vetoed, and after five vetoes the one on screen is go or cancel.
 
-  Every wait has an end, and each ends as failed, never placed: 15 minutes to reach the pay screen, 40 minutes
-  held for your go, 10 minutes to confirm after it (that last one says to check with the restaurant before
-  ordering again). A new order replaces an open one, except one already being placed. If the PC can't reach the
-  Worker, nothing is sent and the card says so.
+  **Nothing is paid without your go.** Muse stops at the last screen before paying and reports the cart and the
+  total; that is what you approve. Only this PC can write the go or the veto (`api/order-ahead`): the full-screen
+  GO card, "go" said to the Now microphone or the ask box, or the GO button on the phone alert. No tool can write
+  either, `wait_for_go` is the only thing that releases the payment, and a `placed` report is refused unless the
+  go was given. A go or a veto names the cart it is about, so a button on an old alert, tapped after Muse has
+  shown a newer cart, is refused. Muse is told to report `failed`, not pay, if the total on screen has changed,
+  and never to order outside the deal or what you typed. Deal text is passed as data, one clipped line per field.
+
+  Every wait has an end, and each ends as failed, never placed: 15 minutes to reach the pay screen (again after
+  each veto), 40 minutes held for your go, 10 minutes to confirm after it (that last one says to check with the
+  restaurant before ordering again). A new order replaces an open one, except one already being placed. If the PC
+  can't reach the Worker, nothing is sent and the card says so.
 
   A deal's link goes along as the ordering page only when it is one (Toast, so far); otherwise Muse finds the
   restaurant's own pickup ordering, not a delivery app, or reports failed. Deals tagged dine-in only have no
-  Order ahead. A pick from Eat always has it: its deal at one tap when it has one that can be picked up, otherwise
-  one field for what you want, sent as a typed order with the place's address. What you had is kept per place in `%LOCALAPPDATA%\PulseOps\order-usual.json` and sent with the
+  Order ahead. A pick from Eat always has it, at one tap: its deal when it has one that can be picked up, otherwise
+  the place and its address alone, and Muse chooses the meal. What you had is kept per place in `%LOCALAPPDATA%\PulseOps\order-usual.json` and sent with the
   next order there.
 
   Nothing outside Muse can start it, only a message from you. In Pulse Mobile the tap opens Muse with "order
