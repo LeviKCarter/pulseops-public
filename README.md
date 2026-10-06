@@ -121,11 +121,21 @@ graphs appear as history becomes available; before the first run, the card shows
 Body-composition and mixed workout heart-rate charts remain in the morning rundown and training panel.
 Load sparklines sit beside lift targets when the health brief carries enough history. The Now card uses an aligned
 header, content and action grid, with hidden scrollbars while keeping wheel and touch scrolling available.
-The bare wallpaper also shows how the weather feels, rain timing and the next 12 hours. On the PC's wallpaper the
+The bare wallpaper also shows how the weather feels and rain timing, with no row of hours. On the PC's wallpaper the
 thought is its own block under the lane icons, not part of the Now card: it rests a few lines tall and opens upward on
 hover, with B or with the microphone, and Hungry / What now? / Another run along its foot while it is open. The Now
 card there shows only the moment, and with no moment there is no card. The PC's wallpaper has no morning rundown
 either, since everything in it is already on screen.
+While a lane is open over the PC's wallpaper, the Now card's place holds that lane's own week. Beside **Events** it is
+the week's weather, with the rainy days opened hour by hour. Beside **Deals** it is the week in food deals: today as a
+timeline (what is on by when it ends, what starts later by when it starts), then each day with a bar of when its deals
+with set hours run and the specials that run on that day only, with their hours. Today's and tomorrow's are open; a
+later day opens on a click. It follows the lane's own filters. Beside **Work** it is the week ahead for driving: what
+your own offers have paid by hour of the day (the median after gas, once more than one offer was seen in the hour),
+then each day's driving hours, 11 AM to 10 PM, with the rain in them, what is on your calendar and what that weekday
+paid the last time you drove it. Today and any day with rain likely in those hours open hour by hour. Nothing in
+either is a guess at demand: the sheet's schedules, the forecast, your calendar and your own log
+(`app/dealWeek.ts`, `app/driveWeek.ts`).
 The Now card's thought sits under a heading that follows the moment (the run, an event, food, the time of day, or the
 conversation once you speak). The **microphone** at the card's top corner makes the thought a back-and-forth: say
 something (Chrome or Edge) and Pulse answers it from the same snapshot, with the thought and the earlier turns as
@@ -169,7 +179,7 @@ controls for clicking.
 | **Pulse** | The 6:30 AM update and evening recap from Pulse Agent's `pulse_local.py`. Live weather and air quality for the phone's location, with a week forecast that opens automatically on days with rain, storms or snow. The training card (today's session, the week, lift targets, body composition). The collapsed home view shows a written summary of RSS and newsletter stories, plus unread newsletter highlights; opening it reveals the source links. The feed below is one list of stories, newsletter mail and Instagram posts, newest first, with no filters; each can be read in place, dismissed or (for mail) unsubscribed from. The briefing card reads the day aloud. The scent card (below). The music player. |
 | **Events** | Upcoming Denver events from the Event Ledger, with 3/8/15 mi distance chips, a Free filter and categories. Can be overlaid with your own ICS calendars, Google Tasks (with a Done button), tracked-artist concerts from Songkick (a concert's ticket button opens the TicketData price comparison), and DoMORE tickets (claimed tickets, bonus and last-minute extras, the next drop, and clashes with your plans calendar). Events that the week's forecast says will get rained on are marked. Rows can be dismissed and restored. |
 | **Work** | Two tabs. **Driving** is the Uber log, with nothing typed in: earnings, hours, trips and pay per hour for the week, from the orders accepted in Uber Driver and its time online, both reported by [Pulse Mobile](#pulse-mobile-android-app). A status line shows whether Uber Driver is offline, online, on an offer or on a delivery. **Careers** is the science and geospatial roles from the job pipeline, grouped into a few areas, each with an application stage (Saved, Applied, Interviewing, …). Stages are shared between devices. A warning appears if the pipeline hasn't run in the last day. |
-| **Deals** | Verified and recurring food deals, shown only while they're running (weekday, date range and happy-hour windows from the sheet) and while the restaurant is open: a place that is shut, or closing within 30 minutes, is left out, and one closing within the hour is marked. Rockies game-day deals show the day after a qualifying game, checked against MLB's Stats API. Also here: food emails that were moved out of the feeds card, the gear watch, and dismiss/restore. |
+| **Deals** | Verified and recurring food deals, shown only while they're running (weekday, date range and happy-hour windows from the sheet) and while the restaurant is open: a place that is shut, or closing within 30 minutes, is left out, and one closing within the hour is marked. Rockies game-day deals show the day after a qualifying game, checked against MLB's Stats API. Every deal that isn't dine-in only has **Order ahead**, and **Order elsewhere** beside the Food / Sales switch takes a typed place and what you want: Muse builds the cart and nothing is paid until you say go (see [Ordering ahead, through Muse](#claude-connector-mcp)). Also here: food emails that were moved out of the feeds card, the gear watch, and dismiss/restore. |
 
 Some Pulse pieces need a little more explanation:
 
@@ -254,14 +264,16 @@ Some Pulse pieces need a little more explanation:
   plays a 10-second, 720p, 15 fps loop cut from the stream (made once per stream on this PC and kept in the venv's `loops`
   folder), instead of the full video that used to crash it. In Vibe the muted wallpaper loop can play before audio
   starts; Play/Pause still controls the music independently, and the loop pauses while the page is hidden.
-  In Pulse Mobile the phone's music plays only over Bluetooth: off Bluetooth, Play holds with a note instead of
+  In Pulse Mobile the phone's music plays only over Bluetooth: off Bluetooth, Play holds, with no message, instead of
   starting; Bluetooth dropping mid-song pauses the music, and its return within 30 minutes picks it up again. In a
   browser the output is unknown and music plays as before.
 - **Hue lights.** H switches music colours on at the remembered strength, steps through the video's colour sets on
   each further press, then switches them off; Shift+Z / Shift+X adjust that strength in 5% steps without resetting
   brightness. Z / X dim or brighten the lit rooms 5 points a press (hold to keep going).
-  A third mode, Breathe, drifts the lights very slowly from one of the video's color picks to the next, about three minutes each,
-  for as long as it is on; in Dominant and Contrast the colors are painted once per stream and J takes another pick.
+  A third mode, Breathe, slides the lights very slowly along a gradient of the video's colors and back (the stretch of the
+  color wheel that holds the video's hues; the bulbs sit half of it apart and move at most 30° of hue every three minutes),
+  for as long as it is on; in Dominant and Contrast the colors are painted once per stream and J takes another pick. Breathe has no pick
+  (J does nothing there, and the Lights controls drop their ↻ button): it goes through all of the colors by itself.
   The modes stay available while a frame loads. Contrast pairs the dominant hue with a distinct hue from
   the frame, or its complementary color when the scene has only one color or closely related hues. Music colours switch
   in about 1 s, including stream changes, scheduled music-colour updates and restoring colours when switched off. The plain
@@ -362,12 +374,15 @@ typing in a field or holding Ctrl, Alt or ⌘.
 | 1 | Open / close Mail (Inbox Supervisor), above Now |
 | 2 / 3 | Move down / up the active Mail or To Do list; scroll down / up inside the source popout. Elsewhere, step through the feed, the Inbox rows, the events (or DoMORE extras) or the deals, whichever is open |
 | 4 | Open / close To Do. With Events open: hide / show concerts |
-| 5 | Read the daily briefing aloud from any view (again to stop) |
+| Hold Q | The Work lane on its Careers tab, as holding the Work icon does on a PC (on the phone that hold opens Uber Driver). Held for half a second; a tap still does what Q does there |
+| Hold W | The Deals lane on Sales, its second view (the Food tab, or 1 with Deals open, goes back). Held for half a second; a tap still does what W does there |
+| Hold E | The Events lane with concerts shown among the other events, as holding the Events icon does. Held for half a second; a tap still does what E does there |
+| 5, hold R | Read the daily briefing aloud from any view (again to stop). R held for half a second does it; a tap still does what R does there (its lane, or the Brief icon on the wallpaper) |
 | V / B | Scroll the open story or email down / up; hold for a steady glide. In Events, V on a picked concert plays the act's songs and pauses the music, V on any other event opens it in the reader, and B adds the picked event to Calendar. In Deals, V opens the picked deal's details or email. V opens a selected Mail or To Do row's source |
 | Shift+V / Shift+B, + / − | In an open email or story: zoom the text in / out (0 resets) |
 | C | Complete the selected Mail or To Do item, including from its source popout (email seen, mail collected, task done, bill paid, package received). Elsewhere, the one action for what is open or picked: mark the story read, unsubscribe from or dismiss the email, mark a task done, claim the picked DoMORE extra, hide the picked deal |
 | H | Switch the Hue lights' music colours on at the remembered strength, then step through the modes (Dominant, Contrast, Breathe), then off |
-| J | While the lights have the video's colours: another pick of them |
+| J | While the lights have the video's colours: another pick of them (not in Breathe) |
 | Z / X | Dim / brighten the lit Hue rooms by 5 percentage points; hold to keep stepping |
 | Shift+Z / Shift+X | Decrease / increase music-colour strength in 5% steps up to 100% |
 | G | Reset Hue lights to the time-of-day default, ending music colours and manual overrides |
@@ -403,7 +418,8 @@ Local settings go in `.env.local`, which is gitignored. All of them are optional
 | `NOW_THOUGHT_PROVIDER` | unset | Forces the Now thought onto one provider: `cli` (signed-in Claude CLI), `codex` (signed-in ChatGPT CLI), `claude` or `openai` (API keys). `NOW_THOUGHT_CLAUDE_PATH` / `NOW_THOUGHT_CODEX_PATH` point at the CLIs when they aren't found |
 | `HOME_POINT`, `HOME_ADDRESS` | unset | Home as `lat,lon` (and an optional address) for Drive Home |
 | `PULSE_HTTPS_ORIGIN` | unset | The https address `tailscale serve` publishes; plain-http Tailscale visitors are sent there so the microphone works |
-| `EIA_API_KEY`, `GAS_PRICE`, `UBER_MPG` | unset | Grading Uber offers: the EIA's weekly Denver gas price (or a fixed `GAS_PRICE`) and the car's mpg |
+| `EIA_API_KEY`, `GAS_PRICE`, `UBER_MPG` | unset | Grading Uber offers. Gas is the EIA's weekly Denver price, read off its public page with no key (`EIA_API_KEY` uses its API instead, `GAS_PRICE` fixes it); mpg is 22, the car's city figure, unless `UBER_MPG` says otherwise |
+| `TOMTOM_API_KEY` | unset | Grading Uber offers with TomTom's traffic forecast for the trip's own roads (`app/routeTraffic.ts`) instead of the city-wide time-of-day curve. A free key from [my.tomtom.com/keys](https://my.tomtom.com/keys); restart the server after adding it, then `GET /api/uber-offer` shows `"route":{"source":"tomtom","ok":true}`. Unset, over the daily cap or on a slow answer, the grader keeps the curve |
 | `GH_PATH` | `gh` | GitHub CLI that `/api/mobile-update` uses to read the Pulse Mobile release |
 | `NTFY_TOPIC`, `NTFY_SERVER` | unset | Phone alerts through ntfy; normally set from the page instead (see Phone alerts) |
 | `CALL_CAP_<PROVIDER>` | see `docs/outside-calls.md` | Overrides one outside provider's daily call cap (`0` blocks it) |
@@ -417,9 +433,11 @@ Local settings go in `.env.local`, which is gitignored. All of them are optional
 | `SITE_ORIGIN` | `http://localhost:3000` | Base URL for page metadata |
 
 State the server keeps outside the repo lives in `%LOCALAPPDATA%\PulseOps` (Now choices and research progress, the
-work log, Uber offers, phone location, phone alerts, Block Filter sync, Instagram pictures, artist genres). Each file
+work log, Uber offers, phone location, phone alerts, Block Filter sync, Instagram pictures, artist genres, what you
+last ordered at each place). Each file
 has an override for isolated previews and tests: `NOW_INTENT_FILE`, `NOW_THOUGHT_RESEARCH_FILE`, `WORK_LOG_FILE`,
-`UBER_OFFERS_FILE`, `PHONE_LOCATION_FILE`, `PHONE_ALERTS_FILE`, `BLOCK_SYNC_FILE`, `ARTIST_GENRE_FILE`. The ones kept
+`UBER_OFFERS_FILE`, `PHONE_LOCATION_FILE`, `PHONE_ALERTS_FILE`, `BLOCK_SYNC_FILE`, `ARTIST_GENRE_FILE`,
+`ORDER_USUAL_FILE`. The ones kept
 in the Pulse Agent checkout's `data` folder have `DEAL_STORES_FILE`, `HABIT_LOG_FILE` and `SCENT_SHARE_DIR`.
 
 `refresh_snapshot.py`, `push_live_snapshot.py` and `push_private_digest.py` read the sheets through PulseAgent's
@@ -469,6 +487,7 @@ The routes that change something also refuse cross-origin requests. Every server
 | `scents`, `scents/identify`, `scents/share` | Read and write the scent shelf; look a bottle up by name or photo on the local models; take a bottle photo from the phone's Share sheet |
 | `deal-stores` | The Sales tab's muted, pinned and shop-here stores, kept on the PC so the briefing follows them |
 | `shelf-command` | Run one scent-shelf change for the Claude connector (called by `scripts/poll_shelf_commands.py`) |
+| `order-ahead` | The pickup order Muse is building: read it, ask for one (a food deal, or a typed place and what you want), give its go or cancel it |
 | `forecast` | Open-Meteo weather + air quality for the phone's location (`app/openMeteoEnvironment.ts`, one shared reading per 5 minutes via `app/environmentReading.ts`). `?detail=1` returns the week of hours |
 | `origin` | Phone location, rounded to about 1 km, for the distance chips |
 | `phone-location`, `now-location`, `home` | Pulse Mobile's background location in; the freshest location for the Now card; the Home point |
@@ -608,14 +627,15 @@ counts (no subjects or senders). To stop it, remove the
   x. Post text is only ever stored as one clipped line per field; nothing in it is run.
 - **Muse (Meta's agent).** Muse has no connector form: you ask it in chat to build a custom connector, and it asks for
   the key in its own secure prompt. So it gets a third entrance, plain `/mcp` with `Authorization: Bearer <key>`
-  (secret `MCP_MUSE_TOKEN`), which offers the same sixteen tools as `/mcp-private`, so Muse can read your calendar,
-  tickets and tasks and change the scent shelf (until 2026-10-05 it had the six snapshot tools only). The key is
+  (secret `MCP_MUSE_TOKEN`), which offers the same eighteen tools as `/mcp-private`, so Muse can read your calendar,
+  tickets and tasks and change the scent shelf (until 2026-10-05 it had the six snapshot tools only), plus five
+  of its own, covered in the next three items. The key is
   in `%LOCALAPPDATA%\PulseAgent\leviops-mcp-muse-key.txt`. Tell Muse: *"Create a custom connector for my Pulse Ops MCP
   server at `https://YOUR-WORKER.workers.dev/mcp`. It is a remote MCP server over streamable HTTP
   (stateless, POST only) and uses a bearer token in the Authorization header."* A wrong key gets 401; with the secret
   deleted the path is a 404 and Muse is cut off without touching Claude's connectors.
 - **Instagram, through Muse.** Instagram has no API for a personal home feed, and Muse is Meta's agent, so Muse is the
-  one thing that can read yours. Its entrance has one tool the Claude connectors don't: `submit_instagram_digest`, which
+  one thing that can read yours. For this its entrance has a tool the Claude connectors don't, `submit_instagram_digest`, which
   takes up to 40 posts a call (account, caption, instagram.com link, picture link, time) and keeps them on the Worker for
   a week, each post once (`edge-feed/src/instagram.js`). Captions are stored as capped
   plain text, a link that isn't to instagram.com is dropped, and a picture is kept only as an https link to Meta's image
@@ -636,6 +656,39 @@ counts (no subjects or senders). To stop it, remove the
 - **Mail, through Muse.** When the PC's own Gmail read fails, the Inbox falls back to the list of unread threads
   Muse last handed over with `submit_email_digest` (`edge-feed/src/email.js`,
   `app/museEmail.ts`). Muse has to be asked, or scheduled, to send it.
+- **Ordering ahead, through Muse.** Muse has a browser, so it can fill a restaurant's cart while you drive there.
+  **Order ahead** on a food deal, or **Order elsewhere** with a typed place and what you want, opens Maps and
+  leaves one order on the Worker (`edge-feed/src/order.js`, `/orders` with the write
+  token: its own KV key, one order at a time, never served by `/snapshot` or the Claude connectors). Three tools,
+  on the Muse entrance only, move it along:
+
+  | Tool | Does |
+  |---|---|
+  | `get_order_request` | The waiting order (restaurant, the deal or what you want, the ordering page when one is on file), where it stands and Muse's one next step |
+  | `report_order` | Muse's status: `building`, `ready` with the total the pay screen shows, `placed` with the total charged and the pickup time, or `failed` with a one-line reason |
+  | `wait_for_go` | Watches about 25 seconds and answers GO, WAIT (call again) or STOP (cancelled or timed out: don't pay, empty the cart) |
+
+  **Nothing is paid without your go.** Muse stops at the last screen before paying and reports the total; that is
+  the number you approve. Only this PC can write the go (`api/order-ahead`): the full-screen GO card, "go" said to
+  the Now microphone or the ask box, or the GO button on the phone alert. No tool can write it, `wait_for_go` is
+  the only thing that releases the payment, and a `placed` report is refused unless the go was given. Muse is told
+  to report `failed`, not pay, if the total on screen has changed, and never to swap in another item, deal or
+  code. Deal text is passed as data, one clipped line per field.
+
+  Every wait has an end, and each ends as failed, never placed: 15 minutes to reach the pay screen, 40 minutes
+  held for your go, 10 minutes to confirm after it (that last one says to check with the restaurant before
+  ordering again). A new order replaces an open one, except one already being placed. If the PC can't reach the
+  Worker, nothing is sent and the card says so.
+
+  A deal's link goes along as the ordering page only when it is one (Toast, so far); otherwise Muse finds the
+  restaurant's own pickup ordering, not a delivery app, or reports failed. Deals tagged dine-in only have no
+  Order ahead. What you had is kept per place in `%LOCALAPPDATA%\PulseOps\order-usual.json` and sent with the
+  next order there.
+
+  Nothing outside Muse can start it, only a message from you. In Pulse Mobile the tap opens Muse with "order
+  ahead" typed, one Send away, and Maps opens when you come back; anywhere else, tell Muse "order ahead"
+  yourself. The dashboard half is `app/orderAhead.ts`,
+  `app/orderAheadServer.ts` and `app/OrderGo.tsx`.
 - **Rotating a token.** In `edge-feed`, run `npx wrangler secret put MCP_PRIVATE_TOKEN` (or `MCP_TOKEN`,
   `MCP_MUSE_TOKEN`), then update the connector and the URL or key file. Deleting the secret turns the endpoint off (404).
 - **Testing locally.** In `edge-feed`, run
