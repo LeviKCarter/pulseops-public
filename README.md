@@ -154,7 +154,7 @@ the other side of the desk; the choice is kept per screen.
 On the wallpaper (1200 px or wider) the lanes are a row of icons under the music player: Events, Deals, Work and
 **Brief**, which opens the daily briefing over the Now card. An icon or its key opens the lane as one pane over the
 wallpaper. The same icon or key closes it, another one swaps it, and Esc or the mouse's Back button closes it. Wheel
-down anywhere on the wallpaper, or Tab, slides the feed into the middle of the screen; wheel up from its top, Tab again
+down anywhere on the wallpaper, or T, slides the feed into the middle of the screen; wheel up from its top, T again
 or Esc slides it back out. From 1700 px the date stays beside the feed, and an open lane sits between the feed (docked at the left
 edge) and the Now column. Narrower than that, the lane takes the feed's place. Wheel up from the top closes an open
 lane and the feed beside it.
@@ -271,7 +271,9 @@ Some Pulse pieces need a little more explanation:
 
 - **Feed.** One list of RSS stories, newsletter mail and Instagram posts, newest first. Mixed feeds sort by actual
   publication time, including timestamps from different time zones; mail is interleaved with stories rather than
-  collected at the top. There are no source or topic filters. A story opens as the dashboard's own text and
+  collected at the top. There are no source or topic filters, but the list has three orders: Newest, Topic and
+  Source. The last two put the same rows in groups, the group with the latest story first, and show the first
+  three of each until Show all, so every topic and every source is in sight at once. A story opens as the dashboard's own text and
   pictures (`app/articleBlocks.ts`); the original page is the fallback and one tap away.
 - **Sales.** Clear sale subjects such as "Last chance to save on summer shorts" go to Sales even when Gmail has
   not labelled them Promotions. Sales and mail labelled Promotions stay out of the feed and feed summary.
@@ -510,11 +512,12 @@ typing in a field or holding Ctrl, Alt or ⌘.
 | Keys | Does |
 |---|---|
 | Q W E R | The four lanes, left to right as laid out: Pulse, Events, Deals, Work on the primary monitor (Work, Deals, Events, Pulse on a screen laid out the other way; Shift+F switches). On the wallpaper they are the icons under the music player as drawn: Events, Deals, Work, Brief |
-| Tab | On the wallpaper: bring the feed up or put it away, as the wheel does; 2 / 3 then step through it. Beside an open lane it works the feed and leaves the lane. Off the wallpaper it is the browser's own Tab |
+| Tab / Shift+Tab | With the feed on screen: jump to its next / previous topic or source (from Newest it switches the feed to Topic first); 2 / 3 then step through the stories from there. With no feed on screen it is the browser's own Tab |
+| T | On the wallpaper: bring the feed up or put it away, as the wheel does; 2 / 3 then step through it. Beside an open lane it works the feed and leaves the lane. Off the wallpaper it does nothing |
 | A / S | Music volume down / up |
 | D | Next music stream (cycles Auto's picks for the current block); the next song and visual while a concert act plays |
 | Shift+D | Previous music stream, wrapping at the ends; the previous song and visual while a concert act plays |
-| Space / T | Play or pause music |
+| Space | Play or pause music |
 | F | Open / close the bare Vibe wallpaper; its setting survives reloads |
 | M | Switch the default hybrid view off / on |
 | Shift+F | Flip the lane order |
