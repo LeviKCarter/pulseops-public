@@ -37,7 +37,7 @@ Captured from the live dashboard on 2026-10-05, 1720 px wide on the PC and 390 p
 on the right is one column: the Now card, with the thought on top of it when it has something to say, then the music
 player, the lane icons and a tool bar (Ask, To do, Lights). Mail hangs from the top of that column while mail is waiting.
 
-![The bare wallpaper: the date, the weather, the Now card, the music player, the lane icons and the Now thought over the music video](docs/screenshots/wallpaper.jpg)
+![The bare wallpaper: the date, the weather, the Now card, the music player, the lane icons and the tool bar (Ask, To do, Lights) over the music video](docs/screenshots/wallpaper.jpg)
 
 **Wheel down for the feed, a key for a lane.** The wheel slides the feed in. Q and W open Events and Deals as one
 pane beside it, and Esc puts everything away.
@@ -87,9 +87,9 @@ up, by genre, each one playable. 2 and 3 move a pick through the rows.
 microphone, and resting the mouse on it (or B) brings up Hungry, What now? and Another; Lights opens the Hue controls,
 and To Do (4) opens the list with its add box.
 
-| The briefing (R) | The thought, opened |
+| The briefing (R) | Ask's actions |
 |---|---|
-| ![The daily briefing over the Now card: what needs him, what is coming up, the headlines](docs/screenshots/brief.jpg) | ![The thought block opened: Hungry, What now?, Another and the microphone](docs/screenshots/now-thought.jpg) |
+| ![The daily briefing over the Now card: what needs him, what is coming up, the headlines](docs/screenshots/brief.jpg) | ![The mouse resting on Ask: Hungry, What now? and Another above the tool bar](docs/screenshots/now-thought.jpg) |
 
 | Lights | To Do (4) |
 |---|---|
