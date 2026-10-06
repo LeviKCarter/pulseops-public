@@ -43,7 +43,7 @@ waiting.
 **Wheel down for the feed, a key for a lane.** The wheel slides the feed in. Q and W open Events and Deals as one
 pane beside it, and Esc puts everything away.
 
-**Wheel up for the portal.** Scrolling up from the wallpaper opens it: the playing artist's art becomes the backdrop
+**Wheel up for the portal.** Scrolling up from the wallpaper (on a phone, pulling down from its top) opens it: the playing artist's art becomes the backdrop
 and runs like paint, the cards turn to glass over it and wear ornament grown from it, and with the feed up the
 picture of the story under the pointer sits beside the feed. Nothing in it is a preset: it is worked out from the
 art each time.
@@ -175,7 +175,8 @@ measured (its light, color, contrast, warmth and strongest hues), a vision model
 picture once (a mood, an energy, a way of moving, a surface, and five dials for how a line drawn in its hand
 behaves), and every choice left over is seeded by the picture itself, so the same art always looks the same and two
 artists seldom alike. Esc or Shift+T closes it and the wallpaper is as it was; it stays open across reloads if left
-open (`app/wallVibes.ts`, `app/portalEngine.ts`,
+open. On a phone a pull down from the top of the wallpaper opens it and the same pull closes it, and the Vibe
+controls in the Pulse header have the same sliders and switches (`app/wallVibes.ts`, `app/portalEngine.ts`,
 `app/artVibe.ts`, `app/filigree.ts`).
 
 Pulse has no pane on the wallpaper, because its pieces already live there: the weather and the scent pick under the
