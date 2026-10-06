@@ -783,7 +783,9 @@ counts (no subjects or senders). To stop it, remove the
   replaces the old one, blank cells are filled, notes are added), and the tool's description says so. News
   stories are kept in `%LOCALAPPDATA%\PulseAgent\pulse\ingested_news.jsonl`, which the feed reads beside the RSS
   files. The tool answers with what was added, updated and skipped, and why; `get_ingest_status` shows the same
-  later. New rows reach the dashboard with the next snapshot (within 15 minutes). The chat's reading of a post is not
+  later. A batch the Worker refuses (an event with no start, a bad date or link, too many items, a full queue) never
+  reaches the PC, so the Worker keeps a line for it among those results: the source, how many of each kind were sent
+  and the reason, and nothing of the items. New rows reach the dashboard with the next snapshot (within 15 minutes). The chat's reading of a post is not
   re-verified beyond those checks, so a wrong date in a post is a wrong date in the ledger: dismiss it with the row's
   x. Post text is only ever stored as one clipped line per field; nothing in it is run.
 - **Muse (Meta's agent).** Muse has no connector form: you ask it in chat to build a custom connector, and it asks for
