@@ -152,8 +152,12 @@ keeps the phone overview. The Now card's play button is available on phone and P
 content aloud using the saved feed voice; press again to stop.
 
 In the Vibe views,
-the **Now** card brings forward an event within 90 minutes, the workout around its planned start,
-tomorrow's session after 9 PM, or the morning rundown. **I’m hungry** brings in food choices, ranked from a fresh
+the **Now** card brings forward the one thing that is happening now or about to: an event within 90 minutes, the
+workout around its planned start (a lift from two hours before to three after; a run from an hour before to 90 minutes
+after, the end of the usual time to run), or on the phone the morning rundown. Nothing that is not now gets a card:
+tomorrow's session is not shown the night before, and a session whose time has gone by is not raised again that day.
+Every card has one shape: a line that says when ("4:00 PM · in 40 min", "Right now"), the thing itself as the lead,
+then quiet lines with what is needed for it. **I’m hungry** brings in food choices, ranked from a fresh
 device location or recent Tasker phone fix; no nearby restaurant is guessed when location is unavailable.
 **What should I do right now?** requests a fresh, quick contextual answer. **Another** skips the current recommendation
 for 90 minutes, including other offers from the same restaurant, starts the conversation over and asks for a more
@@ -162,10 +166,12 @@ Choices are saved on the local server and shared by PC and phone. Patterns acros
 similar times and in the same area can favor food or deeper answers; repeated restaurant dismissals lower that
 restaurant's rank. An imminent calendar commitment keeps priority. This is separate from the disabled music/Hue
 habit learners. Distances use the existing approximate venue locations, not route or travel times.
-During the scheduled run window, Now shows the planned duration, heart-rate zone and walk threshold, weather,
-and the last recorded run's time, distance, pace and average heart rate. Recent distance, pace and run-only heart-rate
-graphs appear as history becomes available; before the first run, the card shows the targets and an empty-history message.
-Body-composition and mixed workout heart-rate charts remain in the morning rundown and training panel.
+During the scheduled run window, Now shows the run as its name, one line of targets (duration, heart-rate zone), the
+plan's note and the weather at its start; on the PC's wallpaper the air, the best window to run and the week follow.
+The detail waits behind a click anywhere on the card (the chevron in its corner): the last recorded run's time,
+distance, pace and average heart rate, the recent distance, pace and run-only heart-rate graphs, skeletal muscle and,
+on the PC, the body trends. A click on the bare wallpaper closes it again; with no run recorded there is nothing to
+open. Body-composition and mixed workout heart-rate charts remain in the training panel.
 Load sparklines sit beside lift targets when the health brief carries enough history. The Now card uses an aligned
 header, content and action grid, with hidden scrollbars while keeping wheel and touch scrolling available.
 The bare wallpaper also shows how the weather feels and rain timing, with no row of hours. On the PC's wallpaper the
