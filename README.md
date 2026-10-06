@@ -1,7 +1,7 @@
 # Pulse Ops
 
 Pulse Ops was formerly named **Levi Ops**. This repository is the sanitized public mirror. This README describes
-the app as it runs today (2026-10-05); the code in this mirror is an older sanitized snapshot, so files the text names
+the app as it runs today (2026-10-06); the code in this mirror is an older sanitized snapshot, so files the text names
 may be missing here, and hostnames, user paths and account identifiers are replaced with placeholders.
 
 For ongoing work with ChatGPT or Codex, follow [AGENTS.md](AGENTS.md).
@@ -44,7 +44,7 @@ pane beside it, and Esc puts everything away.
 
 ![Wheel down brings the feed in, Q opens Events, W swaps to Deals, Esc returns to the wallpaper](docs/screenshots/wallpaper-feed-and-lanes.gif)
 
-**A story opens in place.** It grows out of the feed's lane, V and B scroll it, and Esc shrinks it back.
+**A story opens in place.** It grows out of the feed's lane, V and B scroll it, and Esc shrinks it back. C does too, and marks it read.
 
 ![A story opened from the feed grows out of the lane, scrolls, and closes back into the lane](docs/screenshots/feed-story.gif)
 
@@ -130,8 +130,8 @@ the other side of the desk; the choice is kept per screen.
 On the wallpaper (1200 px or wider) the lanes are a row of icons under the music player: Events, Deals, Work and
 **Brief**, which opens the daily briefing over the Now card. An icon or its key opens the lane as one pane over the
 wallpaper. The same icon or key closes it, another one swaps it, and Esc or the mouse's Back button closes it. Wheel
-down anywhere on the wallpaper slides the feed into the middle of the screen; wheel up from its top, or Esc, slides it
-back out. From 1700 px the clock stays beside the feed, and an open lane sits between the feed (docked at the left
+down anywhere on the wallpaper, or Tab, slides the feed into the middle of the screen; wheel up from its top, Tab again
+or Esc slides it back out. From 1700 px the clock stays beside the feed, and an open lane sits between the feed (docked at the left
 edge) and the Now column. Narrower than that, the lane takes the feed's place. Wheel up from the top closes an open
 lane and the feed beside it.
 
@@ -418,7 +418,8 @@ typing in a field or holding Ctrl, Alt or ⌘.
 
 | Keys | Does |
 |---|---|
-| Q W E R | The four lanes, left to right as laid out: Pulse, Events, Deals, Work on the primary monitor (Work, Deals, Events, Pulse on a screen laid out the other way; Shift+F switches). On the wallpaper the Pulse key brings the feed up and puts it away |
+| Q W E R | The four lanes, left to right as laid out: Pulse, Events, Deals, Work on the primary monitor (Work, Deals, Events, Pulse on a screen laid out the other way; Shift+F switches). On the wallpaper they are the icons under the music player as drawn: Events, Deals, Work, Brief |
+| Tab | On the wallpaper: bring the feed up or put it away, as the wheel does; 2 / 3 then step through it. Beside an open lane it works the feed and leaves the lane. Off the wallpaper it is the browser's own Tab |
 | A / S | Music volume down / up |
 | D | Next music stream (cycles Auto's picks for the current block); the next song and visual while a concert act plays |
 | Shift+D | Previous music stream, wrapping at the ends; the previous song and visual while a concert act plays |
@@ -426,8 +427,7 @@ typing in a field or holding Ctrl, Alt or ⌘.
 | F | Open / close the bare Vibe wallpaper; its setting survives reloads |
 | M | Switch the default hybrid view off / on |
 | Shift+F | Flip the lane order |
-| B | Open the Now card's thought (B again or Esc closes it); hold B to talk to it, sent when you let go; while open, 1 / 2 / 3 are Hungry / What now? / Another. With a reader or picked event, B keeps its job below; in the classic dashboard it asks out loud like Tab |
-| Tab | Ask the dashboard out loud; press Tab again to stop (`app/VoiceAsk.tsx`, Chrome/Edge speech-to-text + `/api/ask`) |
+| B | Open the Now card's thought (B again or Esc closes it); hold B to talk to it, sent when you let go; while open, 1 / 2 / 3 are Hungry / What now? / Another. With a reader or picked event, B keeps its job below; in the classic dashboard it asks out loud, and B again stops (`app/VoiceAsk.tsx`, Chrome/Edge speech-to-text + `/api/ask`) |
 | 1 | Open / close Mail (Inbox Supervisor), above Now |
 | 2 / 3 | Move down / up the active Mail or To Do list; scroll down / up inside the source popout. Elsewhere, step through the feed, the Inbox rows, the events (or DoMORE extras) or the deals, whichever is open |
 | 4 | Open / close To Do. With Events open: hide / show concerts |
@@ -437,7 +437,7 @@ typing in a field or holding Ctrl, Alt or ⌘.
 | 5, hold R | Read the daily briefing aloud from any view (again to stop). R held for half a second does it; a tap still does what R does there (its lane, or the Brief icon on the wallpaper) |
 | V / B | Scroll the open story or email down / up; hold for a steady glide. In Events, V on a picked concert plays the act's songs and pauses the music, V on any other event opens it in the reader, and B adds the picked event to Calendar. In Deals, V opens the picked deal's details or email. V opens a selected Mail or To Do row's source |
 | Shift+V / Shift+B, + / − | In an open email or story: zoom the text in / out (0 resets) |
-| C | Complete the selected Mail or To Do item, including from its source popout (email seen, mail collected, task done, bill paid, package received). Elsewhere, the one action for what is open or picked: mark the story read, unsubscribe from or dismiss the email, mark a task done, claim the picked DoMORE extra, hide the picked deal |
+| C | Complete the selected Mail or To Do item, including from its source popout (email seen, mail collected, task done, bill paid, package received). Elsewhere, the one action for what is open or picked: mark the story read and shrink it back into the feed, unsubscribe from or dismiss the email, mark a task done, claim the picked DoMORE extra, hide the picked deal |
 | H | Switch the Hue lights' music colours on at the remembered strength, then step through the modes (Dominant, Contrast, Breathe), then off |
 | J | While the lights have the video's colours: another pick of them (not in Breathe) |
 | Z / X | Dim / brighten the lit Hue rooms by 5 percentage points; hold to keep stepping |
@@ -640,7 +640,8 @@ and `&reset=1` starts over. The prompt and digest are in `app/askLevi.ts`; the p
 
 **Task "Ask Claude"** is the same as "Ask Pulse Ops" with these changes: Get Voice uses the Free Form language model, the
 URL is `/api/ask?format=text`, the Timeout is 45 s, the request only runs if `%VOICE Set`, and an optional *Task > Goto*
-loops back for another question. On the PC, **Tab** does the same from the page.
+loops back for another question. On the PC, **B** does the same from the classic dashboard; on the wallpaper it talks
+to the Now card instead.
 
 ## Claude connector (MCP)
 
