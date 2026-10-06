@@ -74,6 +74,18 @@ means the same thing all evening. Each move is listed under the sliders with wha
 old lines called Skip") and a button that puts it back; another turns the whole thing off
 (`app/graderTune.ts`).
 
+The grade is taken on the traffic ahead of the trip, not the traffic on the card. Uber's minutes are the roads as
+they are when the offer is drawn, so they are stretched for how the roads usually get over the trip: a time-of-day
+curve corrected by your own timed trips, or with a TomTom key the forecast for the trip's own roads
+(`app/trafficCurve.ts`, `app/routeTraffic.ts`). Neither of those
+knows that a show ends tonight, and the Events lane does. An event in it at one of 17 large venues around Denver
+(1,500 seats and up) slows the streets around that venue while its crowd arrives and, more, for the hour after it
+ends, so a trip or a drive back that is on those streets then is forecast longer, before the crowd is on the road,
+and the badge says why ("Ball Arena lets out about 11 PM"). Where each venue is and about how many it holds are
+facts; how far the slow streets reach and how slow they get are a starting guess, an event with no end time is
+taken to run three hours, and a venue that is not in the list adds nothing. `GET /api/uber-offer` lists the crowds
+it sees for the next day (`app/eventTraffic.ts`).
+
 ![The Work lane opened and read down: the week, the day as a timeline, the map, offers against the lines, rain against dry, trips, areas and restaurants](docs/screenshots/work-lane.gif)
 
 | The week and the days | Where it happens |
@@ -575,7 +587,8 @@ has an override for isolated previews and tests: `NOW_INTENT_FILE`, `NOW_THOUGHT
 `PHONE_LOCATION_FILE`, `PHONE_ALERTS_FILE`, `BLOCK_SYNC_FILE`, `ARTIST_GENRE_FILE`, `MUSIC_HEARD_FILE`,
 `ORDER_USUAL_FILE`, `EAT_PLACES_FILE`, `EAT_EVENTS_FILE`. The ones kept
 in the Pulse Agent checkout's `data` folder have `DEAL_STORES_FILE`, `HABIT_LOG_FILE` and `SCENT_SHARE_DIR`.
-`RESTAURANT_HOURS_FILE` points Eat at another copy of Pulse Agent's own-site opening hours. Whether the desktop
+`RESTAURANT_HOURS_FILE` points Eat at another copy of Pulse Agent's own-site opening hours, and
+`EVENT_TRAFFIC_FILE` gives the order grader a list of events to read in place of the Events lane's. Whether the desktop
 background follows the sun is kept beside the app, in the git-ignored `.desktop_wallpaper.json`.
 
 `refresh_snapshot.py`, `push_live_snapshot.py` and `push_private_digest.py` read the sheets through PulseAgent's
