@@ -31,7 +31,7 @@ The canonical copy runs on Levi's PC at `:3000`. Phones reach that copy over Tai
 
 ## What it looks like
 
-Captured from the live dashboard on 2026-10-05, 1720 px wide on the PC and 390 px on the phone.
+Captured from the live dashboard on 2026-10-05 and 2026-10-06, 1720 px wide on the PC and 390 px on the phone.
 
 **The wallpaper** (F). The music video fills the screen. The date, the weather and what's playing sit on the left;
 on the right is one column: the Now card, with the thought on top of it when it has something to say, then the music
