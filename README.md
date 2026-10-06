@@ -685,9 +685,11 @@ counts (no subjects or senders). To stop it, remove the
   It rides the same queue-and-poll route as shelf edits (`edge-feed/src/ingest.js`, the
   Worker's `/ingest`): the same scheduled task hands each batch to Pulse Agent's `discovery_ingest.py`, which checks
   every item the way scheduled discovery does (an allowed category, not already started, no sports, not already
-  listed, a link that loads) and writes the ones that pass, with *Found By* set to the source ("Instagram"). News
+  listed, a link that loads) and writes the ones that pass, with *Found By* set to the source ("Instagram"). An
+  event that is already listed is not added twice: sent again, it corrects its row (a stated price or ticket status
+  replaces the old one, blank cells are filled, notes are added), and the tool's description says so. News
   stories are kept in `%LOCALAPPDATA%\PulseAgent\pulse\ingested_news.jsonl`, which the feed reads beside the RSS
-  files. The tool answers with what was added and what was skipped, and why; `get_ingest_status` shows the same
+  files. The tool answers with what was added, updated and skipped, and why; `get_ingest_status` shows the same
   later. New rows reach the dashboard with the next snapshot (within 15 minutes). The chat's reading of a post is not
   re-verified beyond those checks, so a wrong date in a post is a wrong date in the ledger: dismiss it with the row's
   x. Post text is only ever stored as one clipped line per field; nothing in it is run.
