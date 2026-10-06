@@ -33,43 +33,89 @@ The canonical copy runs on Levi's PC at `:3000`. Phones reach that copy over Tai
 
 Captured from the live dashboard on 2026-10-05, 1720 px wide on the PC and 390 px on the phone.
 
-**The wallpaper** (F). The music video fills the screen. The clock, the weather and what's playing sit on the left;
-the music player, the lane icons, the Now thought and the Mail, To Do and Lights pills sit on the right.
+**The wallpaper** (F). The music video fills the screen. The date, the weather and what's playing sit on the left;
+the Now card, the music player, the lane icons, the Now thought and the To Do and Lights pills sit on the right (and
+the Mail pill, while mail is waiting).
 
-![The bare wallpaper: clock, weather, music player, lane icons and the Now thought over the music video](docs/screenshots/wallpaper.jpg)
+![The bare wallpaper: the date, the weather, the Now card, the music player, the lane icons and the Now thought over the music video](docs/screenshots/wallpaper.jpg)
 
-**Wheel down for the feed, a key for a lane.** The wheel slides the feed in. W and E open Events and Deals as one
+**Wheel down for the feed, a key for a lane.** The wheel slides the feed in. Q and W open Events and Deals as one
 pane beside it, and Esc puts everything away.
 
-![Wheel down brings the feed in, W opens Events, E swaps to Deals, Esc returns to the wallpaper](docs/screenshots/wallpaper-feed-and-lanes.gif)
+![Wheel down brings the feed in, Q opens Events, W swaps to Deals, Esc returns to the wallpaper](docs/screenshots/wallpaper-feed-and-lanes.gif)
 
 **A story opens in place.** It grows out of the feed's lane, V and B scroll it, and Esc shrinks it back.
 
 ![A story opened from the feed grows out of the lane, scrolls, and closes back into the lane](docs/screenshots/feed-story.gif)
+
+**Events and Deals.** A lane is one pane over the wallpaper, with its own week in the Now card's place: the forecast
+beside Events, the week in deals beside Deals. Each lane has two halves, and a hold on its icon or its key switches
+to the other one: Events with or without concerts, Deals as Food or Sales.
+
+| Events (Q) | Events with concerts |
+|---|---|
+| ![The Events lane as a pane between the docked feed and the week's forecast](docs/screenshots/lane-events.jpg) | ![The Events lane with concerts among the events, grouped by genre](docs/screenshots/lane-events-concerts.jpg) |
+
+| Deals: Food (W) | Deals: Sales |
+|---|---|
+| ![The Deals lane with food deals, the gear watch and the week in deals beside it](docs/screenshots/lane-deals.jpg) | ![The Deals lane on Sales: the stores with a sale on, and the gear watch](docs/screenshots/lane-deals-sales.jpg) |
+
+**The Work lane** (E), here on made-up driving data. It reads down from the week's figures and a bar for each day to
+the map of where offers come from, every offer against the grader's Good and Skip lines, when offers come, and
+whether rain changes what driving pays. Beside it, when to drive.
+
+![The Work lane opened and read down: the week, the day as a timeline, the map, offers against the lines, rain against dry, trips, areas and restaurants](docs/screenshots/work-lane.gif)
+
+| The week and the days | Where it happens |
+|---|---|
+| ![The Work lane: the week's earnings, hours, trips and pay per hour, a bar for each day, and when to drive beside it](docs/screenshots/lane-work.jpg) | ![The Work lane's map of restaurants, drop-offs and hotspots, and the offers counted by grade](docs/screenshots/lane-work-map.jpg) |
+
+| Offers against the lines | Rain against dry |
+|---|---|
+| ![Every offer as a point against the Good and Skip lines, with sliders for the lines, and offers by hour of the day](docs/screenshots/lane-work-offers.jpg) | ![Rain against dry as a two-row table, how long each trip's parts took, and where offers come from](docs/screenshots/lane-work-rain.jpg) |
+
+**Music** (1). The Music view opens over the player: stations through the day and by genre, and the concerts coming
+up, by genre, each one playable. 2 and 3 move a pick through the rows.
+
+![The Music view opening on its stations, then its concerts, with a pick moved down the rows](docs/screenshots/music-view.gif)
+
+| Stations | Concerts |
+|---|---|
+| ![The Music view on Stations: the daily moods and the genres](docs/screenshots/music-stations.jpg) | ![The Music view on Concerts: acts by genre with ticket, calendar and like buttons](docs/screenshots/music-concerts.jpg) |
+
+**Beside the lanes.** R opens the briefing over the Now card. The thought opens upward with Hungry, What now? and
+Another and the microphone. Lights opens the Hue controls, and 4 opens To Do with its add box.
+
+| The briefing (R) | The thought, opened |
+|---|---|
+| ![The daily briefing over the Now card: what needs him, what is coming up, the headlines](docs/screenshots/brief.jpg) | ![The thought block opened: Hungry, What now?, Another and the microphone](docs/screenshots/now-thought.jpg) |
+
+| Lights | To Do (4) |
+|---|---|
+| ![The Lights panel: the colour sets, the colour strength, all lights dimmer or brighter, each room](docs/screenshots/lights.jpg) | ![The To Do list open over the wallpaper, with its add box](docs/screenshots/todo.jpg) |
 
 **Three views.** F switches between the wallpaper and the hybrid view (all four lanes as glass over the video). M
 switches the hybrid view to the classic dashboard and back.
 
 ![F toggles the wallpaper and the hybrid view; M toggles the hybrid view and the classic dashboard](docs/screenshots/views.gif)
 
-| The hybrid view (the PC default) | To Do pinned open (4) |
+| The hybrid view | The classic dashboard (M) |
 |---|---|
-| ![The four lanes as glass over the music video](docs/screenshots/hybrid.jpg) | ![The To Do list open over the hybrid view, with its add box](docs/screenshots/todo.jpg) |
+| ![The four lanes as glass over the music video](docs/screenshots/hybrid.jpg) | ![The classic dashboard without the video behind the lanes](docs/screenshots/classic.jpg) |
 
-| Events beside the feed (W) | Deals beside the feed (E) |
-|---|---|
-| ![The Events lane as a pane between the docked feed and the Now column](docs/screenshots/lane-events.jpg) | ![The Deals lane with food deals and the gear watch](docs/screenshots/lane-deals.jpg) |
+The key list (?):
 
-| The classic dashboard (M) | The key list (?) |
-|---|---|
-| ![The classic dashboard without the video behind the lanes](docs/screenshots/classic.jpg) | ![The keyboard shortcut list, a wide panel that scrolls inside the screen](docs/screenshots/shortcuts.jpg) |
+![The keyboard shortcut list, a wide panel that scrolls inside the screen](docs/screenshots/shortcuts.jpg)
 
-**On a phone.** It starts on the wallpaper, as bare as the PC's: the clock and one line of weather with the day's
-temperature graph at the bottom left. The Now card is a short scroll below. The four buttons at the top open the lanes.
+**On a phone.** It starts on the wallpaper, as bare as the PC's: the date and one line of weather with the day's
+temperature graph at the bottom left, and the lane buttons in a column at the right edge, under a thumb. The Now card
+is a short scroll below. A lane opens as glass over the wallpaper; the Work lane here is on made-up driving data.
 
 <p>
-  <img src="docs/screenshots/phone-wallpaper.jpg" width="260" alt="The phone wallpaper: lane buttons at the top, the bare clock and the day's temperature graph, the To Do pill and the music bar">
-  <img src="docs/screenshots/phone-events.jpg" width="260" alt="The Events lane opened on the phone">
+  <img src="docs/screenshots/phone-wallpaper.jpg" width="200" alt="The phone wallpaper: the date, the day's temperature graph, the lane buttons at the right edge, the To Do pill and the music bar">
+  <img src="docs/screenshots/phone-events.jpg" width="200" alt="The Events lane opened on the phone">
+  <img src="docs/screenshots/phone-deals.jpg" width="200" alt="The Deals lane opened on the phone">
+  <img src="docs/screenshots/phone-work.jpg" width="200" alt="The Work lane opened on the phone">
 </p>
 
 ## The four lanes
@@ -130,14 +176,17 @@ While a lane is open over the PC's wallpaper, the Now card's place holds that la
 the week's weather, with the rainy days opened hour by hour. Beside **Deals** it is the week in food deals: today as a
 timeline (what is on by when it ends, what starts later by when it starts), then each day with a bar of when its deals
 with set hours run and the specials that run on that day only, with their hours. Today's and tomorrow's are open; a
-later day opens on a click. It follows the lane's own filters. Beside **Work** it is the week ahead for driving: what
-your own offers have paid by hour of the day (the median after gas, once more than one offer was seen in the hour),
-then each day's driving hours, 11 AM to 10 PM, with the rain in them, what is on your calendar and what that weekday
-paid the last time you drove it. Today and any day with rain likely in those hours open hour by hour. Nothing in
-either is a guess at demand: the sheet's schedules, the forecast, your calendar and your own log
+later day opens on a click. It follows the lane's own filters. Beside **Work** it is when to drive: one lead, the next
+stretch of the hours your own offers have paid best (the median after gas, once more than one offer was seen in the
+hour) that your calendar leaves free, then only what would change the plan: the hours that have paid under your Skip
+line, the hotspot that has paid most, a day your calendar takes, the weekdays that have paid most. Nothing in
+either is a guess at demand: the sheet's schedules, your calendar and your own log
 (`app/dealWeek.ts`, `app/driveWeek.ts`).
-The Now card's thought sits under a heading that follows the moment (the run, an event, food, the time of day, or the
-conversation once you speak). The **microphone** at the card's top corner makes the thought a back-and-forth: say
+The thought is never the Now card over again: it says the one useful thing the screen is not showing (a bill due
+tomorrow, an overdue to-do, mail that needs you, something on the calendar through tomorrow), or nothing when nothing
+qualifies. It is written as a short lead with at most one quiet line under it, headed by where the thing lives
+(Calendar, To do, Bills, Packages, Mail, Training, Food), by the time of day when there is no thought, or by the
+conversation once you speak (`app/nowThought.ts`). The **microphone** at the card's top corner makes the thought a back-and-forth: say
 something (Chrome or Edge) and Pulse answers it from the same snapshot, with the thought and the earlier turns as
 context. What was said and each answer are listed under the thought. Nothing is saved: the conversation lives in the
 open page and **Another** starts it over. On a PC, **B** opens the thought (B again or Esc closes it) and holding **B**
@@ -238,7 +287,7 @@ Some Pulse pieces need a little more explanation:
   and night-drive music; the sleep-lofi stream is in Wind down. The other genre choices include deep focus,
   classic rock, indie, house, classical, reggae, funk,
   drum & bass, ambient, and blues. Pick them by chip or say, for example, "play drum and bass", "play ambient", or
-  "play blues". DnB, Ambient, and Blues each have two live streams. Click the selected chip again to cycle its streams.
+  "play blues". DnB and Blues each have two live streams; Ambient has twelve, space and dark. Click the selected chip again to cycle its streams.
   These extra choices are available by request; Auto follows the daily schedule.
   A YouTube embed: a slim control in the Pulse header on a PC, and a fixed strip at the top of the page on
   a phone. With no saved level it starts at 25% volume and picks a stream for the time of day. PC tabs share their
@@ -374,9 +423,9 @@ typing in a field or holding Ctrl, Alt or ⌘.
 | 1 | Open / close Mail (Inbox Supervisor), above Now |
 | 2 / 3 | Move down / up the active Mail or To Do list; scroll down / up inside the source popout. Elsewhere, step through the feed, the Inbox rows, the events (or DoMORE extras) or the deals, whichever is open |
 | 4 | Open / close To Do. With Events open: hide / show concerts |
-| Hold Q | The Work lane on its Careers tab, as holding the Work icon does on a PC (on the phone that hold opens Uber Driver). Held for half a second; a tap still does what Q does there |
-| Hold W | The Deals lane on Sales, its second view (the Food tab, or 1 with Deals open, goes back). Held for half a second; a tap still does what W does there |
-| Hold E | The Events lane with concerts shown among the other events, as holding the Events icon does. Held for half a second; a tap still does what E does there |
+| Hold Q | The Events lane on its other view: concerts shown among the other events, or taken out again when they were, as holding the Events icon does. Held for half a second; a tap opens the lane the way it was left. A hold always belongs to the lane its key opens: in the classic dashboard, where Q W E R are Jobs, Deals, Events, Pulse, this is Hold E |
+| Hold W | The Deals lane on its other view: Sales when Food was open last, Food when Sales was, as holding the Deals icon does. Held for half a second; a tap opens the view that was open last |
+| Hold E | The Work lane on its other tab: Careers when Driving was open last, Driving when Careers was, as holding the Work icon does on a PC (on the phone that hold opens Uber Driver). Held for half a second; a tap opens the tab that was open last. In the classic dashboard this is Hold Q |
 | 5, hold R | Read the daily briefing aloud from any view (again to stop). R held for half a second does it; a tap still does what R does there (its lane, or the Brief icon on the wallpaper) |
 | V / B | Scroll the open story or email down / up; hold for a steady glide. In Events, V on a picked concert plays the act's songs and pauses the music, V on any other event opens it in the reader, and B adds the picked event to Calendar. In Deals, V opens the picked deal's details or email. V opens a selected Mail or To Do row's source |
 | Shift+V / Shift+B, + / − | In an open email or story: zoom the text in / out (0 resets) |
