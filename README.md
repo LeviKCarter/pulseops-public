@@ -43,6 +43,11 @@ waiting.
 **Wheel down for the feed, a key for a lane.** The wheel slides the feed in. Q and W open Events and Deals as one
 pane beside it, and Esc puts everything away.
 
+**Wheel up for the portal.** Scrolling up from the wallpaper opens it: the playing artist's art becomes the backdrop
+and runs like paint, the cards turn to glass over it and wear ornament grown from it, and with the feed up the
+picture of the story under the pointer sits beside the feed. Nothing in it is a preset: it is worked out from the
+art each time.
+
 ![Wheel down brings the feed in, Q opens Events, W swaps to Deals, Esc returns to the wallpaper](docs/screenshots/wallpaper-feed-and-lanes.gif)
 
 **A story opens in place.** It grows out of the feed's lane, V and B scroll it, and Esc shrinks it back. C does too, and marks it read.
@@ -158,6 +163,20 @@ down anywhere on the wallpaper, or T, slides the feed into the middle of the scr
 or Esc slides it back out. From 1700 px the date stays beside the feed, and an open lane sits between the feed (docked at the left
 edge) and the Now column. Narrower than that, the lane takes the feed's place. Wheel up from the top closes an open
 lane and the feed beside it.
+
+Wheel up on the bare wallpaper, or Shift+T, opens the **portal**. The playing artist's art (a concert act's cover,
+or the stream's own) becomes the backdrop on one canvas: it runs, folds into a kaleidoscope in bands, turns its
+colors and parts its reds from its blues. Every part of the dashboard is changed with it: the cards are glass with
+the art's light behind them and its colors on their edges, their corners melt to new shapes every few seconds, the
+colors of their words part, and fine filigree grows round the column, the corner and the feed, and grows again
+differently every 45 seconds. With the feed up, the picture of the story the pointer rests on sits at the feed's
+left in a soft-edged portal of its own. None of it is picked from a list of themes. The art's own pixels are
+measured (its light, color, contrast, warmth and strongest hues), a vision model running on the PC then reads the
+picture once (a mood, an energy, a way of moving, a surface, and five dials for how a line drawn in its hand
+behaves), and every choice left over is seeded by the picture itself, so the same art always looks the same and two
+artists seldom alike. Esc or Shift+T closes it and the wallpaper is as it was; it stays open across reloads if left
+open (`app/wallVibes.ts`, `app/portalEngine.ts`,
+`app/artVibe.ts`, `app/filigree.ts`).
 
 Pulse has no pane on the wallpaper, because its pieces already live there: the weather and the scent pick under the
 date, mail in the Mail pill, the stories in the feed, the briefing behind Brief, and the workout in the Now card. Its
@@ -384,8 +403,10 @@ Some Pulse pieces need a little more explanation:
   While a concert act plays, the page's tint, the wallpaper's light and the Hue lights follow the act's video or
   album art instead of the paused station, and go back to the station afterwards.
 - **Vibe button.** On the PC it is the pill at the end of the wallpaper's tool bar, the Lights pill until 2026-10-06;
-  on a phone the same rows sit above the lights in the Pulse header's controls. Above the light controls it has two
-  rows for what is behind everything. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
+  on a phone the same rows sit above the lights in the Pulse header's controls. Above the light controls it has
+  rows for what is behind everything. On the PC the first is **Portal**: closed or open, and while it is open what
+  the art was read as, a slider for each effect (flow, folds, color drift, color split, melt, fringe: from off to
+  one and a half times what the art asks for) and a switch for the glass cards, the filigree and the feed's portal. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
   slideshow of the pictures in `Pictures\Blackbody\desktop`, 30 minutes a slide), **Bing** (Bing Wallpaper's daily
   picture) or **Auto**, the default, which is Bing from sunrise to sunset and Blackbody through the night. With Auto
   on, the one the sun has up is outlined; picking Blackbody or Bing by hand ends Auto until Auto is pressed again. The
@@ -514,6 +535,7 @@ typing in a field or holding Ctrl, Alt or ⌘.
 | Q W E R | The four lanes, left to right as laid out: Pulse, Events, Deals, Work on the primary monitor (Work, Deals, Events, Pulse on a screen laid out the other way; Shift+F switches). On the wallpaper they are the icons under the music player as drawn: Events, Deals, Work, Brief |
 | Tab / Shift+Tab | With the feed on screen: jump to its next / previous topic or source (from Newest it switches the feed to Topic first); 2 / 3 then step through the stories from there. With no feed on screen it is the browser's own Tab |
 | T | On the wallpaper: bring the feed up or put it away, as the wheel does; 2 / 3 then step through it. Beside an open lane it works the feed and leaves the lane. Off the wallpaper it does nothing |
+| Shift+T | On the wallpaper: open or close the portal, as the wheel up on the bare wallpaper opens it. Esc closes it too |
 | A / S | Music volume down / up |
 | D | Next music stream (cycles Auto's picks for the current block); the next song and visual while a concert act plays |
 | Shift+D | Previous music stream, wrapping at the ends; the previous song and visual while a concert act plays |
