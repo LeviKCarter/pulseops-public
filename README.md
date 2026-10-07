@@ -1,7 +1,7 @@
 # Pulse Ops
 
 Pulse Ops was formerly named **Levi Ops**. This repository is the sanitized public mirror. This README describes
-the app as it runs today (2026-10-06); the code in this mirror is an older sanitized snapshot, so files the text names
+the app as it runs today (2026-10-07); the code in this mirror is an older sanitized snapshot, so files the text names
 may be missing here, and hostnames, user paths and account identifiers are replaced with placeholders.
 
 For ongoing work with ChatGPT or Codex, follow [AGENTS.md](AGENTS.md).
@@ -348,10 +348,10 @@ Some Pulse pieces need a little more explanation:
   It hides the row when the window has passed or its inputs cannot be read. The dew-point
   comfort line appears only when Pulse is expanded, including the phone's opened Pulse lane.
 - **Music.** The picker groups **Daily moods** (Morning, Daytime focus, Café, Evening, Wind down) separately from
-  **Genres & sessions**, and every one of them has its own part of the day. Auto plays synthwave from midnight,
-  downtempo from 2 AM, reggae from 4, classical from 6, morning jazz from 7, Chillhop from 8, deep focus from 9,
+  **Genres & sessions**, and every one of them has its own part of the day. Auto plays synthwave from 2 AM,
+  downtempo from 3, reggae from 4, classical from 6, morning jazz from 7, Chillhop from 8, deep focus from 9,
   blues from 10, funk from 11, indie from noon, house from 1 PM, café jazz from 2, classic rock from 3, drum & bass
-  from 4, dark ambient through the 5 to 9 PM working stretch, and Wind down from 9 PM until midnight. Wind down
+  from 4, dark ambient through the 5 to 9 PM working stretch, and Wind down from 9 PM until 2 AM. Wind down
   starts on soft sleep ambient, with calm space music and sleepy lofi alternatives. When a new part of the day
   starts, the station listened to most in it comes on; with none yet, the first stream of its genre does. Pick any
   genre by chip or say, for example, "play drum and bass", "play ambient", or
