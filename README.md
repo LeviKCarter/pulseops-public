@@ -620,7 +620,6 @@ Local settings go in `.env.local`, which is gitignored. All of them are optional
 | `CALL_CAP_<PROVIDER>` | see `docs/outside-calls.md` | Overrides one outside provider's daily call cap (`0` blocks it) |
 | `OLLAMA_URL`, `SCENT_TEXT_MODEL`, `SCENT_VISION_MODEL` | `http://127.0.0.1:11434`, `qwen3:8b`, `qwen3-vl:8b` | Local models used for scent lookups |
 | `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION` | unset, unset, `us-east-1` | Switches the feed summary card's listen button from the free Microsoft neural voices (no key) to Amazon Polly (`app/api/feed-speech`); billed per character. Unset, it uses the free Microsoft neural voices, then the browser's own voice if those fail |
-| `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET` | unset | Optional extra, not needed. V finds an act's Spotify page through MusicBrainz (free, no key) and plays it in a small in-page player (full tracks when signed in to Spotify in the browser, 30-second previews otherwise); these two keys from a developer app are only tried when MusicBrainz has no Spotify link for the act (Spotify's Web API needs the app owner to have Premium) |
 | `POLLY_VOICE` | `Matthew` | Polly voice used for the listen button |
 | `POLLY_ENGINE` | `generative` | Listen-button speech engine; falls back to neural for an unsupported engine/voice/region. Set `neural` to use it directly |
 | `MUSIC_RELAY_PYTHON`, `MUSIC_RELAY_FFMPEG` | `<PulseOps-tools>\media-relay\Scripts\python.exe`, auto-detected | Python with yt-dlp and imageio-ffmpeg, and optional explicit ffmpeg path for phone audio and backdrop loops |
@@ -705,7 +704,7 @@ The routes that change something also refuse cross-origin requests. Every server
 | `secure-address` | The https address a plain-http Tailscale visitor is sent to |
 | `habit-log`, `habit-summary` | Log of music, light and like choices, and how well the habit predictors match it (they run in shadow; applying them is off) |
 | `music/remote`, `music/still` | Player command mailbox and shared stream, Hue colour strength and PC volume; same-origin thumbnail for the page's colours |
-| `music/genre`, `music/visuals`, `spotify` | A concert act's genre (iTunes, MusicBrainz), its visuals (a muted music-video loop, else album art) and its Spotify artist id for the in-page player |
+| `music/genre`, `music/visuals` | A concert act's genre (iTunes, MusicBrainz) and its visuals (a muted music-video loop, else album art) |
 | `music/audio`, `music/loop` | PC-relayed MP3 audio and cached backdrop loop for the phone |
 | `hue-dim` | Read light state, adjust brightness or music colours, restore colours, or reset to the schedule |
 | `desktop-wallpaper` | The PC's own desktop background, for the Vibe button: read it, switch to Blackbody or Bing, turn Auto on, and answer the scheduled task's 5-minute check against the sun |
