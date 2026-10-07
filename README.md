@@ -166,17 +166,22 @@ edge) and the Now column. Narrower than that, the lane takes the feed's place. W
 lane and the feed beside it.
 
 Wheel up on the bare wallpaper, or Shift+T, opens the **portal**. The playing artist's art (a concert act's cover,
-or the stream's own) becomes the backdrop on one canvas. The art is the subject, so it is shown whole, sharp and in
-its own colors: fitted to the screen instead of cropped to fill it, with its own colors carrying on past its edges.
-One effect after another plays over it, each adding to the picture without taking its place: light streaming from
-its lightest place, sparks of its own colors rising, rings crossing it as over water, a sheen passing as over foil,
-beads of water, mist, depth, an echo, a slow wind in cloth. A new one comes about every half minute, in an order
-drawn for that picture, with at least three others between two turns of the same one. Every part of the dashboard is changed with it: the cards
-are glass with the art's light behind them and its colors on their edges, their corners melt to new shapes every
-few seconds, the colors of their words part, and filigree grows round the column, the corner and the feed: pen
-strokes in the art's colors that grow out from their roots, put out leaves, sway, carry a glint of light along
-them and light up near the pointer, drawn at the screen's own refresh rate, and grown again differently every
-45 seconds, the old ornament drawing back as the new one comes. With the feed up, the picture of the story the pointer rests on sits at the feed's
+or the stream's own) becomes the backdrop on one canvas. The art is the subject, so it is shown whole and sharp:
+fitted to the screen instead of cropped to fill it, with its own colors carrying on past its edges. It is shown in
+four psychedelic looks, one after another, each built from the visual effects reported for the experience it is
+named after (what the people who make psychedelic replications catalogue), and each a range of them that rise and
+pass while it is up, never one fixed look. One has radiant color, drifting that turns cartoon-like and back, hues
+running through its tones in bands, angular panes of color and edges lit in the rainbow. One breathes slowly, its
+surfaces flow in place, a haze comes over it, rainbow rings stand round the light and a soft honeycomb lies in the
+picture. One has the color of cut stones and one of the four form constants (a lattice, a cobweb, a tunnel, a
+spiral) that swells between large and small. One has its colors change places and a many-sided lattice opening
+out of the picture's lightest place, layer behind layer. All of it is done to the
+picture itself, which is never folded, tiled or replaced. A new one comes about every minute, in an order drawn
+for that picture, and never the same one twice running. Hold the mouse down on the wallpaper and drag, and filigree
+grows along the way and branches off it: pen strokes in the art's colors that put out leaves, sway and carry a
+glint of light, drawn into the picture itself so that they move with it, and drawn back after a while. Every part
+of the dashboard is changed with it: the cards are glass with the art's light behind them and its colors on their
+edges, their corners melt to new shapes every few seconds, and the colors of their words part. With the feed up, the picture of the story the pointer rests on sits at the feed's
 left in a soft-edged portal of its own. None of it is picked from a list of themes. The art's own pixels are
 measured (its light, color, contrast, warmth and strongest hues), a vision model running on the PC then reads the
 picture once (a mood, an energy, a way of moving, a surface, and five dials for how a line drawn in its hand
@@ -416,8 +421,8 @@ Some Pulse pieces need a little more explanation:
   on a phone the same rows sit above the lights in the Pulse header's controls. Above the light controls it has
   rows for what is behind everything. On the PC the first is **Portal**: closed or open, and while it is open what
   the art was read as, which effect is on it now with a Next beside it, a slider for each thing it does (flow,
-  strength, change, color drift, color split, melt, fringe: from off to one and a half times what the art asks
-  for) and a switch for the glass cards, the filigree and the feed's portal. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
+  strength, change, color drift, color split, filigree, melt, fringe: from off to one and a half times what the art
+  asks for) and a switch for the glass cards and the feed's portal. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
   slideshow of the pictures in `Pictures\Blackbody\desktop`, 30 minutes a slide), **Bing** (Bing Wallpaper's daily
   picture) or **Auto**, the default, which is Bing from sunrise to sunset and Blackbody through the night. With Auto
   on, the one the sun has up is outlined; picking Blackbody or Bing by hand ends Auto until Auto is pressed again. The
