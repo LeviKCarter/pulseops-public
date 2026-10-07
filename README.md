@@ -348,14 +348,14 @@ Some Pulse pieces need a little more explanation:
   It hides the row when the window has passed or its inputs cannot be read. The dew-point
   comfort line appears only when Pulse is expanded, including the phone's opened Pulse lane.
 - **Music.** The picker groups **Daily moods** (Morning, Daytime focus, Café, Evening, Wind down) separately from
-  **Genres & sessions**. Auto follows morning jazz from 7 AM, Chillhop from 11 AM, café jazz from 2 PM, downtempo
-  from 4 PM, and Wind down from 9 PM until midnight. Wind down starts on soft sleep ambient, with calm space music
-  and sleepy lofi alternatives. Before 7 AM, Auto uses morning jazz. Synthwave is a request-only genre for retro
-  and night-drive music; the sleep-lofi stream is in Wind down. The other genre choices include deep focus,
-  classic rock, indie, house, classical, reggae, funk,
-  drum & bass, ambient, and blues. Pick them by chip or say, for example, "play drum and bass", "play ambient", or
-  "play blues". DnB and Blues each have two live streams; Ambient has twelve, space and dark. Click the selected chip again to cycle its streams.
-  These extra choices are available by request; Auto follows the daily schedule.
+  **Genres & sessions**, and every one of them has its own part of the day. Auto plays synthwave from midnight,
+  downtempo from 2 AM, reggae from 4, classical from 6, morning jazz from 7, Chillhop from 8, deep focus from 9,
+  blues from 10, funk from 11, indie from noon, house from 1 PM, café jazz from 2, classic rock from 3, drum & bass
+  from 4, dark ambient through the 5 to 9 PM working stretch, and Wind down from 9 PM until midnight. Wind down
+  starts on soft sleep ambient, with calm space music and sleepy lofi alternatives. When a new part of the day
+  starts, the station listened to most in it comes on; with none yet, the first stream of its genre does. Pick any
+  genre by chip or say, for example, "play drum and bass", "play ambient", or
+  "play blues". DnB and Blues each have two live streams; Ambient has seven, dark and sci-fi. Click the selected chip again to cycle its streams.
   A YouTube embed: a slim control in the Pulse header on a PC, and a fixed strip at the top of the page on
   a phone. With no saved level it starts at 25% volume and picks a stream for the time of day. PC tabs share their
   volume; the phone keeps its own saved volume, mute setting, and play/pause choice. Reopening or refreshing a phone
