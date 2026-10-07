@@ -86,7 +86,7 @@ curve corrected by your own timed trips, or with a TomTom key the forecast for t
 knows that a show ends tonight, and the Events lane does; nor that there is a game on, which the home schedules of
 the Broncos, Rockies, Nuggets, Avalanche and Rapids give, read twice a day with no key. An event or a game at one
 of 17 large venues around Denver (1,500 seats and up) slows the streets around that venue while its crowd arrives and, more, for the hour after it
-ends, so a trip or a drive back that is on those streets then is forecast longer, before the crowd is on the road,
+ends, so a trip that is on those streets then is forecast longer, before the crowd is on the road,
 and the badge says why ("Ball Arena lets out about 11 PM"). Where each venue is and about how many it holds are
 facts; how far the slow streets reach and how slow they get are a starting guess, an event with no end time is
 taken to run three hours and a game as long as its sport usually does, and a venue that is not in the list adds
