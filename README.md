@@ -852,6 +852,17 @@ counts (no subjects or senders). To stop it, remove the
 - **Mail, through Muse.** When the PC's own Gmail read fails, the Inbox falls back to the list of unread threads
   Muse last handed over with `submit_email_digest` (`edge-feed/src/email.js`,
   `app/museEmail.ts`). Muse has to be asked, or scheduled, to send it.
+- **A thought, through Muse.** Muse knows things the PC cannot (your Instagram, what you told it in chat), and
+  nothing outside can call Muse, so it hands a thought over: `submit_thought`, on the Muse entrance only, takes a
+  lead of at most 80 characters, one optional quiet line and how many minutes it is worth saying (two hours unless
+  it says, twelve at most). There is one at a time; a new one replaces the last and `withdraw` takes it back
+  (`edge-feed/src/thought.js`, read back by `GET /thought` with the write token). The
+  dashboard looks every two minutes and draws it in the thought panel headed **Muse**, in place of a thought you
+  did not ask for and with no model call (`app/museThought.ts`). The panel's rules hold: a
+  thought that only repeats your screen is not drawn, it leaves when its time is up, and **Another** waves it off
+  for good. What now? is still answered by the dashboard's own model, and that answer keeps the panel until Muse
+  hands over something newer. Ask Muse: *"Put that on my Pulse Ops
+  dashboard with submit_thought."*
 - **Ordering ahead, through Muse.** Muse has a browser, so it can fill a restaurant's cart while you drive there.
   **Order ahead** on a food deal or on the place Eat picks (its card in the Deals lane, and Where to eat on the Now
   card), or **Order elsewhere** with a typed place, opens Maps and
