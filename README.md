@@ -33,7 +33,7 @@ The canonical copy runs on Levi's PC at `:3000`. Phones reach that copy over Tai
 
 Captured from the dashboard on 2026-10-06, 1720 px wide on the PC and 390 px on the phone.
 
-**The wallpaper** (F). The music video fills the screen. The date and what's playing sit on the left, and the weather comes in over them with the scroll down that brings the feed up;
+**The wallpaper.** It is the only view: the music video fills the screen and everything else opens over it. The date and what's playing sit on the left, and the weather comes in over them with the scroll down that brings the feed up;
 on the right is one column: the Now card (here where to eat, after Hungry), with the thought on top of it, then the
 music player, the lane icons and a tool bar (Ask, To do, Vibe). Mail hangs from the top of that column while mail is
 waiting.
@@ -125,15 +125,6 @@ background's row over the Hue controls, and To Do (4) opens the list with its ad
 |---|---|
 | ![The Vibe panel: the desktop background (Auto, Blackbody, Bing), then the lights: the colour sets, the colour strength, all lights dimmer or brighter, each room](docs/screenshots/lights.jpg) | ![The To Do list open over the wallpaper, with its add box](docs/screenshots/todo.jpg) |
 
-**Three views.** F switches between the wallpaper and the hybrid view (all four lanes as glass over the video). M
-switches the hybrid view to the classic dashboard and back.
-
-![F toggles the wallpaper and the hybrid view; M toggles the hybrid view and the classic dashboard](docs/screenshots/views.gif)
-
-| The hybrid view | The classic dashboard (M) |
-|---|---|
-| ![The four lanes as glass over the music video](docs/screenshots/hybrid.jpg) | ![The classic dashboard without the video behind the lanes](docs/screenshots/classic.jpg) |
-
 The key list (?):
 
 ![The keyboard shortcut list, a wide panel that scrolls inside the screen](docs/screenshots/shortcuts.jpg)
@@ -151,9 +142,9 @@ Home's house on top of them. The Now card is a short scroll below. A lane opens 
 
 ## The four lanes
 
-The lanes are **Pulse, Events, Deals and Work**. On a PC the default hybrid Vibe view lays them out as glass over the
-music video. **M** switches between this and the classic dashboard. **F** opens the bare wallpaper with the date,
-weather, music and the Now card; its setting survives reloads. On the primary monitor the lanes read Pulse, Events,
+The lanes are **Pulse, Events, Deals and Work**. On a PC each opens as one pane of glass over the
+wallpaper, from its icon under the music player or its key, and closing it lands back on the wallpaper; there is no
+other view to switch to. On the primary monitor the lanes read Pulse, Events,
 Deals, Work, and Q/W/E/R follow that order. **Shift+F** mirrors the lanes, and their keys with them, for a monitor on
 the other side of the desk; the choice is kept per screen.
 
@@ -205,8 +196,7 @@ float in a column at the right edge, under a thumb, while the page is at its top
 top of them away from home; the music bar sits along the bottom with the Mail and To Do pills above it.
 Closing a lane or using Back returns to the wallpaper; a swipe down closes it too. A lane always opens at its header.
 A swipe up scrolls to the Now card, and the same swipe carried on past it slides the feed up as a sheet; one swipe
-down puts it away. A saved classic view
-keeps the phone overview. The Now card's play button is available on phone and PC. It reads the card's current
+down puts it away. The Now card's play button is available on phone and PC. It reads the card's current
 content aloud using the saved feed voice; press again to stop.
 
 In the Vibe views,
@@ -557,8 +547,6 @@ typing in a field or holding Ctrl, Alt or ⌘.
 | D | Next music stream (cycles Auto's picks for the current block); the next song and visual while a concert act plays |
 | Shift+D | Previous music stream, wrapping at the ends; the previous song and visual while a concert act plays |
 | Space | Play or pause music |
-| F | Open / close the bare Vibe wallpaper; its setting survives reloads |
-| M | Switch the default hybrid view off / on |
 | Shift+F | Flip the lane order |
 | B | Open the Now card's thought (B again or Esc closes it); hold B to talk to it, sent when you let go; while open, 1 / 2 / 3 are Hungry / What now? / Another. With a reader or picked event, B keeps its job below; in the classic dashboard it asks out loud, and B again stops (`app/VoiceAsk.tsx`, Chrome/Edge speech-to-text + `/api/ask`) |
 | 1 | Open / close Mail (Inbox Supervisor), above Now |
