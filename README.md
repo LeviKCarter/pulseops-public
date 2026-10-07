@@ -33,7 +33,7 @@ The canonical copy runs on Levi's PC at `:3000`. Phones reach that copy over Tai
 
 Captured from the dashboard on 2026-10-06, 1720 px wide on the PC and 390 px on the phone.
 
-**The wallpaper** (F). The music video fills the screen. The date, the weather and what's playing sit on the left;
+**The wallpaper** (F). The music video fills the screen. The date and what's playing sit on the left, and the weather comes in over them with the scroll down that brings the feed up;
 on the right is one column: the Now card (here where to eat, after Hungry), with the thought on top of it, then the
 music player, the lane icons and a tool bar (Ask, To do, Vibe). Mail hangs from the top of that column while mail is
 waiting.
