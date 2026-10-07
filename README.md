@@ -173,8 +173,10 @@ its lightest place, sparks of its own colors rising, rings crossing it as over w
 beads of water, mist, depth, an echo, a slow wind in cloth. A new one comes about every half minute, in an order
 drawn for that picture, with at least three others between two turns of the same one. Every part of the dashboard is changed with it: the cards
 are glass with the art's light behind them and its colors on their edges, their corners melt to new shapes every
-few seconds, the colors of their words part, and fine filigree grows round the column, the corner and the feed, and
-grows again differently every 45 seconds. With the feed up, the picture of the story the pointer rests on sits at the feed's
+few seconds, the colors of their words part, and filigree grows round the column, the corner and the feed: pen
+strokes in the art's colors that grow out from their roots, put out leaves, sway, carry a glint of light along
+them and light up near the pointer, drawn at the screen's own refresh rate, and grown again differently every
+45 seconds, the old ornament drawing back as the new one comes. With the feed up, the picture of the story the pointer rests on sits at the feed's
 left in a soft-edged portal of its own. None of it is picked from a list of themes. The art's own pixels are
 measured (its light, color, contrast, warmth and strongest hues), a vision model running on the PC then reads the
 picture once (a mood, an energy, a way of moving, a surface, and five dials for how a line drawn in its hand
@@ -183,7 +185,7 @@ alike and the same one does not look the same for long. Esc or Shift+T closes it
 open. On a phone a pull down from the top of the wallpaper opens it and the same pull closes it: the cover sits in
 the upper half of the screen and fades into its own reflection behind the words, there is no filigree, and the Vibe
 controls in the Pulse header have the same sliders (`app/wallVibes.ts`, `app/portalEngine.ts`,
-`app/artVibe.ts`, `app/filigree.ts`).
+`app/artVibe.ts`, `app/filigree.ts`, `app/filigreePaint.ts`).
 
 Pulse has no pane on the wallpaper, because its pieces already live there: the weather and the scent pick under the
 date, mail in the Mail pill, the stories in the feed, the briefing behind Brief, and the workout in the Now card. Its
