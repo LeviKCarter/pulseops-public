@@ -46,8 +46,8 @@ pane beside it, and Esc puts everything away.
 **Wheel up for the portal.** Scrolling up from the wallpaper (on a phone, pulling down from its top) opens it: the playing artist's art becomes the backdrop,
 whole and in its own colors, with one effect after another growing out of its edges, which break into fractal teeth
 and put out rows of frets and scrolls; the cards turn to glass over it, and with the feed up the
-picture of the story under the pointer sits beside the feed. Nothing in it is a preset: it is worked out from the
-art each time.
+stories on screen become portals beside the feed, to browse by picture. Nothing in it is a preset: it is worked out
+from the art each time.
 
 ![Wheel down brings the feed in, Q opens Events, W swaps to Deals, Esc returns to the wallpaper](docs/screenshots/wallpaper-feed-and-lanes.gif)
 
@@ -189,8 +189,11 @@ for that picture, and never the same one twice running. Hold the mouse down on t
 grows along the way and branches off it: pen strokes in the art's colors that put out leaves, sway and carry a
 glint of light, drawn into the picture itself so that they move with it, and drawn back after a while. Every part
 of the dashboard is changed with it: the cards are glass with the art's light behind them and its colors on their
-edges, their corners melt to new shapes every few seconds, and the colors of their words part. With the feed up, the picture of the story the pointer rests on sits at the feed's
-left in a soft-edged portal of its own. None of it is picked from a list of themes. The art's own pixels are
+edges, their corners melt to new shapes every few seconds, and the colors of their words part. With the feed up, the stories on screen in it
+are soft-edged portals at its left, each its own picture, in the feed's order: the one under the pointer comes
+forward, a click or the wheel up on it opens it over the whole room with its story beside it where the feed was, the
+wheel down closes it again, and the wheel down on the portals turns the feed on to the next ones. None of it is
+picked from a list of themes. The art's own pixels are
 measured (its light, color, contrast, warmth and strongest hues), a vision model running on the PC then reads the
 picture once (a mood, an energy, a way of moving, a surface, and five dials for how a line drawn in its hand
 behaves), and every choice left over is seeded by the picture itself and the clock, so two artists seldom look
@@ -429,7 +432,7 @@ Some Pulse pieces need a little more explanation:
   rows for what is behind everything. On the PC the first is **Portal**: closed or open, and while it is open what
   the art was read as, which effect is on it now with a Next beside it, a slider for each thing it does (flow,
   strength, pattern, change, color drift, color split, filigree, melt, fringe: from off to one and a half times what the art
-  asks for) and a switch for the glass cards and the feed's portal. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
+  asks for) and a switch for the glass cards and the feed's portals. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
   slideshow of the pictures in `Pictures\Blackbody\desktop`, 30 minutes a slide), **Bing** (Bing Wallpaper's daily
   picture) or **Auto**, the default, which is Bing from sunrise to sunset and Blackbody through the night. With Auto
   on, the one the sun has up is outlined; picking Blackbody or Bing by hand ends Auto until Auto is pressed again. The
