@@ -80,6 +80,16 @@ means the same thing all evening. Each move is listed under the sliders with wha
 old lines called Skip") and a button that puts it back; another turns the whole thing off
 (`app/graderTune.ts`).
 
+Following your picks makes the badge agree with you more often. It does not show that those picks earn more, so the
+lane also measures what the driving paid. A shift is a day's stretches online and the short stops between them,
+its money is Uber's own figure for the day less the gas for the miles driven, and an hour's pay is those shifts'
+money over their hours: after gas, with the waits and the drives between orders counted. Once there are five shifts
+and 15 hours, every offer you took or passed is set against that figure by what it pays for its own time: how many
+you took that paid less, how many you passed that would have paid more, and, where you went against the badge, what
+doing as it said would have changed. The lines are held to the same figure. Your picks cannot bring Good under an
+hour's pay or Skip over it, a line found on the wrong side of it is stepped back, and each move is listed with what
+the shifts before it and since have paid (`app/graderOutcome.ts`).
+
 The grade is taken on the traffic ahead of the trip, not the traffic on the card. Uber's minutes are the roads as
 they are when the offer is drawn, so they are stretched for how the roads usually get over the trip: a time-of-day
 curve corrected by your own timed trips, or with a TomTom key the forecast for the trip's own roads
