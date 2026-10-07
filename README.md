@@ -171,7 +171,7 @@ its own colors: fitted to the screen instead of cropped to fill it, with its own
 One effect after another plays over it, each adding to the picture without taking its place: light streaming from
 its lightest place, sparks of its own colors rising, rings crossing it as over water, a sheen passing as over foil,
 beads of water, mist, depth, an echo, a slow wind in cloth. A new one comes about every half minute, in an order
-drawn for that picture, never the same twice running. Every part of the dashboard is changed with it: the cards
+drawn for that picture, with at least three others between two turns of the same one. Every part of the dashboard is changed with it: the cards
 are glass with the art's light behind them and its colors on their edges, their corners melt to new shapes every
 few seconds, the colors of their words part, and fine filigree grows round the column, the corner and the feed, and
 grows again differently every 45 seconds. With the feed up, the picture of the story the pointer rests on sits at the feed's
