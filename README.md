@@ -44,8 +44,8 @@ waiting.
 pane beside it, and Esc puts everything away.
 
 **Wheel up for the portal.** Scrolling up from the wallpaper (on a phone, pulling down from its top) opens it: the playing artist's art becomes the backdrop,
-whole and in its own colors, with one effect after another playing over it; the cards turn to glass over it and, on
-the PC, wear ornament grown from it, and with the feed up the
+whole and in its own colors, with one effect after another growing out of its edges, which break into fractal teeth
+and put out rows of frets and scrolls; the cards turn to glass over it, and with the feed up the
 picture of the story under the pointer sits beside the feed. Nothing in it is a preset: it is worked out from the
 art each time.
 
@@ -171,12 +171,19 @@ or the stream's own) becomes the backdrop on one canvas. The art is the subject,
 fitted to the screen instead of cropped to fill it, with its own colors carrying on past its edges. It is shown in
 four psychedelic looks, one after another, each built from the visual effects reported for the experience it is
 named after (what the people who make psychedelic replications catalogue), and each a range of them that rise and
-pass while it is up, never one fixed look. One has radiant color, drifting that turns cartoon-like and back, hues
-running through its tones in bands, angular panes of color and edges lit in the rainbow. One breathes slowly, its
-surfaces flow in place, a haze comes over it, rainbow rings stand round the light and a soft honeycomb lies in the
-picture. One has the color of cut stones and one of the four form constants (a lattice, a cobweb, a tunnel, a
-spiral) that swells between large and small. One has its colors change places and a many-sided lattice opening
-out of the picture's lightest place, layer behind layer. All of it is done to the
+pass while it is up, never one fixed look. What they share is where it happens: on the picture's own edges. When a
+picture loads, its edges are traced into lines, the way an edge detector does it, and each line is measured: how
+far any place is from it, how far along it, and how much room it has on each side. A look then breaks those lines
+into teeth that carry smaller teeth that carry smaller ones still, a fractal, and stands rows of ornament on them,
+each row twice the size of the one inside it, into the room the line has and no further. One number takes every
+shape from round to square, a vine's scroll to a squared hook and an arch to a stepped pyramid, so nothing is
+picked from a set of pictures. One look has an arabesque's scrolls, flat and bright, with the rainbow running
+along the edges and moving off them in rings. One has the step fret of Aztec and Maya work: edges that are stairs
+of stairs, with squared hooks and stepped pyramids cut into the picture like stone, in its own colors. One strings
+stepped diamonds along edges broken into points, each a stone in one of the picture's three strongest colors, and
+its highlights glint. One has every ornament at once, turning from round to square and back, two layers deep, its
+colors changing places a shape at a time. Away from its edges the picture is left sharp and in its own colors, and
+it drifts only in spells, still between them. All of it is done to the
 picture itself, which is never folded, tiled or replaced. A new one comes about every minute, in an order drawn
 for that picture, and never the same one twice running. Hold the mouse down on the wallpaper and drag, and filigree
 grows along the way and branches off it: pen strokes in the art's colors that put out leaves, sway and carry a
@@ -191,7 +198,7 @@ alike and the same one does not look the same for long. Esc or Shift+T closes it
 open. On a phone a pull down from the top of the wallpaper opens it and the same pull closes it: the cover sits in
 the upper half of the screen and fades into its own reflection behind the words, there is no filigree, and the Vibe
 controls in the Pulse header have the same sliders (`app/wallVibes.ts`, `app/portalEngine.ts`,
-`app/artVibe.ts`, `app/filigree.ts`, `app/filigreePaint.ts`).
+`app/artEdges.ts`, `app/artVibe.ts`, `app/filigree.ts`, `app/filigreePaint.ts`).
 
 Pulse has no pane on the wallpaper, because its pieces already live there: the weather and the scent pick under the
 date, mail in the Mail pill, the stories in the feed, the briefing behind Brief, and the workout in the Now card. Its
@@ -421,7 +428,7 @@ Some Pulse pieces need a little more explanation:
   on a phone the same rows sit above the lights in the Pulse header's controls. Above the light controls it has
   rows for what is behind everything. On the PC the first is **Portal**: closed or open, and while it is open what
   the art was read as, which effect is on it now with a Next beside it, a slider for each thing it does (flow,
-  strength, change, color drift, color split, filigree, melt, fringe: from off to one and a half times what the art
+  strength, pattern, change, color drift, color split, filigree, melt, fringe: from off to one and a half times what the art
   asks for) and a switch for the glass cards and the feed's portal. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
   slideshow of the pictures in `Pictures\Blackbody\desktop`, 30 minutes a slide), **Bing** (Bing Wallpaper's daily
   picture) or **Auto**, the default, which is Bing from sunrise to sunset and Blackbody through the night. With Auto
