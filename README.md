@@ -45,8 +45,8 @@ pane beside it, and Esc puts everything away.
 
 **Wheel up for the portal.** Scrolling up from the wallpaper (on a phone, pulling down from its top) opens it: the playing artist's art becomes the backdrop,
 whole and in its own colors, with one effect after another growing out of its edges, which break into fractal teeth
-and put out rows of frets and scrolls; the cards turn to glass over it, and with the feed up the
-stories on screen become portals beside the feed, to browse by picture. Nothing in it is a preset: it is worked out
+and put out rows of frets and scrolls; the cards turn to glass over it, and the feed comes up
+as portals in place of its rows, nine stories to a page, to browse by picture. Nothing in it is a preset: it is worked out
 from the art each time.
 
 ![Wheel down brings the feed in, Q opens Events, W swaps to Deals, Esc returns to the wallpaper](docs/screenshots/wallpaper-feed-and-lanes.gif)
@@ -189,10 +189,11 @@ for that picture, and never the same one twice running. Hold the mouse down on t
 grows along the way and branches off it: pen strokes in the art's colors that put out leaves, sway and carry a
 glint of light, drawn into the picture itself so that they move with it, and drawn back after a while. Every part
 of the dashboard is changed with it: the cards are glass with the art's light behind them and its colors on their
-edges, their corners melt to new shapes every few seconds, and the colors of their words part. With the feed up, the stories on screen in it
-are soft-edged portals at its left, each its own picture, in the feed's order: the one under the pointer comes
-forward, a click or the wheel up on it opens it over the whole room with its story beside it where the feed was, the
-wheel down closes it again, and the wheel down on the portals turns the feed on to the next ones. None of it is
+edges, their corners melt to new shapes every few seconds, and the colors of their words part. With the feed up, its stories are
+soft-edged portals in place of its rows, nine to a page, each its own picture, in the feed's order: the one the
+pointer is moved onto comes forward, a click or the wheel up on it opens it at the feed's left with its story where
+the feed is, the wheel down closes it again, and anywhere else the wheel down turns to the next page, up turns back,
+and up from the first page puts them away. None of it is
 picked from a list of themes. The art's own pixels are
 measured (its light, color, contrast, warmth and strongest hues), a vision model running on the PC then reads the
 picture once (a mood, an energy, a way of moving, a surface, and five dials for how a line drawn in its hand
@@ -559,7 +560,7 @@ typing in a field or holding Ctrl, Alt or ⌘.
 | Keys | Does |
 |---|---|
 | Q W E R | The four lanes, left to right as laid out: Pulse, Events, Deals, Work on the primary monitor (Work, Deals, Events, Pulse on a screen laid out the other way; Shift+F switches). On the wallpaper they are the icons under the music player as drawn: Events, Deals, Work, Brief |
-| Tab / Shift+Tab | With the feed on screen: jump to its next / previous topic or source (from Newest it switches the feed to Topic first); 2 / 3 then step through the stories from there. With no feed on screen it is the browser's own Tab |
+| Tab / Shift+Tab | With the feed on screen: jump to its next / previous topic or source (from Newest it switches the feed to Topic first); 2 / 3 then step through the stories from there. With the portal open the feed is up as portals, and Tab turns to their next page, Shift+Tab the one before. With no feed on screen it is the browser's own Tab |
 | T | On the wallpaper: bring the feed up or put it away, as the wheel does; 2 / 3 then step through it. Beside an open lane it works the feed and leaves the lane. Off the wallpaper it does nothing |
 | Shift+T | On the wallpaper: open or close the portal, as the wheel up on the bare wallpaper opens it. Esc closes it too |
 | Y | Open or close the Vibe button's controls, as a click on the button does. Esc or a click elsewhere closes them too |
