@@ -43,8 +43,9 @@ waiting.
 **Wheel down for the feed, a key for a lane.** The wheel slides the feed in. Q and W open Events and Deals as one
 pane beside it, and Esc puts everything away.
 
-**Wheel up for the portal.** Scrolling up from the wallpaper (on a phone, pulling down from its top) opens it: the playing artist's art becomes the backdrop
-and runs like paint, the cards turn to glass over it and wear ornament grown from it, and with the feed up the
+**Wheel up for the portal.** Scrolling up from the wallpaper (on a phone, pulling down from its top) opens it: the playing artist's art becomes the backdrop,
+whole and in its own colors, with one effect after another playing over it; the cards turn to glass over it and, on
+the PC, wear ornament grown from it, and with the feed up the
 picture of the story under the pointer sits beside the feed. Nothing in it is a preset: it is worked out from the
 art each time.
 
@@ -165,18 +166,23 @@ edge) and the Now column. Narrower than that, the lane takes the feed's place. W
 lane and the feed beside it.
 
 Wheel up on the bare wallpaper, or Shift+T, opens the **portal**. The playing artist's art (a concert act's cover,
-or the stream's own) becomes the backdrop on one canvas: it runs, folds into a kaleidoscope in bands, turns its
-colors and parts its reds from its blues. Every part of the dashboard is changed with it: the cards are glass with
-the art's light behind them and its colors on their edges, their corners melt to new shapes every few seconds, the
-colors of their words part, and fine filigree grows round the column, the corner and the feed, and grows again
-differently every 45 seconds. With the feed up, the picture of the story the pointer rests on sits at the feed's
+or the stream's own) becomes the backdrop on one canvas. The art is the subject, so it is shown whole, sharp and in
+its own colors: fitted to the screen instead of cropped to fill it, with its own colors carrying on past its edges.
+One effect after another plays over it, each adding to the picture without taking its place: light streaming from
+its lightest place, sparks of its own colors rising, rings crossing it as over water, a sheen passing as over foil,
+beads of water, mist, depth, an echo, a slow wind in cloth. A new one comes about every half minute, in an order
+drawn for that picture, never the same twice running. Every part of the dashboard is changed with it: the cards
+are glass with the art's light behind them and its colors on their edges, their corners melt to new shapes every
+few seconds, the colors of their words part, and fine filigree grows round the column, the corner and the feed, and
+grows again differently every 45 seconds. With the feed up, the picture of the story the pointer rests on sits at the feed's
 left in a soft-edged portal of its own. None of it is picked from a list of themes. The art's own pixels are
 measured (its light, color, contrast, warmth and strongest hues), a vision model running on the PC then reads the
 picture once (a mood, an energy, a way of moving, a surface, and five dials for how a line drawn in its hand
-behaves), and every choice left over is seeded by the picture itself, so the same art always looks the same and two
-artists seldom alike. Esc or Shift+T closes it and the wallpaper is as it was; it stays open across reloads if left
-open. On a phone a pull down from the top of the wallpaper opens it and the same pull closes it, and the Vibe
-controls in the Pulse header have the same sliders and switches (`app/wallVibes.ts`, `app/portalEngine.ts`,
+behaves), and every choice left over is seeded by the picture itself and the clock, so two artists seldom look
+alike and the same one does not look the same for long. Esc or Shift+T closes it and the wallpaper is as it was; it stays open across reloads if left
+open. On a phone a pull down from the top of the wallpaper opens it and the same pull closes it: the cover sits in
+the upper half of the screen and fades into its own reflection behind the words, there is no filigree, and the Vibe
+controls in the Pulse header have the same sliders (`app/wallVibes.ts`, `app/portalEngine.ts`,
 `app/artVibe.ts`, `app/filigree.ts`).
 
 Pulse has no pane on the wallpaper, because its pieces already live there: the weather and the scent pick under the
@@ -406,8 +412,9 @@ Some Pulse pieces need a little more explanation:
 - **Vibe button.** On the PC it is the pill at the end of the wallpaper's tool bar, the Lights pill until 2026-10-06;
   on a phone the same rows sit above the lights in the Pulse header's controls. Above the light controls it has
   rows for what is behind everything. On the PC the first is **Portal**: closed or open, and while it is open what
-  the art was read as, a slider for each effect (flow, folds, color drift, color split, melt, fringe: from off to
-  one and a half times what the art asks for) and a switch for the glass cards, the filigree and the feed's portal. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
+  the art was read as, which effect is on it now with a Next beside it, a slider for each thing it does (flow,
+  strength, change, color drift, color split, melt, fringe: from off to one and a half times what the art asks
+  for) and a switch for the glass cards, the filigree and the feed's portal. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
   slideshow of the pictures in `Pictures\Blackbody\desktop`, 30 minutes a slide), **Bing** (Bing Wallpaper's daily
   picture) or **Auto**, the default, which is Bing from sunrise to sunset and Blackbody through the night. With Auto
   on, the one the sun has up is outlined; picking Blackbody or Bing by hand ends Auto until Auto is pressed again. The
