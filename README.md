@@ -705,7 +705,7 @@ The routes that change something also refuse cross-origin requests. Every server
 | `scents`, `scents/identify`, `scents/share` | Read and write the scent shelf; look a bottle up by name or photo on the local models; take a bottle photo from the phone's Share sheet |
 | `deal-stores` | The Sales tab's muted, pinned and shop-here stores, kept on the PC so the briefing follows them |
 | `shelf-command` | Run one scent-shelf change for the Claude connector (called by `scripts/poll_shelf_commands.py`) |
-| `order-ahead` | The pickup order Muse is building: read it, ask for one (a food deal, the place Eat picked, or a typed place), give its go, veto the cart Muse chose, or cancel it |
+| `order-ahead` | The pickup order your assistant is building: read it, ask for one (a food deal, the place Eat picked, or a typed place), give its go, veto the cart it chose, or cancel it. Each answer says which assistant builds orders on this PC |
 | `eat/recommendation`, `eat/events`, `eat/debug/recommendation` | Where to eat: one pick with up to two alternatives; what you did with a pick (directions, its site, an order, another, undo) and how the picks are doing; the same answer with every ranked and rejected place and its reasons, never logged as a showing |
 | `forecast` | Open-Meteo weather + air quality for the phone's location (`app/openMeteoEnvironment.ts`, one shared reading per 5 minutes via `app/environmentReading.ts`). `?detail=1` returns the week of hours |
 | `origin` | Phone location, rounded to about 1 km, for the distance chips |
@@ -897,6 +897,18 @@ counts (no subjects or senders). To stop it, remove the
   for good. What now? is still answered by the dashboard's own model, and that answer keeps the panel until Muse
   hands over something newer. Ask Muse: *"Put that on my Pulse Ops
   dashboard with submit_thought."*
+- **Ordering ahead, with Claude on the PC.** By default the order is built on your own PC, by the signed-in Claude
+  command-line tool working in your own Chrome through the Claude extension
+  (`app/orderAgent.ts`, `app/orderAgentPrompt.ts`). The server
+  starts it the moment your tap arrives, so nobody has to message an agent first, and because it is your browser
+  it orders as you: your signed-in restaurant accounts, their rewards and favorites, and the card you already
+  have on file. It is told what you ordered at the place before (from your own receipts), what you have said
+  about ordering, and its own note on the site from last time. It signs in only with your Google account, never
+  types a password, a code or a card number, and stops at the pay screen. Your go is sent to it as a new message
+  only after you gave it; it then checks the bag, the total to the cent and the card, and presses the button once.
+  A restart in the middle of an order fails the order with a line saying so; it never picks a payment back up.
+  Set `ORDER_AGENT=muse` to leave orders to Muse instead, as below. The design, what was measured and what is
+  still unproven (a real paid order, above all) are in `docs/order-assistant.md`.
 - **Ordering ahead, through Muse.** Muse has a browser, so it can fill a restaurant's cart while you drive there.
   **Order ahead** on a food deal or on the place Eat picks (its card in the Deals lane, and Where to eat on the Now
   card), or **Order elsewhere** with a typed place, opens Maps and
