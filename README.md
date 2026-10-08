@@ -123,10 +123,12 @@ Pulse Mobile sends the screen Uber Driver is showing, the PC works out which mom
 request, on the way to a restaurant or a customer, Uber's list of quests) and answers with the calls that apply
 there, and the phone draws them one at a time. A tip interrupts, so it is held to more than the lane is: only a
 call the log is sure of, your acceptance floor only on Uber's own figure and never on a worst case, stopping
-requests only on a gap chance explains less than one time in a hundred, and each said once: the phone tells back
-what it has shown, the PC keeps that, and passes over it until it may be said again. A tip never covers an offer
-or its grade, comes down when the screen changes or Uber Driver leaves it, and is decided on the PC, so one that
-turns out wrong is fixed without a new build (`app/overlayTip.ts`,
+requests only on a gap chance explains less than one time in a hundred, when to drive only with your calendar in
+hand (the PC keeps what the dashboard was last given, and says nothing on a copy that is partial or older than ten
+minutes), an hour to avoid only on a count that sure, and each said once: the phone tells back what it has shown,
+the PC keeps that, and passes over it until it may be said again. A tip never covers an offer or its grade, comes
+down when the screen changes or Uber Driver leaves it, and is decided on the PC, so one that turns out wrong is
+fixed without a new build (`app/overlayTip.ts`, `app/calendarKept.ts`,
 `TipGate.java`).
 
 ![The Work lane opened and read down: the week, the day as a timeline, the map, offers against the lines, rain against dry, trips, areas and restaurants](docs/screenshots/work-lane.gif)
