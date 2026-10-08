@@ -917,7 +917,11 @@ counts (no subjects or senders). To stop it, remove the
   about ordering, and its own note on the site from last time. It signs in only with your Google account, never
   types a password, a code or a card number, and stops at the pay screen. Your go is sent to it as a new message
   only after you gave it; it then checks the bag, the total to the cent and the card, and presses the button once.
-  A restart in the middle of an order fails the order with a line saying so; it never picks a payment back up.
+  The conversation is kept on your PC, so an order outlives a restart of the dashboard (every deploy is one): a
+  build that was cut off is carried on with in the same conversation, and a cart held at the pay screen can still
+  be given its go or vetoed. A restart never pays. An order the new server first sees already at "go" is not
+  placed, a conversation is given one go in its life, and if a go was on its way when the server stopped you are
+  told that nobody knows whether it went through.
   Set `ORDER_AGENT=muse` to leave orders to Muse instead, as below. The design, what was measured and what is
   still unproven (a real paid order, above all) are in `docs/order-assistant.md`.
 - **Ordering ahead, through Muse.** Muse has a browser, so it can fill a restaurant's cart while you drive there.
