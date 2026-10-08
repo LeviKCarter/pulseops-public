@@ -104,6 +104,19 @@ taken to run three hours and a game as long as its sport usually does, and a ven
 nothing. `GET /api/uber-offer` lists the crowds
 it sees for the next day (`app/eventTraffic.ts`, `app/gameSchedule.ts`).
 
+The grade is the trip, wherever it ends: the next order comes wherever you are, so no drive to a busier area is
+counted. The exception is the drive home at the end of a shift, which nobody pays for. With `HOME_POINT` set, an
+offer that would leave you farther from home than you are is read against your own recent shifts at this time of
+day: of the shifts that were on the road between now and the hour after this trip would end, how many were over by
+then. That share of the extra drive home (home from the drop-off, less home from where you are) is added to the
+trip's time and gas, so the dollars an hour are for all the time the offer takes from you, and the badge says so
+with the count ("18 min farther from home, 14 counted: 8 of 10 shifts done by 10:10 PM"). At the start of a shift
+the share is small and nothing is counted. An offer that ends no farther from home is not marked down, however
+late it is, and one that takes you toward home gets no credit; both are only said. Fewer than eight shifts to read
+the hour from, a drop-off that could not be placed or no home set: nothing is counted. How late counts as late is
+not a setting: it is whatever your last two months of shifts say, and it moves when you do
+(`app/homeLeg.ts`).
+
 Uber's weekend quest, so many trips by Monday morning for a bonus, chosen from a list by Thursday night, is read and
 reasoned about the same way. Pulse Mobile sends Uber's "Select next Quest" screen as it sends any other, the list is
 read from it, and the Work lane says which quest to choose: each quest's bonus times the chance of reaching its
@@ -643,7 +656,7 @@ Local settings go in `.env.local`, which is gitignored. All of them are optional
 | `ASK_PROVIDER`, `ASK_MODEL` | `cli`, `qwen3:8b` | Where the model jobs get their answers (`/api/ask`, the feed summary and its spoken edition, the read of the playing cover, scent lookups). The default, `cli`, is the signed-in Claude CLI on this PC: no key, and nothing on the graphics card; when Claude cannot answer, the local Ollama model (`ASK_MODEL`) answers if the card has room for it, and otherwise the job says so. `ASK_PROVIDER=ollama` keeps every job on the local model. `ASK_PROVIDER=claude` uses the Claude API for the text jobs instead |
 | `ANTHROPIC_API_KEY` | unset | Needed for `ASK_PROVIDER=claude` (each question is billed; capped per minute and per hour). When set, quick Now thoughts also use it first |
 | `NOW_THOUGHT_PROVIDER` | unset | Forces the Now thought onto one provider: `cli` (signed-in Claude CLI), `codex` (signed-in ChatGPT CLI), `claude` or `openai` (API keys). `NOW_THOUGHT_CLAUDE_PATH` / `NOW_THOUGHT_CODEX_PATH` point at the CLIs when they aren't found |
-| `HOME_POINT`, `HOME_ADDRESS` | unset | Home as `lat,lon` (and an optional address) for Drive Home |
+| `HOME_POINT`, `HOME_ADDRESS` | unset | Home as `lat,lon` (and an optional address) for Drive Home, "on the way home" and the order grader's drive home at the end of a shift |
 | `PULSE_HTTPS_ORIGIN` | unset | The https address `tailscale serve` publishes; plain-http Tailscale visitors are sent there so the microphone works |
 | `EIA_API_KEY`, `GAS_PRICE`, `UBER_MPG` | unset | Grading Uber offers. Gas is the EIA's weekly Denver price, read off its public page with no key (`EIA_API_KEY` uses its API instead, `GAS_PRICE` fixes it); mpg is 22, the car's city figure, unless `UBER_MPG` says otherwise |
 | `TOMTOM_API_KEY` | unset | Grading Uber offers with TomTom's traffic forecast for the trip's own roads (`app/routeTraffic.ts`) instead of the city-wide time-of-day curve. A free key from [my.tomtom.com/keys](https://my.tomtom.com/keys); restart the server after adding it, then `GET /api/uber-offer` shows `"route":{"source":"tomtom","ok":true}`. Unset, over the daily cap or on a slow answer, the grader keeps the curve. The same key lets [Eat](#eat-where-should-i-eat) read the restaurants around you with their dated opening hours (TomTom Search) and the drive to its picks; without it Eat has OpenStreetMap's places and hours alone |
@@ -991,7 +1004,7 @@ can't do:
   the phone's speaker never starts the music.
 - **The Uber driving log.** It reads Uber Driver's notifications and, through a read-only accessibility service, its
   offer cards. Each offer is sent to `/api/uber-offer` and graded (`app/uberOffer.ts`: pay against
-  time, distance, gas and how far the drop-off is from a busy area) and shown as a Good / OK / Skip badge; time or
+  time, distance and gas, and late in a shift the extra drive home the trip would leave you with) and shown as a Good / OK / Skip badge; time or
   distance it could not read is "not graded", never guessed. Where Good and Skip begin follows which offers you take
   and pass (see the Work lane above). The badge is never silent: it says "Order grader on"
   when Android starts the service, "Grading..." the moment an offer is recognised, and "Can't reach the PC" at the
