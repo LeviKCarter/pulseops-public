@@ -118,6 +118,17 @@ this one, so it is counted into the grade only from a dollar up, and near a goal
 words (`app/questPick.ts`, `app/questChance.ts`,
 `app/quests.ts`, `app/questMenu.ts`).
 
+The lane's calls are also said where they are needed: over Uber Driver, on the same badge that grades an offer.
+Pulse Mobile sends the screen Uber Driver is showing, the PC works out which moment that is (offline, waiting for a
+request, on the way to a restaurant or a customer, Uber's list of quests) and answers with the calls that apply
+there, and the phone draws them one at a time. A tip interrupts, so it is held to more than the lane is: only a
+call the log is sure of, your acceptance floor only on Uber's own figure and never on a worst case, stopping
+requests only on a gap chance explains less than one time in a hundred, and each said once: the phone tells back
+what it has shown, the PC keeps that, and passes over it until it may be said again. A tip never covers an offer
+or its grade, comes down when the screen changes or Uber Driver leaves it, and is decided on the PC, so one that
+turns out wrong is fixed without a new build (`app/overlayTip.ts`,
+`TipGate.java`).
+
 ![The Work lane opened and read down: the week, the day as a timeline, the map, offers against the lines, rain against dry, trips, areas and restaurants](docs/screenshots/work-lane.gif)
 
 | The week and the days | Where it happens |
@@ -649,7 +660,7 @@ work log, Uber offers and their history, the grader's lines, Uber's quests and t
 alerts, Block Filter sync, Instagram pictures, artist genres, the act songs played lately, what you last ordered at
 each place, and the places Eat knows with its log of picks). Each file
 has an override for isolated previews and tests: `NOW_INTENT_FILE`, `NOW_THOUGHT_RESEARCH_FILE`, `WORK_LOG_FILE`,
-`UBER_OFFERS_FILE`, `UBER_OFFER_HISTORY_FILE`, `GRADER_LINES_FILE`, `QUESTS_FILE`, `QUEST_MENU_FILE`, `RAIN_LOG_FILE`,
+`UBER_OFFERS_FILE`, `UBER_OFFER_HISTORY_FILE`, `GRADER_LINES_FILE`, `QUESTS_FILE`, `QUEST_MENU_FILE`, `OVERLAY_TIPS_FILE`, `RAIN_LOG_FILE`,
 `GAS_PRICE_FILE`,
 `PHONE_LOCATION_FILE`, `PHONE_ALERTS_FILE`, `BLOCK_SYNC_FILE`, `ARTIST_GENRE_FILE`, `MUSIC_HEARD_FILE`,
 `ORDER_USUAL_FILE`, `EAT_PLACES_FILE`, `EAT_EVENTS_FILE`, `GAME_SCHEDULE_FILE`. The ones kept
