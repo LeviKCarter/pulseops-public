@@ -45,7 +45,7 @@ pane beside it, and Esc puts everything away.
 
 **Wheel up for the portal.** Scrolling up from the wallpaper (on a phone, pulling down from its top) opens it: the playing artist's art becomes the backdrop,
 whole and in its own colors, with one effect after another growing out of its edges, which break into fractal teeth
-and put out rows of frets and scrolls; the cards turn to glass over it, and the feed comes up
+and put out frets and scrolls that grow from them; the cards turn to glass over it, and the feed comes up
 as portals in place of its rows, nine stories to a page, to browse by picture. Nothing in it is a preset: it is worked out
 from the art each time.
 
