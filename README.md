@@ -1,7 +1,7 @@
 # Pulse Ops
 
 Pulse Ops was formerly named **Levi Ops**. This repository is the sanitized public mirror. This README describes
-the app as it runs today (2026-10-07); the code in this mirror is an older sanitized snapshot, so files the text names
+the app as it runs today (2026-10-08); the code in this mirror is an older sanitized snapshot, so files the text names
 may be missing here, and hostnames, user paths and account identifiers are replaced with placeholders.
 
 For ongoing work with ChatGPT or Codex, follow [AGENTS.md](AGENTS.md).
@@ -659,12 +659,12 @@ Local settings go in `.env.local`, which is gitignored. All of them are optional
 
 State the server keeps outside the repo lives in `%LOCALAPPDATA%\PulseOps` (Now choices and research progress, the
 work log, Uber offers and their history, the grader's lines, Uber's quests and the one you hold, the rain log, the gas price, phone location, phone
-alerts, Block Filter sync, Instagram pictures, artist genres, the act songs played lately, what you last ordered at
+alerts, Block Filter sync, Instagram pictures, artist genres, the act songs played lately and the albums they were from, what you last ordered at
 each place, and the places Eat knows with its log of picks). Each file
 has an override for isolated previews and tests: `NOW_INTENT_FILE`, `NOW_THOUGHT_RESEARCH_FILE`, `WORK_LOG_FILE`,
 `UBER_OFFERS_FILE`, `UBER_OFFER_HISTORY_FILE`, `GRADER_LINES_FILE`, `QUESTS_FILE`, `QUEST_MENU_FILE`, `OVERLAY_TIPS_FILE`, `RAIN_LOG_FILE`,
 `GAS_PRICE_FILE`,
-`PHONE_LOCATION_FILE`, `PHONE_ALERTS_FILE`, `BLOCK_SYNC_FILE`, `ARTIST_GENRE_FILE`, `MUSIC_HEARD_FILE`,
+`PHONE_LOCATION_FILE`, `PHONE_ALERTS_FILE`, `BLOCK_SYNC_FILE`, `ARTIST_GENRE_FILE`, `MUSIC_HEARD_FILE`, `ALBUM_PLAYS_FILE`,
 `ORDER_USUAL_FILE`, `EAT_PLACES_FILE`, `EAT_EVENTS_FILE`, `GAME_SCHEDULE_FILE`. The ones kept
 in the Pulse Agent checkout's `data` folder have `DEAL_STORES_FILE`, `HABIT_LOG_FILE` and `SCENT_SHARE_DIR`.
 `RESTAURANT_HOURS_FILE` points Eat at another copy of Pulse Agent's own-site opening hours, and
