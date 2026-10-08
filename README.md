@@ -507,7 +507,8 @@ Some Pulse pieces need a little more explanation:
   returns subscription details with `no-store`; public copies cannot access it.
 
 After a deploy, an open tab reloads itself onto the new build (`app/BuildWatcher.tsx`). It waits
-while you're typing or music is playing.
+while you're typing or a lane or panel is open, and on a phone while music is playing; the PC reloads through its music,
+which starts again by itself (rules in `app/buildReload.ts`).
 
 ### Eat: where should I eat?
 
