@@ -348,12 +348,12 @@ Some Pulse pieces need a little more explanation:
   exclusions do not mark mail read.
 - **Scent card.** Picks what to wear, and how many sprays, from the weather, the time of day and tonight's plans. It
   draws on the shelf you keep in the card and on Fragrantica's "when to wear" votes
-  (`app/fragranticaCrowd.ts`). A new bottle's name is looked up on this PC's Ollama models,
-  so the lookup is free.
+  (`app/fragranticaCrowd.ts`). A new bottle's name, or a photo of its label, is looked up by the signed-in Claude CLI on this
+  PC (no API key), or by this PC's Ollama models when Claude cannot answer and the graphics card has room.
 - **Feed summary.** The closed card previews two stories on phones and five on desktop; tap it for the full summary.
   Story links are woven into the summary's own words. **Listen** generates a separate spoken news brief: a few
-  connected paragraphs that group related coverage and highlight the most useful stories. It uses the local
-  Ollama model by default, or the configured Claude provider, and caches the script for replay. While preparing,
+  connected paragraphs that group related coverage and highlight the most useful stories. It is written by the
+  signed-in Claude CLI by default (see `ASK_PROVIDER`), and the script is cached for replay. While preparing,
   the button shows progress and can cancel playback. If the model is unavailable or its output fails validation,
   the voice reads a short paragraph fallback without section headings or topic labels.
   In expanded Pulse, the RSS/email feed sits directly under the workout and feed-summary cards.
@@ -612,7 +612,7 @@ Local settings go in `.env.local`, which is gitignored. All of them are optional
 | `PERSONAL_TASKS_URL` | unset | Web-app URL of [`scripts/google-tasks-feed.gs`](scripts/google-tasks-feed.gs); setup steps are in the file header |
 | `PERSONAL_EMAIL_URL` | unset | Optional web-app URL (with `?key=`) of `scripts/gmail-feed.gs`. If unset, mail is read through Pulse Agent's `gws` sign-in (`scripts/gmail_feed.py`) |
 | `DOMORE_AUTH_TOKEN` | unset | DoMORE member-app sign-in token for the tickets overlay. It stops working when DoMORE signs you out |
-| `ASK_PROVIDER`, `ASK_MODEL` | `ollama`, `qwen3:8b` | Where `/api/ask` gets its answers. The default is the local Ollama model (free, no key). `ASK_PROVIDER=claude` uses the Claude API instead |
+| `ASK_PROVIDER`, `ASK_MODEL` | `cli`, `qwen3:8b` | Where the model jobs get their answers (`/api/ask`, the feed summary and its spoken edition, the read of the playing cover, scent lookups). The default, `cli`, is the signed-in Claude CLI on this PC: no key, and nothing on the graphics card; when Claude cannot answer, the local Ollama model (`ASK_MODEL`) answers if the card has room for it, and otherwise the job says so. `ASK_PROVIDER=ollama` keeps every job on the local model. `ASK_PROVIDER=claude` uses the Claude API for the text jobs instead |
 | `ANTHROPIC_API_KEY` | unset | Needed for `ASK_PROVIDER=claude` (each question is billed; capped per minute and per hour). When set, quick Now thoughts also use it first |
 | `NOW_THOUGHT_PROVIDER` | unset | Forces the Now thought onto one provider: `cli` (signed-in Claude CLI), `codex` (signed-in ChatGPT CLI), `claude` or `openai` (API keys). `NOW_THOUGHT_CLAUDE_PATH` / `NOW_THOUGHT_CODEX_PATH` point at the CLIs when they aren't found |
 | `HOME_POINT`, `HOME_ADDRESS` | unset | Home as `lat,lon` (and an optional address) for Drive Home |
@@ -622,7 +622,7 @@ Local settings go in `.env.local`, which is gitignored. All of them are optional
 | `GH_PATH` | `gh` | GitHub CLI that `/api/mobile-update` uses to read the Pulse Mobile release |
 | `NTFY_TOPIC`, `NTFY_SERVER` | unset | Phone alerts through ntfy; normally set from the page instead (see Phone alerts) |
 | `CALL_CAP_<PROVIDER>` | see `docs/outside-calls.md` | Overrides one outside provider's daily call cap (`0` blocks it) |
-| `OLLAMA_URL`, `SCENT_TEXT_MODEL`, `SCENT_VISION_MODEL` | `http://127.0.0.1:11434`, `qwen3:8b`, `qwen3-vl:8b` | Local models used for scent lookups |
+| `OLLAMA_URL`, `SCENT_TEXT_MODEL`, `SCENT_VISION_MODEL` | `http://127.0.0.1:11434`, `qwen3:8b`, `qwen3-vl:8b` | Local models used for scent lookups when Claude cannot answer, or with `ASK_PROVIDER=ollama` |
 | `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION` | unset, unset, `us-east-1` | Switches the feed summary card's listen button from the free Microsoft neural voices (no key) to Amazon Polly (`app/api/feed-speech`); billed per character. Unset, it uses the free Microsoft neural voices, then the browser's own voice if those fail |
 | `POLLY_VOICE` | `Matthew` | Polly voice used for the listen button |
 | `POLLY_ENGINE` | `generative` | Listen-button speech engine; falls back to neural for an unsupported engine/voice/region. Set `neural` to use it directly |
@@ -773,11 +773,12 @@ branch. You can start it from a home-screen shortcut, a headset media button, or
 ### Free-form questions (`/api/ask`)
 
 This route answers anything the dashboard shows in one to three spoken sentences. It builds a digest of the dashboard
-and sends it with the question to the model on this PC through Ollama (`qwen3:8b`): free, and no key. The first
-question after a while waits for the model to load, which can take most of a minute. `ASK_PROVIDER=claude` sends it to
-Claude (Sonnet 5) instead, which needs `ANTHROPIC_API_KEY` and is billed. Follow-up questions work for ten minutes,
+and sends it with the question to the signed-in Claude CLI on this PC: no key, a few seconds an answer, and nothing on the
+graphics card. When Claude cannot answer, the model on this PC (`qwen3:8b` through Ollama) does if the card has room
+for it, and `ASK_PROVIDER=ollama` keeps it there always. `ASK_PROVIDER=claude` sends it to
+the Claude API (Sonnet 5) instead, which needs `ANTHROPIC_API_KEY` and is billed. Follow-up questions work for ten minutes,
 and `&reset=1` starts over. The prompt and digest are in `app/askLevi.ts`; the provider choice is in
-`app/askModels.ts`.
+`app/askModels.ts` and the Claude CLI path in `app/claudeJobs.ts`.
 
 - **Music commands** ("pause", "louder", "play synthwave", "what's playing") run straight away without calling Claude,
   so they don't reach a model at all. Looser phrasing goes to the model, which has a music tool.
@@ -921,8 +922,10 @@ counts (no subjects or senders). To stop it, remove the
   next order there.
 
   Nothing outside Muse can start it, only a message from you. In Pulse Mobile the tap opens Muse with "order
-  ahead" typed, one Send away, and Maps opens when you come back; anywhere else, tell Muse "order ahead"
-  yourself. The dashboard half is `app/orderAhead.ts`,
+  ahead" typed, one Send away, and Maps opens when you come back. On the PC the tap copies "order ahead" and
+  opens Muse's web app in a new tab in place of Maps: paste it and send (Muse's web app takes no message from a
+  link). Until Muse picks the order up, the card on the PC says so and has **Open Muse** to do that again.
+  Anywhere else (a phone's own browser), tell Muse "order ahead" yourself. The dashboard half is `app/orderAhead.ts`,
   `app/orderAheadServer.ts` and `app/OrderGo.tsx`.
 - **Rotating a token.** In `edge-feed`, run `npx wrangler secret put MCP_PRIVATE_TOKEN` (or `MCP_TOKEN`,
   `MCP_MUSE_TOKEN`), then update the connector and the URL or key file. Deleting the secret turns the endpoint off (404).
