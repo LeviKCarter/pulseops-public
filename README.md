@@ -215,15 +215,17 @@ pass while it is up, never one fixed look. What they share is where it happens: 
 picture loads, its edges are traced into lines, the way an edge detector does it, and each line is measured: how
 far any place is from it, how far along it, and how much room it has on each side. A look then breaks those lines
 into teeth that carry smaller teeth that carry smaller ones still, a fractal, and stands rows of ornament on them,
-each row twice the size of the one inside it, into the room the line has and no further. One number takes every
+the first close to the line and each row one and a half times the size of the one inside it, with their reach
+capped by the room the line has. The rows flow along the line, breathe and ripple, and their shapes slowly change.
+Sharp corners and line ends fade so they do not fan the ornament into a spray. One number takes every
 shape from round to square, a vine's scroll to a squared hook and an arch to a stepped pyramid, so nothing is
 picked from a set of pictures. One look has an arabesque's scrolls, flat and bright, with the rainbow running
-along the edges and moving off them in rings. One has the step fret of Aztec and Maya work: edges that are stairs
-of stairs, with squared hooks and stepped pyramids cut into the picture like stone, in its own colors. One strings
+along the edges and moving off them in tight, pulsing rings. One has the step fret of Aztec and Maya work: edges
+that are stairs of stairs, with squared hooks and stepped pyramids cut into the picture like stone, in its own colors. One strings
 stepped diamonds along edges broken into points, each a stone in one of the picture's three strongest colors, and
 its highlights glint. One has every ornament at once, turning from round to square and back, two layers deep, its
-colors changing places a shape at a time. Away from its edges the picture is left sharp and in its own colors, and
-it drifts only in spells, still between them. All of it is done to the
+colors changing places a shape at a time and a close after-image along its edges. Away from its edges the picture
+is left sharp and in its own colors, and it drifts only in spells, still between them. All of it is done to the
 picture itself, which is never folded, tiled or replaced. A new one comes about every minute, in an order drawn
 for that picture, and never the same one twice running. Hold the mouse down on the wallpaper and drag, and filigree
 grows along the way and branches off it: pen strokes in the art's colors that put out leaves, sway and carry a
