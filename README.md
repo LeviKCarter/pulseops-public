@@ -218,9 +218,10 @@ glint of light, drawn into the picture itself so that they move with it, and dra
 of the dashboard is changed with it: the cards are glass with the art's light behind them and its colors on their
 edges, their corners melt to new shapes every few seconds, and the colors of their words part. With the feed up, its stories are
 soft-edged portals in place of its rows, nine to a page, each its own picture, in the feed's order: the one the
-pointer is moved onto comes forward, a click or the wheel up on it opens it at the feed's left with its story where
-the feed is, the wheel down closes it again, and anywhere else the wheel down turns to the next page, up turns back,
-and up from the first page puts them away. None of it is
+pointer is moved onto comes forward, a click on it opens it at the feed's left with its story where the feed is, the
+wheel down over it or anywhere on the wallpaper off the story, or a click on the background, puts it back among the
+others, and with none open the wheel down turns to the next page, up turns back, and up from the first page puts them
+away. None of it is
 picked from a list of themes. The art's own pixels are
 measured (its light, color, contrast, warmth and strongest hues), a vision model running on the PC then reads the
 picture once (a mood, an energy, a way of moving, a surface, and five dials for how a line drawn in its hand
