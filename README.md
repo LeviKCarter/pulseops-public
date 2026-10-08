@@ -904,7 +904,7 @@ counts (no subjects or senders). To stop it, remove the
   tells Muse how many new posts came without one. `GET /instagram` with the write token reads them back; `/snapshot`
   and the connectors never serve them.
   On the dashboard the posts are rows of the Pulse feed, mixed in by time with stories and newsletters
-  (`app/instagramFeed.ts`, `api/instagram`, local only). Muse cannot supply pictures (its
+  (`app/instagramFeed.ts`, `api/instagram`, local only). Full posters and stitched carousels uploaded by Muse are also accepted as jpg, png or webp files under `https://muse.ai/files/`; other hosts and Muse pages are refused. Rejected image links are reported even when the post already exists. Saved images revalidate on reload, so a replaced crop does not stay cached for a day. Muse cannot supply pictures (its
   Instagram tools return none for a feed post), so the PC asks Instagram for each post's link preview, the public
   oEmbed answer a chat app unfurls a pasted link with: one request per post, under the name `PulseOps-LinkPreview`,
   giving the preview picture and the caption in full (Muse's copy is cut short). A post from a private account has no
