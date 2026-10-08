@@ -104,6 +104,20 @@ taken to run three hours and a game as long as its sport usually does, and a ven
 nothing. `GET /api/uber-offer` lists the crowds
 it sees for the next day (`app/eventTraffic.ts`, `app/gameSchedule.ts`).
 
+Uber's weekend quest, so many trips by Monday morning for a bonus, chosen from a list by Thursday night, is read and
+reasoned about the same way. Pulse Mobile sends Uber's "Select next Quest" screen as it sends any other, the list is
+read from it, and the Work lane says which quest to choose: each quest's bonus times the chance of reaching its
+goal, from the orders you delivered in your last eight weekends, and never past a goal you reached in fewer than two
+of your last four. When two quests come out within a couple of dollars it says so, what each pays, and what would
+tip it; it does not dress a guess up as a figure. One tap says which you chose. While a quest runs the lane says how
+much driving is left at your own pace and the bonus it is for, and the offer book counts its trips, each customer
+of a batch one as Uber's terms have it (two orders to one door still count as one, so it can run an order short of
+Uber's own count), and its declines. On a card, a quest is worth the change
+the card makes to the chance of the goal. That is cents for most cards, since the next order comes with or without
+this one, so it is counted into the grade only from a dollar up, and near a goal the badge says what is left in
+words (`app/questPick.ts`, `app/questChance.ts`,
+`app/quests.ts`, `app/questMenu.ts`).
+
 ![The Work lane opened and read down: the week, the day as a timeline, the map, offers against the lines, rain against dry, trips, areas and restaurants](docs/screenshots/work-lane.gif)
 
 | The week and the days | Where it happens |
@@ -631,11 +645,12 @@ Local settings go in `.env.local`, which is gitignored. All of them are optional
 | `SITE_ORIGIN` | `http://localhost:3000` | Base URL for page metadata |
 
 State the server keeps outside the repo lives in `%LOCALAPPDATA%\PulseOps` (Now choices and research progress, the
-work log, Uber offers and their history, the grader's lines, the rain log, the gas price, phone location, phone
+work log, Uber offers and their history, the grader's lines, Uber's quests and the one you hold, the rain log, the gas price, phone location, phone
 alerts, Block Filter sync, Instagram pictures, artist genres, the act songs played lately, what you last ordered at
 each place, and the places Eat knows with its log of picks). Each file
 has an override for isolated previews and tests: `NOW_INTENT_FILE`, `NOW_THOUGHT_RESEARCH_FILE`, `WORK_LOG_FILE`,
-`UBER_OFFERS_FILE`, `UBER_OFFER_HISTORY_FILE`, `GRADER_LINES_FILE`, `RAIN_LOG_FILE`, `GAS_PRICE_FILE`,
+`UBER_OFFERS_FILE`, `UBER_OFFER_HISTORY_FILE`, `GRADER_LINES_FILE`, `QUESTS_FILE`, `QUEST_MENU_FILE`, `RAIN_LOG_FILE`,
+`GAS_PRICE_FILE`,
 `PHONE_LOCATION_FILE`, `PHONE_ALERTS_FILE`, `BLOCK_SYNC_FILE`, `ARTIST_GENRE_FILE`, `MUSIC_HEARD_FILE`,
 `ORDER_USUAL_FILE`, `EAT_PLACES_FILE`, `EAT_EVENTS_FILE`, `GAME_SCHEDULE_FILE`. The ones kept
 in the Pulse Agent checkout's `data` folder have `DEAL_STORES_FILE`, `HABIT_LOG_FILE` and `SCENT_SHARE_DIR`.
@@ -703,6 +718,7 @@ The routes that change something also refuse cross-origin requests. Every server
 | `now-thought`, `now-intent` | The Now card's thought and conversation; its Hungry / Another / I ate choices |
 | `notify`, `notify/setup` | Send a phone alert through ntfy; set the topic up from the page |
 | `work-log`, `uber-offer`, `grader-lines` | The Uber driving log; grade an Uber Driver offer for Pulse Mobile; the grader's Good and Skip lines, whether they move by themselves, and their last move put back |
+| `quests` | Uber's quests: the week's list as read off its screen with which to choose, the one you hold with its counts, and the taps that say which you chose or who keeps its counts |
 | `mobile-update` | The newest Pulse Mobile build, read with the PC's `gh` |
 | `block-sync` | The Block Filter's shared list (see Extras) |
 | `secure-address` | The https address a plain-http Tailscale visitor is sent to |
