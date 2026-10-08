@@ -35,10 +35,10 @@ Captured from the dashboard on 2026-10-06, 1720 px wide on the PC and 390 px on 
 
 **The wallpaper.** It is the only view: the music video fills the screen and everything else opens over it. The date and what's playing sit on the left, and the weather comes in over them with the scroll down that brings the feed up;
 on the right is one column: the Now card (here where to eat, after Hungry), with the thought on top of it, then the
-music player, the lane icons and a tool bar (Ask, To do, Vibe). Mail hangs from the top of that column while mail is
+music player, a tool bar (Vibe, To do, Ask) and the lane icons. Mail hangs from the top of that column while mail is
 waiting.
 
-![The bare wallpaper: the date, the weather, the thought, the Now card with where to eat, the music player, the lane icons and the tool bar (Ask, To do, Vibe) over the music video](docs/screenshots/wallpaper.jpg)
+![The bare wallpaper: the date, the weather, the thought, the Now card with where to eat, the music player, the tool bar (Vibe, To do, Ask) and the lane icons over the music video](docs/screenshots/wallpaper.jpg)
 
 **Wheel down for the feed, a key for a lane.** The wheel slides the feed in. Q and W open Events and Deals as one
 pane beside it, and Esc puts everything away.
@@ -163,7 +163,7 @@ up, by genre, each one playable. 2 and 3 move a pick through the rows.
 |---|---|
 | ![The Music view on Stations: the daily moods and the genres](docs/screenshots/music-stations.jpg) | ![The Music view on Concerts: acts by genre with ticket, calendar and like buttons](docs/screenshots/music-concerts.jpg) |
 
-**Beside the lanes.** R opens the briefing over the Now card. At the foot of the column is one tool bar: Ask is the
+**Beside the lanes.** R opens the briefing over the Now card. Over the lane icons at the foot of the column is one tool bar: Ask is the
 microphone, and resting the mouse on it (or B) brings up Hungry, What now? and Another; Vibe opens the desktop
 background's row over the Hue controls, and To Do (4) opens the list with its add box.
 
@@ -471,7 +471,7 @@ Some Pulse pieces need a little more explanation:
   The playing tab still takes priority over a paused tab, and manual room overrides remain respected.
   While a concert act plays, the page's tint, the wallpaper's light and the Hue lights follow the act's video or
   album art instead of the paused station, and go back to the station afterwards.
-- **Vibe button.** On the PC it is the pill at the end of the wallpaper's tool bar, the Lights pill until 2026-10-06
+- **Vibe button.** On the PC it is the pill at the left of the wallpaper's tool bar, the Lights pill until 2026-10-06
   (Y opens and closes it, as a click does);
   on a phone the same rows sit above the lights in the Pulse header's controls. Above the light controls it has
   rows for what is behind everything. On the PC the first is **Portal**: closed or open, and while it is open what
