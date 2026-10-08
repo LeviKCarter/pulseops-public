@@ -443,6 +443,9 @@ Some Pulse pieces need a little more explanation:
   A concert act's songs, and the acts of a genre or of your likes, start on the ones not played lately. What has
   played is kept on the PC (`%LOCALAPPDATA%\PulseOps\music-heard.json`) and not in the server's memory, so a deploy,
   which restarts the server, no longer starts every act over on the same songs.
+  The session an act plays in is kept there too (`music-act-sessions.json`): after a restart the now-playing line
+  still names the song being heard, and the browser's stream goes on in the song it was in, at the second it had
+  reached, instead of starting a new run of songs under the old name.
 - **Hue lights.** H switches music colours on at the remembered strength, steps through the video's colour sets on
   each further press, then switches them off; Shift+Z / Shift+X adjust that strength in 5% steps without resetting
   brightness. Z / X dim or brighten the lit rooms 5 points a press (hold to keep going).
