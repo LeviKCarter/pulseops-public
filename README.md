@@ -51,7 +51,7 @@ from the art each time.
 
 ![Wheel down brings the feed in, Q opens Events, W swaps to Deals, Esc returns to the wallpaper](docs/screenshots/wallpaper-feed-and-lanes.gif)
 
-**A story opens in place.** It grows out of the feed's lane, V and B scroll it, and Esc shrinks it back. C does too, and marks it read.
+**A story opens in place.** 2 and 3 move a pick through the feed and C opens it. It grows out of the feed's lane, V and B scroll it (with none open they scroll the feed), and Esc shrinks it back. C does too, and marks it read.
 
 ![A story opened from the feed grows out of the lane, scrolls, and closes back into the lane](docs/screenshots/feed-story.gif)
 
@@ -601,8 +601,8 @@ typing in a field or holding Ctrl, Alt or ⌘.
 | Keys | Does |
 |---|---|
 | Q W E R | The four lanes, left to right as laid out: Pulse, Events, Deals, Work on the primary monitor (Work, Deals, Events, Pulse on a screen laid out the other way; Shift+F switches). On the wallpaper they are the icons under the music player as drawn: Events, Deals, Work, Brief |
-| Tab / Shift+Tab | With the feed on screen: jump to its next / previous topic or source (from Newest it switches the feed to Topic first); 2 / 3 then step through the stories from there. With the portal open the feed is up as portals, and Tab turns to their next page, Shift+Tab the one before. With no feed on screen it is the browser's own Tab |
-| T | On the wallpaper: bring the feed up or put it away, as the wheel does; 2 / 3 then step through it. Beside an open lane it works the feed and leaves the lane. Off the wallpaper it does nothing |
+| Tab / Shift+Tab | With the feed on screen: jump to its next / previous topic or source (from Newest it switches the feed to Topic first); 2 / 3 then pick through the stories from there. With the portal open the feed is up as portals, and Tab turns to their next page, Shift+Tab the one before. With no feed on screen it is the browser's own Tab |
+| T | On the wallpaper: bring the feed up or put it away, as the wheel does; 2 / 3 then move a pick through it, C opens the pick and V / B scroll it. Beside an open lane it works the feed and leaves the lane. Off the wallpaper it does nothing |
 | Shift+T | On the wallpaper: open or close the portal, as the wheel up on the bare wallpaper opens it. Esc closes it too |
 | Y | Open or close the Vibe button's controls, as a click on the button does. Esc or a click elsewhere closes them too |
 | A / S | Music volume down / up |
@@ -612,15 +612,15 @@ typing in a field or holding Ctrl, Alt or ⌘.
 | Shift+F | Flip the lane order |
 | B | Open the Now card's thought (B again or Esc closes it); hold B to talk to it, sent when you let go; while open, 1 / 2 / 3 are Hungry / What now? / Another. With a reader or picked event, B keeps its job below; in the classic dashboard it asks out loud, and B again stops (`app/VoiceAsk.tsx`, Chrome/Edge speech-to-text + `/api/ask`) |
 | 1 | Open / close Mail (Inbox Supervisor), above Now |
-| 2 / 3 | Move down / up the active Mail or To Do list; scroll down / up inside the source popout. Elsewhere, step through the feed, the Inbox rows, the events (or DoMORE extras) or the deals, whichever is open |
+| 2 / 3 | Move down / up the active Mail or To Do list; scroll down / up inside the source popout. Elsewhere, move the pick through the feed (with a story or email open, open the next / previous in its place; with the feed up as portals, pick the next / previous portal), the Inbox rows, the events (or DoMORE extras) or the deals, whichever is open |
 | 4 | Open / close To Do. With Events open: hide / show concerts |
 | Hold Q | The Events lane on its other view: concerts shown among the other events, or taken out again when they were, as holding the Events icon does. Held for half a second; a tap opens the lane the way it was left. A hold always belongs to the lane its key opens: in the classic dashboard, where Q W E R are Jobs, Deals, Events, Pulse, this is Hold E |
 | Hold W | The Deals lane on its other view: Sales when Food was open last, Food when Sales was, as holding the Deals icon does. Held for half a second; a tap opens the view that was open last |
 | Hold E | The Work lane on its other tab: Careers when Driving was open last, Driving when Careers was, as holding the Work icon does on a PC (on the phone that hold opens Uber Driver, or directions when your log says a drive pays first). Held for half a second; a tap opens the tab that was open last. In the classic dashboard this is Hold Q |
 | 5, hold R | Read the daily briefing aloud from any view (again to stop). R held for half a second does it; a tap still does what R does there (its lane, or the Brief icon on the wallpaper) |
-| V / B | Scroll the open story or email down / up; hold for a steady glide. In Events, V on a picked concert plays the act's songs and pauses the music, V on any other event opens it in the reader, and B adds the picked event to Calendar. In Deals, V opens the picked deal's details or email. V opens a selected Mail or To Do row's source |
+| V / B | Scroll the open story or email down / up; hold for a steady glide. On the wallpaper with the feed up and none open, scroll the feed (as portals: the next / previous page). In Events, V on a picked concert plays the act's songs and pauses the music, V on any other event opens it in the reader, and B adds the picked event to Calendar. In Deals, V opens the picked deal's details or email. V opens a selected Mail or To Do row's source |
 | Shift+V / Shift+B, + / − | In an open email or story: zoom the text in / out (0 resets) |
-| C | Complete the selected Mail or To Do item, including from its source popout (email seen, mail collected, task done, bill paid, package received). Elsewhere, the one action for what is open or picked: mark the story read and shrink it back into the feed, unsubscribe from or dismiss the email, mark a task done, claim the picked DoMORE extra, hide the picked deal |
+| C | Complete the selected Mail or To Do item, including from its source popout (email seen, mail collected, task done, bill paid, package received). Elsewhere, the one action for what is open or picked: open the picked story or email in the feed, mark the open story read and shrink it back into the feed (the pick moves to the next one), unsubscribe from or dismiss the open email, mark a task done, claim the picked DoMORE extra, hide the picked deal |
 | H | Switch the Hue lights' music colours on at the remembered strength, then step through the modes (Dominant, Contrast, Breathe), then off |
 | J | While the lights have the video's colours: another pick of them (not in Breathe) |
 | Z / X | Dim / brighten the lit Hue rooms by 5 percentage points; hold to keep stepping |
