@@ -476,7 +476,8 @@ Some Pulse pieces need a little more explanation:
   manually changed brightness or bulb colours alone until the room is switched off or G resets it to the time-of-day
   default. Turning music colours off otherwise restores the saved bulb colours while keeping the current brightness.
 - **Game lights.** With the Vibe panel's Game switch on (it is, unless turned off), the lights take the colours of
-  the region the character is in while World of Warcraft is on screen. A small addon (`wow/PulseOpsRegion`) says which
+  the region the character is in while World of Warcraft is on screen, whether or not a dashboard is open (the server
+  watches, not a tab). A small addon (`wow/PulseOpsRegion`) says which
   zone: an addon can send nothing out of the game, so it draws the zone's name as a thin row of dim squares along the
   top left edge of the window, and the dashboard reads that row off the screen. The colours themselves come from the
   picture of the world on screen, so there is no table of zones and colours, and a region looks as it does at that hour.
