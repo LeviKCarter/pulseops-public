@@ -1,7 +1,7 @@
 # Pulse Ops
 
 Pulse Ops was formerly named **Levi Ops**. This repository is the sanitized public mirror. This README describes
-the app as it runs today (2026-10-08); the code in this mirror is an older sanitized snapshot, so files the text names
+the app as it runs today (2026-10-09); the code in this mirror is an older sanitized snapshot, so files the text names
 may be missing here, and hostnames, user paths and account identifiers are replaced with placeholders.
 
 For ongoing work with ChatGPT or Codex, follow [AGENTS.md](AGENTS.md).
@@ -212,11 +212,18 @@ fitted to the screen instead of cropped to fill it, with its own colors carrying
 four psychedelic looks, one after another, each built from the visual effects reported for the experience it is
 named after (what the people who make psychedelic replications catalogue), and each a range of them that rise and
 pass while it is up, never one fixed look. What they share is where it happens: on the picture's own edges. When a
-picture loads, its edges are traced into lines, the way an edge detector does it, and each line is measured: how
-far any place is from it, how far along it, and how much room it has on each side. A look then breaks those lines
+picture loads, its edges are traced into lines, the way an edge detector does it, and only its outlines are kept:
+each line is scored by how long, how smooth and how strong it is seen from a step back, where the spots and strands
+of a pattern blur away and the outline of a whole thing does not, and a soft photograph's subject is held to the
+plain ground round it rather than to the picture's hardest edge, so a face is traced and a busy cover's texture is
+left alone. Each line is then measured: how far any place is from it, how far along it, and how much room it has on
+each side. A look then breaks those lines
 into teeth that carry smaller teeth that carry smaller ones still, a fractal, and stands rows of ornament on them,
 the first close to the line and each row one and a half times the size of the one inside it, with their reach
-capped by the room the line has. The rows flow along the line, breathe and ripple, and their shapes slowly change.
+capped by the room the line has. Every shape is large enough to read as one on the screen, takes its color from
+where it stands along the line so the colors run slowly from shape to shape, and is laid into the picture as light,
+with the picture's own light and shade kept under it. The rows flow along the line, breathe and ripple, rise and
+sink in a slow swell, and their shapes slowly change.
 Sharp corners and line ends fade so they do not fan the ornament into a spray. One number takes every
 shape from round to square, a vine's scroll to a squared hook and an arch to a stepped pyramid, so nothing is
 picked from a set of pictures. One look has an arabesque's scrolls, flat and bright, with the rainbow running
@@ -479,7 +486,9 @@ Some Pulse pieces need a little more explanation:
   rows for what is behind everything. On the PC the first is **Portal**: closed or open, and while it is open what
   the art was read as, which effect is on it now with a Next beside it, a slider for each thing it does (flow,
   strength, pattern, change, color drift, color split, filigree, melt, fringe: from off to one and a half times what the art
-  asks for) and a switch for the glass cards and the feed's portals. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
+  asks for) and a switch for the glass cards and the feed's portals. **Auto**, on by default, has the sliders move by
+  themselves, slowly, with the art: less strength and pattern on busy art, more on quiet art. Change and filigree stay
+  where they were set, and moving any other slider turns Auto off with every slider where it was. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
   slideshow of the pictures in `Pictures\Blackbody\desktop`, 30 minutes a slide), **Bing** (Bing Wallpaper's daily
   picture) or **Auto**, the default, which is Bing from sunrise to sunset and Blackbody through the night. With Auto
   on, the one the sun has up is outlined; picking Blackbody or Bing by hand ends Auto until Auto is pressed again. The
