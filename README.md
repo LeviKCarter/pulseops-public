@@ -92,7 +92,7 @@ the shifts before it and since have paid (`app/graderOutcome.ts`).
 
 The grade is taken on the traffic ahead of the trip, not the traffic on the card. Uber's minutes are the roads as
 they are when the offer is drawn, so they are stretched for how the roads usually get over the trip: a time-of-day
-curve corrected by your own timed trips, or with a TomTom key the forecast for the trip's own roads
+curve corrected by your own timed trips, or with a HERE or TomTom key the forecast for the trip's own roads
 (`app/trafficCurve.ts`, `app/routeTraffic.ts`). Neither of those
 knows that a show ends tonight, and the Events lane does; nor that there is a game on, which the home schedules of
 the Broncos, Rockies, Nuggets, Avalanche and Rapids give, read twice a day with no key. An event or a game at one
@@ -287,8 +287,8 @@ considered answer with a compact explanation (it replaced the separate Think dee
 Choices are saved on the local server and shared by PC and phone. Patterns across at least three different days at
 similar times and in the same area can favor food or deeper answers; repeated restaurant dismissals lower that
 restaurant's rank. An imminent calendar commitment keeps priority. This is separate from the disabled music/Hue
-habit learners. The drive to a place to eat is TomTom's for the places shown; without it, it is worked out from the
-distance and said as "about N min".
+habit learners. The drive to a place to eat is HERE's (with the hour's usual traffic) or TomTom's for the places
+shown; without either, it is worked out from the distance and said as "about N min".
 During the scheduled run window, Now shows the run as its name, one line of targets (duration, heart-rate zone), the
 plan's note and the weather at its start; on the PC's wallpaper the air, the best window to run and the week follow.
 The detail waits behind a click anywhere on the card (the chevron in its corner): the last recorded run's time,
@@ -541,8 +541,8 @@ One recommendation path (`app/eatServer.ts`) answers every asker, so they always
 
 How it decides:
 
-- **Places** are every restaurant TomTom Search and OpenStreetMap report within 6 miles, read when you ask from
-  somewhere not read in the last 20 hours, plus the deals sheet's own restaurants, looked up by name and address.
+- **Places** are every restaurant HERE's place search (TomTom's when HERE is not asked) and OpenStreetMap report
+  within 6 miles, read when you ask from somewhere not read lately (six days for HERE, 20 hours for TomTom), plus the deals sheet's own restaurants, looked up by name and address.
 - **Gates run before any score.** A place is out when it is closed at the minute you would arrive, closes within 30
   minutes of that, has no hours that can be believed, is not a meal (an ice cream shop, a bar with no kitchen), is
   over 15 minutes away (8 for "quick"), or was turned down in the last 90 minutes.
@@ -553,7 +553,7 @@ How it decides:
 - **Alternatives** each trade something the data can show: Closer, Better value, A favorite, Somewhere new or
   Different food. No trade, no alternative.
 - **Hours are never guessed.** Each source has its own expiry: the restaurant's own site 35 days, TomTom's dated
-  hours 48 hours, an OpenStreetMap tag by when it was read and last edited. Stale hours are a second tier, used only
+  hours 48 hours, HERE's usual week 7 days, an OpenStreetMap tag by when it was read and last edited. Stale hours are a second tier, used only
   when nothing current is left and said to be unchecked. Missing or expired hours are unknown, and an unknown place
   is never called open.
 - **Location** is the device's own fix, else the phone's last report. One up to 6 hours old is used and said; after
@@ -565,9 +565,9 @@ How it decides:
 
 The places and the log are kept on the PC (`%LOCALAPPDATA%\PulseOps\eat-places.json` and `eat-events.json`); deleting
 either is safe. `GET /api/eat/debug/recommendation?q=something+quick` shows every ranked and rejected place with its
-reasons, and `GET /api/eat/events` says how the picks are doing. The outside calls (TomTom Search and Routing,
+reasons, and `GET /api/eat/events` says how the picks are doing. The outside calls (HERE and TomTom search and routing,
 OpenStreetMap's Overpass and Nominatim) have daily caps in `docs/outside-calls.md`;
-`CALL_CAP_TOMTOM_SEARCH=0` and `CALL_CAP_OVERPASS=0` in `.env.local` stop the place reads.
+`HERE_MONTH_CAP_SEARCH=0`, `CALL_CAP_TOMTOM_SEARCH=0` and `CALL_CAP_OVERPASS=0` in `.env.local` stop the place reads.
 
 ## Where it runs
 
@@ -675,7 +675,8 @@ Local settings go in `.env.local`, which is gitignored. All of them are optional
 | `HOME_POINT`, `HOME_ADDRESS` | unset | Home as `lat,lon` (and an optional address) for Drive Home, "on the way home" and the order grader's drive home at the end of a shift |
 | `PULSE_HTTPS_ORIGIN` | unset | The https address `tailscale serve` publishes; plain-http Tailscale visitors are sent there so the microphone works |
 | `EIA_API_KEY`, `GAS_PRICE`, `UBER_MPG` | unset | Grading Uber offers. Gas is the EIA's weekly Denver price, read off its public page with no key (`EIA_API_KEY` uses its API instead, `GAS_PRICE` fixes it); mpg is 22, the car's city figure, unless `UBER_MPG` says otherwise |
-| `TOMTOM_API_KEY` | unset | Grading Uber offers with TomTom's traffic forecast for the trip's own roads (`app/routeTraffic.ts`) instead of the city-wide time-of-day curve. A free key from [my.tomtom.com/keys](https://my.tomtom.com/keys); restart the server after adding it, then `GET /api/uber-offer` shows `"route":{"source":"tomtom","ok":true}`. Unset, over the daily cap or on a slow answer, the grader keeps the curve. The same key lets [Eat](#eat-where-should-i-eat) read the restaurants around you with their dated opening hours (TomTom Search) and the drive to its picks; without it Eat has OpenStreetMap's places and hours alone |
+| `HERE_API_KEY` | unset | HERE Location Services, asked before TomTom for the order grader's traffic forecast, Eat's places, hours and drives, and the geocoder for corners and houses Nominatim lacks (`app/hereMaps.ts`). A key from [platform.here.com](https://platform.here.com); its Base Plan takes a card and bills past a free number of requests a month, so every request is counted on disk (`%LOCALAPPDATA%\PulseOps\here-usage.json`) and held to nine tenths of each service's free month, spread evenly over its days: traffic routing 4,500 of 5,000, plain routing 27,000 of 30,000, place search 4,500 of 5,000, geocoding 27,000 of 30,000. Past that, with no key or with no answer, TomTom answers. `HERE_MONTH_CAP_TRAFFIC`, `_ROUTE`, `_SEARCH` and `_GEOCODE` set a lower cap, never a higher one. `GET /api/uber-offer` shows `"route":{"source":"here","ok":true}` and the month so far under `route.here` |
+| `TOMTOM_API_KEY` | unset | The backup to HERE (and the only road source without a HERE key). Grading Uber offers with TomTom's traffic forecast for the trip's own roads (`app/routeTraffic.ts`) instead of the city-wide time-of-day curve. A free key from [my.tomtom.com/keys](https://my.tomtom.com/keys); restart the server after adding it, then `GET /api/uber-offer` shows `"route":{"source":"tomtom","ok":true}`. Unset, over the daily cap or on a slow answer, the grader keeps the curve. The same key lets [Eat](#eat-where-should-i-eat) read the restaurants around you with their dated opening hours (TomTom Search) and the drive to its picks; without it Eat has OpenStreetMap's places and hours alone |
 | `GH_PATH` | `gh` | GitHub CLI that `/api/mobile-update` uses to read the Pulse Mobile release |
 | `NTFY_TOPIC`, `NTFY_SERVER` | unset | Phone alerts through ntfy; normally set from the page instead (see Phone alerts) |
 | `CALL_CAP_<PROVIDER>` | see `docs/outside-calls.md` | Overrides one outside provider's daily call cap (`0` blocks it) |
