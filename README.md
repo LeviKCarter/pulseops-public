@@ -475,6 +475,16 @@ Some Pulse pieces need a little more explanation:
   The dimming schedule, a stream change and turning music colours off all leave
   manually changed brightness or bulb colours alone until the room is switched off or G resets it to the time-of-day
   default. Turning music colours off otherwise restores the saved bulb colours while keeping the current brightness.
+- **Game lights.** With the Vibe panel's Game switch on (it is, unless turned off), the lights take the colours of
+  the region the character is in while World of Warcraft is on screen. A small addon (`wow/PulseOpsRegion`) says which
+  zone: an addon can send nothing out of the game, so it draws the zone's name as a thin row of dim squares along the
+  top left edge of the window, and the dashboard reads that row off the screen. The colours themselves come from the
+  picture of the world on screen, so there is no table of zones and colours, and a region looks as it does at that hour.
+  A region is painted once when he comes into it, and again only if it has clearly changed colour since. Everything the
+  light controls do for music colours they do for a region's: the colour modes, the colour strength, another pick.
+  Brightness is kept apart from colour here: a room made dimmer or brighter goes on following the game, and only a room
+  given a colour by hand is left alone. When the game closes, the music's colours come back, or each bulb's own.
+  Nothing is sent to the game and nothing of the game's is read but what it shows on screen.
   Reloading the dashboard refreshes enabled music colours from a current frame, even if audio starts paused.
   Returning to the window refreshes its frame and player check-in. The local server also refreshes enabled colours
   on player check-ins about once a minute, so updates keep working with the page in the background.
