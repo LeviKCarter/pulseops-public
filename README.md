@@ -234,9 +234,10 @@ its highlights glint. One has every ornament at once, turning from round to squa
 colors changing places a shape at a time and a close after-image along its edges. Away from its edges the picture
 is left sharp and in its own colors, and it drifts only in spells, still between them. All of it is done to the
 picture itself, which is never folded, tiled or replaced. A new one comes about every minute, in an order drawn
-for that picture, and never the same one twice running. Hold the mouse down on the wallpaper and drag, and filigree
-grows along the way and branches off it: pen strokes in the art's colors that put out leaves, sway and carry a
-glint of light, drawn into the picture itself so that they move with it, and drawn back after a while. Every part
+for that picture, and never the same one twice running. The art is printed on cloth: run the mouse across the bare wallpaper and the cloth
+under it is dragged along, bunching into soft satin folds ahead of the hand that catch the light, and let go it
+settles back whole within a second or two; a click splashes it, a ring running out through the cloth. It is done in
+the picture itself, so the folds carry whichever drug is on. Every part
 of the dashboard is changed with it: the cards are glass with the art's light behind them and its colors on their
 edges, their corners melt to new shapes every few seconds, and the colors of their words part. With the feed up, its stories are
 soft-edged portals in place of its rows, nine to a page, each its own picture, in the feed's order: the one the
@@ -250,9 +251,9 @@ picture once (a mood, an energy, a way of moving, a surface, and five dials for 
 behaves), and every choice left over is seeded by the picture itself and the clock, so two artists seldom look
 alike and the same one does not look the same for long. Esc or Shift+T closes it and the wallpaper is as it was; it stays open across reloads if left
 open. On a phone a pull down from the top of the wallpaper opens it and the same pull closes it: the cover sits in
-the upper half of the screen and fades into its own reflection behind the words, there is no filigree, and the Vibe
+the upper half of the screen and fades into its own reflection behind the words, a tap splashes the cloth, and the Vibe
 controls in the Pulse header have the same sliders (`app/wallVibes.ts`, `app/portalEngine.ts`,
-`app/artEdges.ts`, `app/artVibe.ts`, `app/filigree.ts`, `app/filigreePaint.ts`).
+`app/artEdges.ts`, `app/artVibe.ts`, `app/fabric.ts`).
 
 Pulse has no pane on the wallpaper, because its pieces already live there: the weather and the scent pick under the
 date, mail in the Mail pill, the stories in the feed, the briefing behind Brief, and the workout in the Now card. Its
@@ -485,10 +486,10 @@ Some Pulse pieces need a little more explanation:
   on a phone the same rows sit above the lights in the Pulse header's controls. Above the light controls it has
   rows for what is behind everything. On the PC the first is **Portal**: closed or open, and while it is open what
   the art was read as, which effect is on it now with a Next beside it, a slider for each thing it does (flow,
-  strength, pattern, change, color drift, color split, filigree, melt, fringe: from off to one and a half times what the art
+  strength, pattern, change, color drift, color split, melt, fringe: from off to one and a half times what the art
   asks for) and a switch for the glass cards and the feed's portals. **Auto**, on by default, has the sliders move by
-  themselves, slowly, with the art: less strength and pattern on busy art, more on quiet art. Change and filigree stay
-  where they were set, and moving any other slider turns Auto off with every slider where it was. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
+  themselves, slowly, with the art: less strength and pattern on busy art, more on quiet art. Change stays
+  where it was set, and moving any other slider turns Auto off with every slider where it was. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
   slideshow of the pictures in `Pictures\Blackbody\desktop`, 30 minutes a slide), **Bing** (Bing Wallpaper's daily
   picture) or **Auto**, the default, which is Bing from sunrise to sunset and Blackbody through the night. With Auto
   on, the one the sun has up is outlined; picking Blackbody or Bing by hand ends Auto until Auto is pressed again. The
