@@ -687,6 +687,11 @@ OpenStreetMap's Overpass and Nominatim) have daily caps in `docs/outside-calls.m
 - **`edge-feed/`** is the `levi-ops-live-feed` Cloudflare Worker. `/snapshot` is read-only, has an allowlisted schema
   and only allows the published site's origin (CORS). Local copies read it through the same-origin `/api/live-feed`
   proxy. The Worker also hosts the [Claude connector](#claude-connector-mcp) and the scent-shelf command queue.
+  Anyone can read `/snapshot`, so the Pulse card goes there without the brief's health block (weight, body fat, heart
+  rate, lifts, runs) or its training line, which quotes the same figures: `write_site_snapshot` in `refresh_snapshot.py`
+  leaves them out, and `scripts/publicSnapshot.test.mjs` fails if they come back. This PC's dashboard, the phone and
+  the voice routes read them from the local feed; the connector gets them through the private digest. The published
+  copy shows no health panel.
 
 ## Keyboard shortcuts
 
@@ -956,7 +961,9 @@ has two endpoints:
   reads this PC's `/api/voice` topics and posts them to the Worker's `/private`. They're kept in a separate KV key that
   no public route serves. Each answer says how old it is, and anything older than 90 minutes is flagged (usually the
   PC is asleep). **This puts your calendar, tickets and tasks in Cloudflare KV,** along with the brief's unread-email
-counts (no subjects or senders). To stop it, remove the
+counts (no subjects or senders), and the brief's health block (the latest five weight and heart-rate points, the
+  plan and lift targets) with its training line as the `health` topic. `get_training_plan` adds those only on the
+  private path; on `/mcp/<token>` it answers without them. To stop it, remove the
   `push_private_digest()` call from `refresh_snapshot.py` and run
   `npx wrangler kv key delete private --binding SNAPSHOT --remote` in `edge-feed`.
 - **Shelf edits.** The Worker can't reach the PC, so the edit tools queue a command on the Worker
