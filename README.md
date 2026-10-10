@@ -715,12 +715,12 @@ Local settings go in `.env.local`, which is gitignored. All of them are optional
 
 State the server keeps outside the repo lives in `%LOCALAPPDATA%\PulseOps` (Now choices and research progress, the
 work log, Uber offers and their history, the grader's lines, Uber's quests and the one you hold, the rain log, the gas price, phone location, phone
-alerts, Block Filter sync, Instagram pictures, artist genres, the act songs played lately and the albums they were from, each act's releases and their tracks, what you last ordered at
+alerts, what the phone's level check heard, Block Filter sync, Instagram pictures, artist genres, the act songs played lately and the albums they were from, each act's releases and their tracks, what you last ordered at
 each place, and the places Eat knows with its log of picks). Each file
 has an override for isolated previews and tests: `NOW_INTENT_FILE`, `NOW_THOUGHT_RESEARCH_FILE`, `WORK_LOG_FILE`,
 `UBER_OFFERS_FILE`, `UBER_OFFER_HISTORY_FILE`, `GRADER_LINES_FILE`, `QUESTS_FILE`, `QUEST_MENU_FILE`, `OVERLAY_TIPS_FILE`, `RAIN_LOG_FILE`,
 `GAS_PRICE_FILE`,
-`PHONE_LOCATION_FILE`, `PHONE_ALERTS_FILE`, `BLOCK_SYNC_FILE`, `ARTIST_GENRE_FILE`, `MUSIC_HEARD_FILE`, `ALBUM_PLAYS_FILE`, `ACT_ALBUMS_FILE`,
+`PHONE_LOCATION_FILE`, `PHONE_ALERTS_FILE`, `PHONE_EAR_FILE`, `BLOCK_SYNC_FILE`, `ARTIST_GENRE_FILE`, `MUSIC_HEARD_FILE`, `ALBUM_PLAYS_FILE`, `ACT_ALBUMS_FILE`,
 `ORDER_USUAL_FILE`, `EAT_PLACES_FILE`, `EAT_EVENTS_FILE`, `GAME_SCHEDULE_FILE`. The ones kept
 in the Pulse Agent checkout's `data` folder have `DEAL_STORES_FILE`, `HABIT_LOG_FILE` and `SCENT_SHARE_DIR`.
 `RESTAURANT_HOURS_FILE` points Eat at another copy of Pulse Agent's own-site opening hours, and
@@ -789,6 +789,7 @@ The routes that change something also refuse cross-origin requests. Every server
 | `work-log`, `uber-offer`, `grader-lines` | The Uber driving log (`?range=90`, `365` or `all` adds its graphs over that span); grade an Uber Driver offer for Pulse Mobile; the grader's Good and Skip lines, whether they move by themselves, and their last move put back |
 | `quests` | Uber's quests: the week's list as read off its screen with which to choose, the one you hold with its counts, and the taps that say which you chose or who keeps its counts |
 | `mobile-update` | The newest Pulse Mobile build, read with the PC's `gh` |
+| `phone-ear` | What Pulse Mobile's level check heard: the app's readings, kept on the PC, and the newest of them |
 | `block-sync` | The Block Filter's shared list (see Extras) |
 | `secure-address` | The https address a plain-http Tailscale visitor is sent to |
 | `habit-log`, `habit-summary` | Log of music, light and like choices, and how well the habit predictors match it (they run in shadow; applying them is off) |
@@ -1044,6 +1045,12 @@ can't do:
 - **Background location** to `/api/phone-location`, for the forecast, the distance chips and the Now card.
 - **Music only over Bluetooth.** The app tells the page whether Android's media sound goes to a Bluetooth output, so
   the phone's speaker never starts the music.
+- **What the phone hears.** A check, opened from the phone's Pulse controls: a live level of what the phone is
+  playing, read by the app from Android's output mix (Android asks for its record-audio permission; the microphone is
+  never used). It says whether sound is heard, on Bluetooth or on the phone's own speaker, and whether it kept being
+  heard while Pulse was behind another app or the screen was off (readings that stopped for a while there are said to
+  have stopped, however much of what arrived had sound in it). The PC keeps what it saw in
+  `%LOCALAPPDATA%\PulseOps\phone-ear.jsonl`. Nothing reacts to the level yet.
 - **The Uber driving log.** It reads Uber Driver's notifications and, through a read-only accessibility service, its
   offer cards. Each offer is sent to `/api/uber-offer` and graded (`app/uberOffer.ts`: pay against
   time, distance and gas, and late in a shift the extra drive home the trip would leave you with) and shown as a Good / OK / Skip badge; time or
