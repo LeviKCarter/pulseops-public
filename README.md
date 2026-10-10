@@ -209,7 +209,7 @@ lane and the feed beside it.
 Wheel up on the bare wallpaper, or Shift+T, opens the **portal**. The playing artist's art (a concert act's cover,
 or the stream's own) becomes the backdrop on one canvas. The art is the subject, so it is shown whole and sharp:
 fitted to the screen instead of cropped to fill it, with its own colors carrying on past its edges. It is shown in
-four psychedelic looks, one after another, each built from the visual effects reported for the experience it is
+four psychedelic looks, one at a time (it stays until you hold Y or press Next in the Vibe button), each built from the visual effects reported for the experience it is
 named after (what the people who make psychedelic replications catalogue), and each a range of them that rise and
 pass while it is up, never one fixed look. What they share is where it happens: on the picture's own edges. When a
 picture loads, its edges are traced into lines, the way an edge detector does it, and only its outlines are kept:
@@ -248,8 +248,8 @@ away. None of it is
 picked from a list of themes. The art's own pixels are
 measured (its light, color, contrast, warmth and strongest hues), a vision model running on the PC then reads the
 picture once (a mood, an energy, a way of moving, a surface, and five dials for how a line drawn in its hand
-behaves), and every choice left over is seeded by the picture itself and the clock, so two artists seldom look
-alike and the same one does not look the same for long. Esc or Shift+T closes it and the wallpaper is as it was; it stays open across reloads if left
+behaves), and every choice left over is seeded by the picture itself, so two artists seldom look
+alike. Esc or Shift+T closes it and the wallpaper is as it was; it stays open across reloads if left
 open. On a phone a pull down from the top of the wallpaper opens it and the same pull closes it: the cover sits in
 the upper half of the screen and fades into its own reflection behind the words, a tap splashes the cloth, and the Vibe
 controls in the Pulse header have the same sliders (`app/wallVibes.ts`, `app/portalEngine.ts`,
@@ -507,10 +507,9 @@ Some Pulse pieces need a little more explanation:
   on a phone the same rows sit above the lights in the Pulse header's controls. Above the light controls it has
   rows for what is behind everything. On the PC the first is **Portal**: closed or open, and while it is open what
   the art was read as, which effect is on it now with a Next beside it, a slider for each thing it does (flow,
-  strength, pattern, change, color drift, color split, melt, fringe: from off to one and a half times what the art
+  strength, pattern, color drift, color split, melt, fringe: from off to one and a half times what the art
   asks for) and a switch for the glass cards and the feed's portals. **Auto**, on by default, has the sliders move by
-  themselves, slowly, with the art: less strength and pattern on busy art, more on quiet art. Change stays
-  where it was set, and moving any other slider turns Auto off with every slider where it was. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
+  themselves, slowly, with the art: less strength and pattern on busy art, more on quiet art. Moving a slider turns Auto off with every slider where it was. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
   slideshow of the pictures in `Pictures\Blackbody\desktop`, 30 minutes a slide), **Bing** (Bing Wallpaper's daily
   picture) or **Auto**, the default, which is Bing from sunrise to sunset and Blackbody through the night. With Auto
   on, the one the sun has up is outlined; picking Blackbody or Bing by hand ends Auto until Auto is pressed again. The
@@ -642,6 +641,7 @@ typing in a field or holding Ctrl, Alt or ⌘.
 | T | On the wallpaper: bring the feed up or put it away, as the wheel does; 2 / 3 then move a pick through it, C opens the pick and V / B scroll it. Beside an open lane it works the feed and leaves the lane. Off the wallpaper it does nothing |
 | Shift+T | On the wallpaper: open or close the portal, as the wheel up on the bare wallpaper opens it. Esc closes it too |
 | Y | Open or close the Vibe button's controls, as a click on the button does. Esc or a click elsewhere closes them too |
+| Hold Y | With the portal open: the next of its four looks on the art, as Next in the Vibe button does. It stays until the next hold: none moves on by itself. Held for half a second |
 | A / S | Music volume down / up |
 | D | Next music stream (cycles Auto's picks for the current block); the next song and visual while a concert act plays |
 | Shift+D | Previous music stream, wrapping at the ends; the previous song and visual while a concert act plays |
