@@ -453,6 +453,10 @@ Some Pulse pieces need a little more explanation:
   The session an act plays in is kept there too (`music-act-sessions.json`): after a restart the now-playing line
   still names the song being heard, and the browser's stream goes on in the song it was in, at the second it had
   reached, instead of starting a new run of songs under the old name.
+  The song's name and its picture change as the song does. The PC is a couple of minutes of sound ahead of what you
+  hear, so the page knows the second the next song begins: it asks for that song's picture 15 seconds before, and
+  shows the name and the picture at that second. It used to find out at a check it makes every 4 seconds, and only
+  then ask for the picture.
   An act can also be played as one of its albums. While an act plays, the Music view lists its albums under its
   row (on the PC and on the phone): open one to see its tracks, press Play in order or Shuffle, or click a track to
   start there. Each track is that album's own recording, found on YouTube by its title and by its length against
