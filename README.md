@@ -499,7 +499,8 @@ Some Pulse pieces need a little more explanation:
   points every five minutes, its brightness alone. The schedule itself is full brightness by day and 70% half an hour
   after sunset, goes on down to 55%, holds that until 10:30 PM, and eases through the night to a 15% night light at
   6 AM, with full brightness again by 7 AM (the white goes from 6500 K by day to 3400 K at sunset and 2000 K by
-  10:30 PM). A level set by hand stays where it was put: Z / X or a slider from
+  10:30 PM). From 6 to 7 AM it only ever brightens: a room switched on brighter than the hour stays as it is until the
+  hour reaches it. A level set by hand stays where it was put: Z / X or a slider from
   that press, the Hue app or a dimmer once it is more than five points off, and a scene by its whites. A playing tab supplies the colours (PC preferred among
   players); a paused tab cannot override it. A fresh frame at the stream's live edge is sampled on each stream switch and every
   minute, and successful identical colours are not re-sent. The five-minute dimming task captures that playing
