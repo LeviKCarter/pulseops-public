@@ -817,7 +817,7 @@ the design system. Impeccable is configured to build directly in code, with Live
 | `npm test` | Unit tests with Node's built-in runner (the `scripts/*.test.mjs` files listed in `package.json`; a new test file must be added there): spoken text, `/api/ask`, music commands, email rules, scents, event clashes, job areas, hotkeys, the Now card, the wallpaper feed, the work log, Eat (its whole loop, offline), the desktop background, the Worker's MCP, private-digest, shelf and ingest code, and Pulse Mobile's offer logic when a JDK is present |
 | `npm run refresh:snapshot` | Regenerate `app/queueSnapshot.ts` from the sheets |
 | `npm run build:public-preview` | Sanitized static build filled with invented data |
-| `npm run publish:handoff` | Refresh, build, lint and package a hashed bundle in `handoff/` for publishing |
+| `npm run publish:handoff` | Refresh, build, lint and package a hashed bundle in `handoff/` for publishing. Its `app/queueSnapshot.ts` is the public copy, without the brief's health block or training line |
 
 ## Local API routes
 
