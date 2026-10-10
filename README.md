@@ -219,7 +219,9 @@ field worked out beside it thirty times a second, the way a sheet of nerve cells
 to make its lattices and spirals, in which every size of shape forms inside every other, tied to the picture's
 light and shade, with rosettes that are each different. The picture's detail is pushed into that pattern, carved
 and turned in color with it, so the pattern is made of the picture. Colors turn region by region and come back,
-reds and blues part, and a thin glow sits just off the edges. How much of this there is goes by the dose, which
+reds and blues part, and a thin glow sits just off the edges. Where the art is the station's moving loop, whatever
+moves in it leaves a short row of fading after-images behind it, made of the loop's own earlier frames; a still
+picture has none. How much of this there is goes by the dose, which
 rises and sinks in waves: a little only sharpens and colors the picture, more makes it breathe and flow, more
 still turns its textures into patterns. And it goes by where a made-up eye rests: the eye wanders the places of
 the picture there is most to look at, what it rests on is the sharpest, and the rest builds away from it while it
