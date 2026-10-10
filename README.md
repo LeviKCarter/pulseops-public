@@ -1,7 +1,7 @@
 # Pulse Ops
 
 Pulse Ops was formerly named **Levi Ops**. This repository is the sanitized public mirror. This README describes
-the app as it runs today (2026-10-09); the code in this mirror is an older sanitized snapshot, so files the text names
+the app as it runs today (2026-10-10); the code in this mirror is an older sanitized snapshot, so files the text names
 may be missing here, and hostnames, user paths and account identifiers are replaced with placeholders.
 
 For ongoing work with ChatGPT or Codex, follow [AGENTS.md](AGENTS.md).
@@ -453,6 +453,21 @@ Some Pulse pieces need a little more explanation:
   The session an act plays in is kept there too (`music-act-sessions.json`): after a restart the now-playing line
   still names the song being heard, and the browser's stream goes on in the song it was in, at the second it had
   reached, instead of starting a new run of songs under the old name.
+  An act can also be played as one of its albums. While an act plays, the Music view lists its albums under its
+  row (on the PC and on the phone): open one to see its tracks, press Play in order or Shuffle, or click a track to
+  start there. Each track is that album's own recording, found on YouTube by its title and by its length against
+  Apple's track list (within 2.5 seconds), so an album plays in order instead of jumping between the act's songs,
+  and a studio track is never swapped for a live one, nor an instrumental or a live take for the plain song of the
+  same length. A track no upload is found for is marked and passed over.
+  An album that cannot be played just now (none of its tracks has an upload, or the day's searches are used up)
+  never stops the act: it goes on with what was playing, the album that was on from the track being heard or the
+  act's own songs, and the list says so under that album. The same holds for Next and Previous inside an album, and
+  a reload that comes back in such an album brings the act back as its own songs. Play in order and Shuffle are off
+  on a release none of whose tracks was found.
+  The now-playing line says where the song is in its album ("Hiraeth · 3 of 9"), the picture is that album's cover,
+  Next and Previous stay inside the album, and the album starts over at its end. Which upload plays each track is
+  kept on the PC (`album-tracks.json`) for 30 days, so an album is searched for once; an upload is looked for again
+  sooner only when YouTube says it is gone, never because a search or the network failed.
   Which picture an act's visual is, is kept there as well (`music-visuals.json`): after a restart the lights and
   Breathe go on reading the visual the page still shows. The server used to ask YouTube for a video of that name,
   and fail, until the page had read the visual's colors again.
@@ -550,8 +565,8 @@ Some Pulse pieces need a little more explanation:
   scheduled task **Pulse Ops Desktop Wallpaper**, registered once from `scripts/` like the other tasks
   ([`CLAUDE.md`](CLAUDE.md) names each script), asks the server every 5 minutes. The server switches once at each sunrise and sunset and runs nothing in between, so a picture set
   by hand in Windows stays until the next crossing. **Art** is there only while a concert act plays: its two arrows step
-  through the act's other videos and album covers without changing the song. A new song keeps the move; a new act
-  forgets it.
+  through the act's other videos and album covers without changing the song. A new song forgets the move and shows
+  its own video or cover, and so does an album put on while the act plays; a new act forgets it too.
 - **Phone directions.** Tap a deal in the phone overview, or its restaurant name in the Deals lane, to open Google
   Maps. A deal tied to a street address requests driving navigation; a chain-wide deal opens a search so you can pick
   the right branch. Home is `HOME_POINT` in the PC's `.env.local` (never in tracked code).
@@ -745,12 +760,12 @@ Local settings go in `.env.local`, which is gitignored. All of them are optional
 
 State the server keeps outside the repo lives in `%LOCALAPPDATA%\PulseOps` (Now choices and research progress, the
 work log, Uber offers and their history, the grader's lines, Uber's quests and the one you hold, the rain log, the gas price, phone location, phone
-alerts, what the phone's level check heard, Block Filter sync, Instagram pictures, artist genres, the act songs played lately and the albums they were from, each act's releases and their tracks, what you last ordered at
+alerts, what the phone's level check heard, Block Filter sync, Instagram pictures, artist genres, the act songs played lately and the albums they were from, each act's releases and their tracks, the upload found for each album track, what you last ordered at
 each place, and the places Eat knows with its log of picks). Each file
 has an override for isolated previews and tests: `NOW_INTENT_FILE`, `NOW_THOUGHT_RESEARCH_FILE`, `WORK_LOG_FILE`,
 `UBER_OFFERS_FILE`, `UBER_OFFER_HISTORY_FILE`, `GRADER_LINES_FILE`, `QUESTS_FILE`, `QUEST_MENU_FILE`, `OVERLAY_TIPS_FILE`, `RAIN_LOG_FILE`,
 `GAS_PRICE_FILE`,
-`PHONE_LOCATION_FILE`, `PHONE_ALERTS_FILE`, `PHONE_EAR_FILE`, `BLOCK_SYNC_FILE`, `ARTIST_GENRE_FILE`, `MUSIC_HEARD_FILE`, `ALBUM_PLAYS_FILE`, `ACT_ALBUMS_FILE`,
+`PHONE_LOCATION_FILE`, `PHONE_ALERTS_FILE`, `PHONE_EAR_FILE`, `BLOCK_SYNC_FILE`, `ARTIST_GENRE_FILE`, `MUSIC_HEARD_FILE`, `ALBUM_PLAYS_FILE`, `ACT_ALBUMS_FILE`, `ALBUM_TRACKS_FILE`,
 `ORDER_USUAL_FILE`, `EAT_PLACES_FILE`, `EAT_EVENTS_FILE`, `GAME_SCHEDULE_FILE`. The ones kept
 in the Pulse Agent checkout's `data` folder have `DEAL_STORES_FILE`, `HABIT_LOG_FILE` and `SCENT_SHARE_DIR`.
 `RESTAURANT_HOURS_FILE` points Eat at another copy of Pulse Agent's own-site opening hours, and
@@ -825,7 +840,8 @@ The routes that change something also refuse cross-origin requests. Every server
 | `habit-log`, `habit-summary` | Log of music, light and like choices, and how well the habit predictors match it (they run in shadow; applying them is off) |
 | `music/remote`, `music/still` | Player command mailbox and shared stream, Hue colour strength and PC volume; same-origin thumbnail for the page's colours |
 | `music/genre`, `music/visuals` | A concert act's genre (iTunes, MusicBrainz) and its visuals (a muted music-video loop, else album art) |
-| `music/audio`, `music/loop` | PC-relayed MP3 audio and cached backdrop loop for the phone |
+| `music/audio`, `music/loop` | PC-relayed MP3 audio (an act's songs, or one of its albums in order or shuffled: `album=`, `order=shuffle`, `track=`) and cached backdrop loop for the phone |
+| `music/albums`, `music/albums/tracks` | A concert act's releases and their tracks as Apple lists them, and which tracks of one album an upload has been found for (read-only: reads what is kept, asks YouTube and Apple nothing) |
 | `hue-dim` | Read light state, adjust brightness or music colours, restore colours, or reset to the schedule |
 | `desktop-wallpaper` | The PC's own desktop background, for the Vibe button: read it, switch to Blackbody or Bing, turn Auto on, and answer the scheduled task's 5-minute check against the sun |
 | `run-window` | Today's best run window from weather, air quality, daylight and personal plans |
