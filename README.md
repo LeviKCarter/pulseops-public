@@ -456,6 +456,13 @@ Some Pulse pieces need a little more explanation:
   Which picture an act's visual is, is kept there as well (`music-visuals.json`): after a restart the lights and
   Breathe go on reading the visual the page still shows. The server used to ask YouTube for a video of that name,
   and fail, until the page had read the visual's colors again.
+  The picture an act is showing is kept in the browser with the act and its place in the song: when the page
+  reloads itself for a new build (after every deploy) the act comes back with its picture, and the lights are told
+  the picture they are already on, so nothing is written to them. The page used to ask for the picture afresh and
+  name the paused station meanwhile, and the station's colors were painted over the act's for some seconds after
+  each deploy. An act you have just put on has its picture asked for; until it comes the lights stay as they are.
+  When the tab that has the lights reloads, a second dashboard that is open and paused waits 20 seconds before
+  taking them, so its own station is not painted in between; a tab that is playing takes them at once.
 - **Hue lights.** H switches music colours on at the remembered strength, steps through the video's colour sets on
   each further press, then switches them off; Shift+Z / Shift+X adjust that strength in 5% steps without resetting
   brightness. Z / X dim or brighten the lit rooms 5 points a press (hold to keep going).
