@@ -490,7 +490,10 @@ Some Pulse pieces need a little more explanation:
   in about 1 s, including stream changes, scheduled music-colour updates and restoring colours when switched off. The plain
   time-of-day dimming schedule keeps its gradual two-minute fade, and goes on under the colours: a room whose brightness
   nobody has set by hand still dims (or brightens) with the hour while music or game colours are on it, at most eight
-  points every five minutes, its brightness alone. A level set by hand stays where it was put: Z / X or a slider from
+  points every five minutes, its brightness alone. The schedule itself is full brightness by day and 70% half an hour
+  after sunset, goes on down to 55%, holds that until 10:30 PM, and eases through the night to a 15% night light at
+  6 AM, with full brightness again by 7 AM (the white goes from 6500 K by day to 3400 K at sunset and 2000 K by
+  10:30 PM). A level set by hand stays where it was put: Z / X or a slider from
   that press, the Hue app or a dimmer once it is more than five points off, and a scene by its whites. A playing tab supplies the colours (PC preferred among
   players); a paused tab cannot override it. A fresh frame at the stream's live edge is sampled on each stream switch and every
   minute, and successful identical colours are not re-sent. The five-minute dimming task captures that playing
@@ -556,9 +559,9 @@ Some Pulse pieces need a little more explanation:
   control beside it: the portal's switch, and all lights dimmer and brighter. Above the light controls it has
   rows for what is behind everything. On the PC the first is **Portal**: closed or open, and while it is open what
   the art was read as, which effect is on it now with a Next beside it, a slider for each thing it does (flow,
-  strength, pattern, color drift, color split, melt, fringe: from off to one and a half times what the art
+  pattern, color drift, color split, melt, fringe: from off to one and a half times what the art
   asks for) and a switch for the glass cards and the feed's portals. **Auto**, on by default, has the sliders move by
-  themselves, slowly, with the art: less strength and pattern on busy art, more on quiet art. Moving a slider turns Auto off with every slider where it was. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
+  themselves, slowly, with the art: less pattern on busy art, more on quiet art. The dose has a row of its own that Auto leaves alone: a **Level** slider from 0 to 4 with its number, and a **Wave** switch (on, the dose rises to that level and sinks to a third of it, over and over; off, it holds there), and the level it is at right now shows beside the look's name. Moving a slider turns Auto off with every slider where it was. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
   slideshow of the pictures in `Pictures\Blackbody\desktop`, 30 minutes a slide), **Bing** (Bing Wallpaper's daily
   picture) or **Auto**, the default, which is Bing from sunrise to sunset and Blackbody through the night. With Auto
   on, the one the sun has up is outlined; picking Blackbody or Bing by hand ends Auto until Auto is pressed again. The
