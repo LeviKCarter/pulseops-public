@@ -252,7 +252,9 @@ measured (its light, color, contrast, warmth and strongest hues), a vision model
 picture once (a mood, an energy, a way of moving, a surface, and five dials for how a line drawn in its hand
 behaves), and every choice left over is seeded by the picture itself, so two artists seldom look
 alike. Esc or Shift+T closes it and the wallpaper is as it was; it stays open across reloads if left
-open. On a phone a pull down from the top of the wallpaper opens it and the same pull closes it: the cover sits in
+open. Esc closes it last: a panel open over the wallpaper (the Vibe controls, To do, the Music view, the briefing),
+the key list or the feed closes first, and the portal on the next press. On a phone a pull down from the top of the
+wallpaper opens it and the same pull closes it: the cover sits in
 the upper half of the screen and fades into its own reflection behind the words, a tap sends a ring of light across it (the cloth is the PC's alone), and the Vibe
 controls in the Pulse header have the same sliders (`app/wallVibes.ts`, `app/portalEngine.ts`,
 `app/artEdges.ts`, `app/artVibe.ts`, `app/fabric.ts`).
@@ -524,7 +526,8 @@ Some Pulse pieces need a little more explanation:
   changes on a flight path. It is the PC's music only: the station the phone shares is never changed, and is back on
   the PC when the game closes, or the one for the part of the day it has become.
 - **Vibe button.** On the PC it is the pill at the left of the wallpaper's tool bar, the Lights pill until 2026-10-06
-  (Y opens and closes it, as a click does);
+  (Y opens and closes it, as a click does; pinned open, Esc or the mouse's Back folds it and leaves an open portal
+  for the next press);
   on a phone the same rows sit above the lights in the Pulse header's controls. The panel is never taller than the
   room over the tool bar (on a small window its rows scroll inside it), and its two long groups, **Portal** and
   **Lights**, fold from their headings and stay as they were left in that browser. A folded heading says what is
@@ -664,8 +667,8 @@ typing in a field or holding Ctrl, Alt or ⌘.
 | Q W E R | The four lanes, left to right as laid out: Pulse, Events, Deals, Work on the primary monitor (Work, Deals, Events, Pulse on a screen laid out the other way; Shift+F switches). On the wallpaper they are the icons under the music player as drawn: Events, Deals, Work, Brief |
 | Tab / Shift+Tab | With the feed on screen: jump to its next / previous topic or source (from Newest it switches the feed to Topic first); 2 / 3 then pick through the stories from there. With the portal open the feed is up as portals, and Tab turns to their next page, Shift+Tab the one before. With no feed on screen it is the browser's own Tab |
 | T | On the wallpaper: bring the feed up or put it away, as the wheel does; 2 / 3 then move a pick through it, C opens the pick and V / B scroll it. Beside an open lane it works the feed and leaves the lane. Off the wallpaper it does nothing |
-| Shift+T | On the wallpaper: open or close the portal, as the wheel up on the bare wallpaper opens it. Esc closes it too |
-| Y | Open or close the Vibe button's controls, as a click on the button does. Esc or a click elsewhere closes them too |
+| Shift+T | On the wallpaper: open or close the portal, as the wheel up on the bare wallpaper opens it. Esc closes it too, once nothing is open over the wallpaper |
+| Y | Open or close the Vibe button's controls, as a click on the button does. Esc or a click elsewhere closes them too; with the portal open Esc closes them first, and the portal on the next press |
 | Hold Y | With the portal open: the next of its four looks on the art, as Next in the Vibe button does. It stays until the next hold: none moves on by itself. Held for half a second |
 | A / S | Music volume down / up |
 | D | Next music stream (cycles Auto's picks for the current block); the next song and visual while a concert act plays |
@@ -689,8 +692,8 @@ typing in a field or holding Ctrl, Alt or ⌘.
 | Shift+Z / Shift+X | Decrease / increase music-colour strength in 5% steps up to 100% |
 | G | Reset Hue lights to the time-of-day default, ending music colours and manual overrides |
 | ? | Show the key list |
-| Mouse Back / Forward | Back closes whatever is open, as Esc does. Forward opens the next email |
-| Esc | Close a panel or the help list, or leave the bare wallpaper; on a lane over the wallpaper it closes the lane and the feed beside it |
+| Mouse Back / Forward | Back closes whatever is open on top, as Esc does, one thing a press. Forward opens the next email |
+| Esc | Close what is open on top, one thing a press: a panel or the help list first, and the wallpaper's portal last, once nothing is over it; on a lane over the wallpaper it closes the lane and the feed beside it |
 
 ## Setup
 
