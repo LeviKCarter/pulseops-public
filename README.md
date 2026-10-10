@@ -237,7 +237,9 @@ picture itself, which is never folded, tiled or replaced. A new one comes about 
 for that picture, and never the same one twice running. The art is printed on cloth: run the mouse across the bare wallpaper and the cloth
 under it is dragged along, bunching into soft satin folds ahead of the hand that catch the light, and let go it
 settles back whole within a second or two; a click splashes it, a ring running out through the cloth. It is done in
-the picture itself, so the folds carry whichever drug is on. Every part
+the picture itself, so the folds carry whichever drug is on. The Vibe button's Mouse row has a switch for the cloth
+and a slider for how far the mouse moves it; with it off the mouse leaves the art alone and a click sends a plain
+ring of light across it. Every part
 of the dashboard is changed with it: the cards are glass with the art's light behind them and its colors on their
 edges, their corners melt to new shapes every few seconds, and the colors of their words part. With the feed up, its stories are
 soft-edged portals in place of its rows, nine to a page, each its own picture, in the feed's order: the one the
@@ -251,7 +253,7 @@ picture once (a mood, an energy, a way of moving, a surface, and five dials for 
 behaves), and every choice left over is seeded by the picture itself, so two artists seldom look
 alike. Esc or Shift+T closes it and the wallpaper is as it was; it stays open across reloads if left
 open. On a phone a pull down from the top of the wallpaper opens it and the same pull closes it: the cover sits in
-the upper half of the screen and fades into its own reflection behind the words, a tap splashes the cloth, and the Vibe
+the upper half of the screen and fades into its own reflection behind the words, a tap sends a ring of light across it (the cloth is the PC's alone), and the Vibe
 controls in the Pulse header have the same sliders (`app/wallVibes.ts`, `app/portalEngine.ts`,
 `app/artEdges.ts`, `app/artVibe.ts`, `app/fabric.ts`).
 
