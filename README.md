@@ -492,6 +492,16 @@ Some Pulse pieces need a little more explanation:
   The playing tab still takes priority over a paused tab, and manual room overrides remain respected.
   While a concert act plays, the page's tint, the wallpaper's light and the Hue lights follow the act's video or
   album art instead of the paused station, and go back to the station afterwards.
+- **Region art.** With the Vibe panel's Region art switch on (it is, unless turned off), the PC's wallpaper shows art
+  of the World of Warcraft region the character is in, in place of the music's video, and a new picture every five
+  minutes. The same addon says which zone. Nothing is picked from a list: the zone's name is searched on ArtStation,
+  DeviantArt and the zone's page on the Warcraft wikis, and each picture that comes back is looked at once by a model,
+  which lets through only art (a painting or a render, never a screenshot of the game), of a place, of that place,
+  with nothing stamped across it, and well made; it also has to be wide and large enough to fill a screen. What passed
+  is kept, so a zone starts on a picture not seen before and goes round them all before one returns. The row under the
+  Game switch names the picture and its artist, and has the picture before, another one now, and never this one again.
+  The page's tint and the wallpaper's light follow the picture; the lights stay with the game's region, or the music.
+  Nothing is searched for or fetched unless a dashboard is open on the PC to show it.
 - **Vibe button.** On the PC it is the pill at the left of the wallpaper's tool bar, the Lights pill until 2026-10-06
   (Y opens and closes it, as a click does);
   on a phone the same rows sit above the lights in the Pulse header's controls. Above the light controls it has
