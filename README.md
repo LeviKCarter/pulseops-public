@@ -485,8 +485,14 @@ Some Pulse pieces need a little more explanation:
   picture of the world on screen, so there is no table of zones and colours, and a region looks as it does at that hour.
   A region is painted once when he comes into it, and again only if it has clearly changed colour since. Everything the
   light controls do for music colours they do for a region's: the colour modes, the colour strength, another pick.
-  Brightness is kept apart from colour here: a room made dimmer or brighter goes on following the game, and only a room
-  given a colour by hand is left alone. When the game closes, the music's colours come back, or each bulb's own.
+  Brightness follows the game too (its switch is the first mark on the Lights heading, on unless turned off): how bright the world on screen
+  is, read from the same picture, sets how much of its own brightness a room is at, all of it in a zone in daylight and
+  down to 70% of it in the dark, in slow ten-second fades. A room never goes brighter than it was when the game took
+  it, unless its brightness is set by hand during the game: that is taken as the level for the world as it looks then,
+  so the room stays there and the game goes on from there, up as well as down, and picks that up again if the game is
+  closed and reopened. Only a room given a colour by hand is left alone. When the game closes, the
+  music's colours come back, or each bulb's own, and each room returns to the brightness set by hand, or else to the
+  one it had before the game.
   Nothing is sent to the game and nothing of the game's is read but what it shows on screen.
   Reloading the dashboard refreshes enabled music colours from a current frame, even if audio starts paused.
   Returning to the window refreshes its frame and player check-in. The local server also refreshes enabled colours
