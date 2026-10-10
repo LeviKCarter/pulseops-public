@@ -44,8 +44,8 @@ waiting.
 pane beside it, and Esc puts everything away.
 
 **Wheel up for the portal.** Scrolling up from the wallpaper (on a phone, pulling down from its top) opens it: the playing artist's art becomes the backdrop,
-whole and in its own colors, with one effect after another growing out of its edges, which break into fractal teeth
-and put out frets and scrolls that grow from them; the cards turn to glass over it, and the feed comes up
+whole and in its own colors, in one psychedelic look after another: it breathes, its detail flows along its own
+grain, and its textures are pushed into patterns that grow out of its own shapes; the cards turn to glass over it, and the feed comes up
 as portals in place of its rows, nine stories to a page, to browse by picture. Nothing in it is a preset: it is worked out
 from the art each time.
 
@@ -210,31 +210,24 @@ Wheel up on the bare wallpaper, or Shift+T, opens the **portal**. The playing ar
 or the stream's own) becomes the backdrop on one canvas. The art is the subject, so it is shown whole and sharp:
 fitted to the screen instead of cropped to fill it, with its own colors carrying on past its edges. It is shown in
 four psychedelic looks, one at a time (it stays until you hold Y or press Next in the Vibe button), each built from the visual effects reported for the experience it is
-named after (what the people who make psychedelic replications catalogue), and each a range of them that rise and
-pass while it is up, never one fixed look. What they share is where it happens: on the picture's own edges. When a
-picture loads, its edges are traced into lines, the way an edge detector does it, and only its outlines are kept:
-each line is scored by how long, how smooth and how strong it is seen from a step back, where the spots and strands
-of a pattern blur away and the outline of a whole thing does not, and a soft photograph's subject is held to the
-plain ground round it rather than to the picture's hardest edge, so a face is traced and a busy cover's texture is
-left alone. Each line is then measured: how far any place is from it, how far along it, and how much room it has on
-each side. A look then breaks those lines
-into teeth that carry smaller teeth that carry smaller ones still, a fractal, and stands rows of ornament on them,
-the first close to the line and each row one and a half times the size of the one inside it, with their reach
-capped by the room the line has. Every shape is large enough to read as one on the screen, takes its color from
-where it stands along the line so the colors run slowly from shape to shape, and is laid into the picture as light,
-with the picture's own light and shade kept under it. The rows flow along the line, breathe and ripple, rise and
-sink in a slow swell, and their shapes slowly change.
-Sharp corners and line ends fade so they do not fan the ornament into a spray. One number takes every
-shape from round to square, a vine's scroll to a squared hook and an arch to a stepped pyramid, so nothing is
-picked from a set of pictures. One look has an arabesque's scrolls, flat and bright, with the rainbow running
-along the edges and moving off them in tight, pulsing rings. One has the step fret of Aztec and Maya work: edges
-that are stairs of stairs, with squared hooks and stepped pyramids cut into the picture like stone, in its own colors. One strings
-stepped diamonds along edges broken into points, each a stone in one of the picture's three strongest colors, and
-its highlights glint. One has every ornament at once, turning from round to square and back, two layers deep, its
-colors changing places a shape at a time and a close after-image along its edges. Away from its edges the picture
-is left sharp and in its own colors, and it drifts only in spells, still between them. All of it is done to the
-picture itself, which is never folded, tiled or replaced. A new one comes about every minute, in an order drawn
-for that picture, and never the same one twice running. The art is printed on cloth: run the mouse across the bare wallpaper and the cloth
+named after (what the people who make psychedelic replications catalogue, and the papers on where the geometry of
+such visions comes from). All of it is made of the picture's own pixels. The picture is split in two: its large
+shapes and colors stay where they are, and its fine detail is what moves. It breathes, a slow swell that goes out
+and comes back. Its detail flows along its own grain, as wood grain seems to run, without ever being carried away.
+In rough textures the detail folds into mirrored rosettes. And a pattern grows out of the picture's own shapes: a
+field worked out beside it thirty times a second, the way a sheet of nerve cells in the visual cortex is modelled
+to make its lattices and spirals, in which every size of shape forms inside every other, tied to the picture's
+light and shade, with rosettes that are each different. The picture's detail is pushed into that pattern, carved
+and turned in color with it, so the pattern is made of the picture. Colors turn region by region and come back,
+reds and blues part, and a thin glow sits just off the edges. How much of this there is goes by the dose, which
+rises and sinks in waves: a little only sharpens and colors the picture, more makes it breathe and flow, more
+still turns its textures into patterns. And it goes by where a made-up eye rests: the eye wanders the places of
+the picture there is most to look at, what it rests on is the sharpest, and the rest builds away from it while it
+holds still and eases back when it moves on. The four looks are that one trip with different numbers: one sharp,
+fast and flat, with the most color; one soft, slow and round, breathing most and carved deepest; one jewel-colored,
+its shapes swelling and shrinking, with color in the shadows; one the finest and fastest, with the most ordered
+rosettes, spreading past the picture's textures onto its plain parts. Nothing is drawn over the picture in ink of
+its own, nothing runs along its outlines, and it is never folded whole, tiled or replaced. The art is printed on cloth: run the mouse across the bare wallpaper and the cloth
 under it is dragged along, bunching into soft satin folds ahead of the hand that catch the light, and let go it
 settles back whole within a second or two; a click splashes it, a ring running out through the cloth. It is done in
 the picture itself, so the folds carry whichever drug is on. The Vibe button's Mouse row has a switch for the cloth
@@ -257,7 +250,7 @@ the key list or the feed closes first, and the portal on the next press. On a ph
 wallpaper opens it and the same pull closes it: the cover sits in
 the upper half of the screen and fades into its own reflection behind the words, a tap sends a ring of light across it (the cloth is the PC's alone), and the Vibe
 controls in the Pulse header have the same sliders (`app/wallVibes.ts`, `app/portalEngine.ts`,
-`app/artEdges.ts`, `app/artVibe.ts`, `app/fabric.ts`).
+`app/portalShaders.ts`, `app/artVibe.ts`, `app/fabric.ts`).
 
 Pulse has no pane on the wallpaper, because its pieces already live there: the weather and the scent pick under the
 date, mail in the Mail pill, the stories in the feed, the briefing behind Brief, and the workout in the Now card. Its
