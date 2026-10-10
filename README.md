@@ -504,7 +504,11 @@ Some Pulse pieces need a little more explanation:
   Nothing is searched for or fetched unless a dashboard is open on the PC to show it.
 - **Vibe button.** On the PC it is the pill at the left of the wallpaper's tool bar, the Lights pill until 2026-10-06
   (Y opens and closes it, as a click does);
-  on a phone the same rows sit above the lights in the Pulse header's controls. Above the light controls it has
+  on a phone the same rows sit above the lights in the Pulse header's controls. The panel is never taller than the
+  room over the tool bar (on a small window its rows scroll inside it), and its two long groups, **Portal** and
+  **Lights**, fold from their headings and stay as they were left in that browser. A folded heading says what is
+  inside (the effect that is up and the ones switched on beside it; the color mode and the rooms) and keeps the group's main
+  control beside it: the portal's switch, and all lights dimmer and brighter. Above the light controls it has
   rows for what is behind everything. On the PC the first is **Portal**: closed or open, and while it is open what
   the art was read as, which effect is on it now with a Next beside it, a slider for each thing it does (flow,
   strength, pattern, color drift, color split, melt, fringe: from off to one and a half times what the art
@@ -515,7 +519,7 @@ Some Pulse pieces need a little more explanation:
   on, the one the sun has up is outlined; picking Blackbody or Bing by hand ends Auto until Auto is pressed again. The
   scheduled task **Pulse Ops Desktop Wallpaper**, registered once from `scripts/` like the other tasks
   ([`CLAUDE.md`](CLAUDE.md) names each script), asks the server every 5 minutes. The server switches once at each sunrise and sunset and runs nothing in between, so a picture set
-  by hand in Windows stays until the next crossing. **Art** is there only while a concert act plays: ‹ and › step
+  by hand in Windows stays until the next crossing. **Art** is there only while a concert act plays: its two arrows step
   through the act's other videos and album covers without changing the song. A new song keeps the move; a new act
   forgets it.
 - **Phone directions.** Tap a deal in the phone overview, or its restaurant name in the Deals lane, to open Google
