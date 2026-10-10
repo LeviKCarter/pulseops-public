@@ -473,12 +473,15 @@ Some Pulse pieces need a little more explanation:
   The modes stay available while a frame loads. Contrast pairs the dominant hue with a distinct hue from
   the frame, or its complementary color when the scene has only one color or closely related hues. Music colours switch
   in about 1 s, including stream changes, scheduled music-colour updates and restoring colours when switched off. The plain
-  time-of-day dimming schedule keeps its gradual two-minute fade. A playing tab supplies the colours (PC preferred among
+  time-of-day dimming schedule keeps its gradual two-minute fade, and goes on under the colours: a room whose brightness
+  nobody has set by hand still dims (or brightens) with the hour while music or game colours are on it, at most eight
+  points every five minutes, its brightness alone. A level set by hand stays where it was put: Z / X or a slider from
+  that press, the Hue app or a dimmer once it is more than five points off, and a scene by its whites. A playing tab supplies the colours (PC preferred among
   players); a paused tab cannot override it. A fresh frame at the stream's live edge is sampled on each stream switch and every
   minute, and successful identical colours are not re-sent. The five-minute dimming task captures that playing
   stream's current frame itself before adjusting music colours, sharing samples for at most 30 seconds; if none is
-  available, it leaves the lights as they are instead of repainting
-  the saved palette from an earlier stream. Fixed-colour CLI flashes still hold their requested colours.
+  available, it leaves the colours as they are instead of repainting
+  the saved palette from an earlier stream (the hour's brightness goes on all the same). Fixed-colour CLI flashes still hold their requested colours.
   The dimming schedule, a stream change and turning music colours off all leave
   manually changed brightness or bulb colours alone until the room is switched off or G resets it to the time-of-day
   default. Turning music colours off otherwise restores the saved bulb colours while keeping the current brightness.
