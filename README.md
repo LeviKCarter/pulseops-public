@@ -458,6 +458,9 @@ Some Pulse pieces need a little more explanation:
   The session an act plays in is kept there too (`music-act-sessions.json`): after a restart the now-playing line
   still names the song being heard, and the browser's stream goes on in the song it was in, at the second it had
   reached, instead of starting a new run of songs under the old name.
+  Which picture an act's visual is, is kept there as well (`music-visuals.json`): after a restart the lights and
+  Breathe go on reading the visual the page still shows. The server used to ask YouTube for a video of that name,
+  and fail, until the page had read the visual's colors again.
 - **Hue lights.** H switches music colours on at the remembered strength, steps through the video's colour sets on
   each further press, then switches them off; Shift+Z / Shift+X adjust that strength in 5% steps without resetting
   brightness. Z / X dim or brighten the lit rooms 5 points a press (hold to keep going).
