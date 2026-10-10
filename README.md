@@ -502,6 +502,16 @@ Some Pulse pieces need a little more explanation:
   Game switch names the picture and its artist, and has the picture before, another one now, and never this one again.
   The page's tint and the wallpaper's light follow the picture; the lights stay with the game's region, or the music.
   Nothing is searched for or fetched unless a dashboard is open on the PC to show it.
+- **Region music.** With the Music switch in the Vibe panel's Game row on (it is, unless turned off), the PC's player goes to
+  one of the stations already in the picker that suits the region the character is in: reggae and jungle in
+  Stranglethorn Vale, the Silent Hill stream in Duskwood, slow blues in Westfall. The game plays its own soundtrack,
+  so this is the player beside it fitting the place, not a second copy of that. Nothing is picked from a list: the
+  first time in a zone a model is asked once which of the stations suit it, best first and why, and the answer is
+  kept with the zone. Under the Game row a line names the station and why it fits, and over it are the zone's station
+  before, another one, and never this one here; the station a zone is left on is the one it opens on next time. A station
+  picked by hand stays on until the character leaves the zone. A new zone has to hold for half a minute, and nothing
+  changes on a flight path. It is the PC's music only: the station the phone shares is never changed, and is back on
+  the PC when the game closes, or the one for the part of the day it has become.
 - **Vibe button.** On the PC it is the pill at the left of the wallpaper's tool bar, the Lights pill until 2026-10-06
   (Y opens and closes it, as a click does);
   on a phone the same rows sit above the lights in the Pulse header's controls. The panel is never taller than the
