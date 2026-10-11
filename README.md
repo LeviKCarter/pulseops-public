@@ -229,7 +229,7 @@ holds still and eases back when it moves on. The four looks are that one trip wi
 fast and flat, with the most color; one soft, slow and round, breathing most and carved deepest; one jewel-colored,
 its shapes swelling and shrinking, with color in the shadows; one the finest and fastest, with the most ordered
 rosettes, spreading past the picture's textures onto its plain parts. Nothing is drawn over the picture in ink of
-its own, nothing runs along its outlines, and it is never folded whole, tiled or replaced. The art is printed on cloth: run the mouse across the bare wallpaper and the cloth
+its own, nothing runs along its outlines, and it is never folded whole, tiled or replaced. The art is printed on cloth: hold the mouse button and drag across the bare wallpaper and the cloth
 under it is dragged along, bunching into soft satin folds ahead of the hand that catch the light, and let go it
 settles back whole within a second or two; a click splashes it, a ring running out through the cloth. It is done in
 the picture itself, so the folds carry whichever drug is on. The Vibe button's Mouse row has a switch for the cloth
@@ -568,7 +568,7 @@ Some Pulse pieces need a little more explanation:
   the art was read as, which effect is on it now with a Next beside it, a slider for each thing it does (flow,
   pattern, color drift, color split, melt, fringe: from off to one and a half times what the art
   asks for) and a switch for the glass cards and the feed's portals. **Auto**, on by default, has the sliders move by
-  themselves, slowly, with the art: less pattern on busy art, more on quiet art. The dose has a row of its own that Auto leaves alone: a **Level** slider from 0 to 6 with its number (at 5 the patterns have depth and lie on everything, never covering the picture; at 6 they start to take it over, lit in its own colors, and what they are keeps changing by itself, and with the song when one is followed; a followed song shapes the patterns at the lower levels too, and the art builds away from wherever the mouse rests on the page), and a **Wave** switch (on, the dose rises to that level and sinks to a third of it, over and over; off, it holds there), and the level it is at right now shows beside the look's name. Moving a slider turns Auto off with every slider where it was. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
+  themselves, slowly, with the art: less pattern on busy art, more on quiet art. The dose has a row of its own that Auto leaves alone: a **Level** slider from 0 to 6 with its number (at 5 the patterns have depth and lie on everything, never covering the picture; at 6 they start to take it over, lit in its own colors, and what they are keeps changing by itself, and with the song when one is followed; a followed song shapes the patterns at the lower levels too), and a **Wave** switch (on, the dose rises to that level and sinks to a third of it, over and over; off, it holds there), and the level it is at right now shows beside the look's name. Moving a slider turns Auto off with every slider where it was. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
   slideshow of the pictures in `Pictures\Blackbody\desktop`, 30 minutes a slide), **Bing** (Bing Wallpaper's daily
   picture) or **Auto**, the default, which is Bing from sunrise to sunset and Blackbody through the night. With Auto
   on, the one the sun has up is outlined; picking Blackbody or Bing by hand ends Auto until Auto is pressed again. The
