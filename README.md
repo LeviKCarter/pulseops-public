@@ -770,6 +770,7 @@ Local settings go in `.env.local`, which is gitignored. All of them are optional
 | `POLLY_VOICE` | `Matthew` | Polly voice used for the listen button |
 | `POLLY_ENGINE` | `generative` | Listen-button speech engine; falls back to neural for an unsupported engine/voice/region. Set `neural` to use it directly |
 | `MUSIC_RELAY_PYTHON`, `MUSIC_RELAY_FFMPEG` | `<PulseOps-tools>\media-relay\Scripts\python.exe`, auto-detected | Python with yt-dlp and imageio-ffmpeg, and optional explicit ffmpeg path for phone audio and backdrop loops |
+| `PC_AUDIO` | unset | Follow music by ear: with the switch on and no kept song at the ear (a YouTube station, a song's first seconds), the dashboard's own server reads what the PC is playing as Windows hands it back, for the beat only (`app/musicLiveServer.ts`; no microphone, nothing of the sound is kept or sent). `0` turns that listening off; `1` lets a copy that is not the live one listen (a rehearsal). Needs `PyAudioWPatch` in the relay's Python |
 | `HUE_BRIDGE_IP`, `HUE_APP_KEY`, `HUE_ROOMS` | unset | Hue bridge and pairing key; optional comma-separated room names. Setup is in `scripts/hue_dim.mjs` |
 | `SITE_ORIGIN` | `http://localhost:3000` | Base URL for page metadata |
 
