@@ -146,11 +146,11 @@ fixed without a new build (`app/overlayTip.ts`, `app/calendarKept.ts`,
 
 ![The Work lane opened and read down: the week, the day as a timeline, the map, offers against the lines, rain against dry, trips, areas and restaurants](docs/screenshots/work-lane.gif)
 
-| The week and the days | Where it happens |
+| The week and the days | Map |
 |---|---|
 | ![The Work lane: the week's earnings, hours, trips and pay per hour, a bar for each day, and when to drive beside it](docs/screenshots/lane-work.jpg) | ![The Work lane's map of restaurants, drop-offs and hotspots, and the offers counted by grade](docs/screenshots/lane-work-map.jpg) |
 
-| Offers against the lines | Rain against dry |
+| Offers vs. your lines | Rain vs. dry |
 |---|---|
 | ![Every offer as a point against the Good and Skip lines, with sliders for the lines, and offers by hour of the day](docs/screenshots/lane-work-offers.jpg) | ![Rain against dry as a two-row table, how long each trip's parts took, and where offers come from](docs/screenshots/lane-work-rain.jpg) |
 
