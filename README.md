@@ -1,7 +1,7 @@
 # Pulse Ops
 
 Pulse Ops was formerly named **Levi Ops**. This repository is the sanitized public mirror. This README describes
-the app as it runs today (2026-10-10); the code in this mirror is an older sanitized snapshot, so files the text names
+the app as it runs today (2026-10-12); the code in this mirror is an older sanitized snapshot, so files the text names
 may be missing here, and hostnames, user paths and account identifiers are replaced with placeholders.
 
 For ongoing work with ChatGPT or Codex, follow [AGENTS.md](AGENTS.md).
@@ -952,7 +952,7 @@ has two endpoints:
 | Endpoint | Secret | Tools |
 |---|---|---|
 | `/mcp/<token>` | `MCP_TOKEN` | Read the snapshot: `get_training_plan`, `get_news`, `get_events`, `get_jobs`, `get_food_deals`, `get_system_status` |
-| `/mcp-private/<token>` | `MCP_PRIVATE_TOKEN` | The six above, plus the private digest (`get_morning_brief`, `get_weather`, `get_scent`, `get_workout`, `get_my_events`, `get_tasks`) the scent shelf (`get_scent_shelf`, `add_scent`, `remove_scent`, `restock_scent`) and finds (`ingest_discovery`, `get_ingest_status`) |
+| `/mcp-private/<token>` | `MCP_PRIVATE_TOKEN` | The six above, plus the private digest (`get_morning_brief`, `get_weather`, `get_scent`, `get_workout`, `get_my_events`, `get_tasks`, `get_driving`) the scent shelf (`get_scent_shelf`, `add_scent`, `remove_scent`, `restock_scent`) and finds (`ingest_discovery`, `get_ingest_status`) |
 
 - **The URL is the password.** A wrong token gets the same 404 as any unknown path. The full URLs are kept outside the
   repo, in `%LOCALAPPDATA%\PulseAgent\leviops-mcp-url.txt` and `leviops-mcp-private-url.txt`. Anyone with the private
@@ -964,7 +964,12 @@ has two endpoints:
   PC is asleep). **This puts your calendar, tickets and tasks in Cloudflare KV,** along with the brief's unread-email
 counts (no subjects or senders), and the brief's health block (the latest five weight and heart-rate points, the
   plan and lift targets) with its training line as the `health` topic. `get_training_plan` adds those only on the
-  private path; on `/mcp/<token>` it answers without them. To stop it, remove the
+  private path; on `/mcp/<token>` it answers without them. The `driving` topic is the Work lane's driving view
+  (`app/drivingDigest.ts`, from `/api/work-log?format=digest`) for `get_driving`: whether
+  you are online and on a delivery, requests on or stopped as Uber Driver last showed them, today's pay (Uber's figure
+  and an estimate beside it), the week's target, acceptance, quest, where and when to drive and why, and the last ten
+  offers with what the badge said and whether you took them. Each figure says when it was seen. It names restaurants
+  and towns only, never a customer or a street, and is flagged as old after 25 minutes instead of 90. To stop it, remove the
   `push_private_digest()` call from `refresh_snapshot.py` and run
   `npx wrangler kv key delete private --binding SNAPSHOT --remote` in `edge-feed`.
 - **Shelf edits.** The Worker can't reach the PC, so the edit tools queue a command on the Worker
