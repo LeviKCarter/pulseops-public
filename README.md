@@ -1051,7 +1051,9 @@ counts (no subjects or senders), and the brief's health block (the latest five w
   be given its go or vetoed. A restart never pays. An order the new server first sees already at "go" is not
   placed, a conversation is given one go in its life, and if a go was on its way when the server stopped you are
   told that nobody knows whether it went through.
-  Set `ORDER_AGENT=muse` to leave orders to Muse instead, as below. The design, what was measured and what is
+  When Claude is out of usage or signed out, the order goes to Muse instead, and so does every order for the next
+  hour; your phone says so, and Open Muse on the order's card starts it. Set `ORDER_AGENT=muse` to leave all orders
+  to Muse, as below. The design, what was measured and what is
   still unproven (a real paid order, above all) are in `docs/order-assistant.md`.
 - **Ordering ahead, through Muse.** Muse has a browser, so it can fill a restaurant's cart while you drive there.
   **Order ahead** on a food deal or on the place Eat picks (its card in the Deals lane, and Where to eat on the Now
