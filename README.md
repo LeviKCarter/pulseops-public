@@ -1,7 +1,7 @@
 # Pulse Ops
 
 Pulse Ops was formerly named **Levi Ops**. This repository is the sanitized public mirror. This README describes
-the app as it runs today (2026-10-12); the code in this mirror is an older sanitized snapshot, so files the text names
+the app as it runs today (2026-10-13); the code in this mirror is an older sanitized snapshot, so files the text names
 may be missing here, and hostnames, user paths and account identifiers are replaced with placeholders.
 
 For ongoing work with ChatGPT or Codex, follow [AGENTS.md](AGENTS.md).
@@ -578,8 +578,9 @@ Some Pulse pieces need a little more explanation:
   through the act's other videos and album covers without changing the song. A new song forgets the move and shows
   its own video or cover, and so does an album put on while the act plays; a new act forgets it too.
 - **Phone directions.** Tap a deal in the phone overview, or its restaurant name in the Deals lane, to open Google
-  Maps. A deal tied to a street address requests driving navigation; a chain-wide deal opens a search so you can pick
-  the right branch. Home is `HOME_POINT` in the PC's `.env.local` (never in tracked code).
+  Maps. A deal tied to a street address, and Directions on the place Eat picked, open the driving route for you to
+  look over and start yourself; only an order's Drive now starts navigation at once. A chain-wide deal opens a search
+  so you can pick the right branch. Home is `HOME_POINT` in the PC's `.env.local` (never in tracked code).
   **Drive Home**, the house on top of the phone's lane buttons, appears when the phone reports that it is more than a
   quarter mile away, or when its current location is unavailable. A tap is directions home; a hold opens Google Maps
   itself with nowhere set, for any other drive. Google Maps controls whether it starts navigation immediately and whether a floating navigation
