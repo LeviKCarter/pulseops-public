@@ -356,14 +356,14 @@ for what is behind everything: the PC's desktop background and a playing band's 
 
 | Lane | What's in it |
 |---|---|
-| **Pulse** | The 6:30 AM update and evening recap from Pulse Agent's `pulse_local.py`. Live weather and air quality for the phone's location, with a week forecast that opens automatically on days with rain, storms or snow. The training card (today's session, the week, lift targets, body composition). The collapsed home view shows a written summary of RSS and newsletter stories, plus unread newsletter highlights; opening it reveals the source links. The feed below is one list of stories, newsletter mail and Instagram posts, newest first, with no filters; each can be read in place, dismissed or (for mail) unsubscribed from. The briefing card reads the day aloud. The scent card (below). The music player. |
+| **Pulse** | The 6:30 AM update and evening recap from Pulse Agent's `pulse_local.py`. Live weather and air quality for the phone's location, with a week forecast that opens automatically on days with rain, storms or snow. The training card (today's session, the week, lift targets, body composition). The collapsed home view shows a written summary of RSS and newsletter stories, plus unread newsletter highlights; opening it reveals the source links. The feed below is one list of stories and newsletter mail, newest first, with no filters; each can be read in place, dismissed or (for mail) unsubscribed from. The briefing card reads the day aloud. The scent card (below). The music player. |
 | **Events** | Upcoming Denver events from the Event Ledger, with 3/8/15 mi distance chips, a Free filter and categories. Can be overlaid with your own ICS calendars, Google Tasks (with a Done button), tracked-artist concerts from Songkick (a concert's ticket button opens the TicketData price comparison), and DoMORE tickets (claimed tickets, bonus and last-minute extras, the next drop, and clashes with your plans calendar). Events that the week's forecast says will get rained on are marked. Rows can be dismissed and restored. |
 | **Work** | Two tabs. **Driving** is the Uber log, with nothing typed in: earnings, hours, trips and pay per hour for the week, from Uber Driver's own earnings figure, the deliveries it sends you on and its time online, all reported by [Pulse Mobile](#pulse-mobile-android-app). A status line shows whether Uber Driver is offline, online, on an offer or on a delivery. Under it is what to do now, each call from your own log: whether to stop new requests while you deliver (by your acceptance rate, and by how stacked offers have graded against the ones that came while you were free, the same time of day and trip length set against each other), where to go online next (where you are, unless a place your own trips have paid more from is worth the drive) and when (from how long the first offer has taken to come). A call the log cannot make yet says how much it has. The hotspots on the map are made from where the restaurants that sent you offers are, not picked by hand. Opened in full it adds the graphs and the map, and every offer against the grader's Good and Skip lines, which follow your own picks by themselves, a little a day. A switch on the lane sets the span the graphs are drawn over: the last 30 days, 90 days, a year, or everything on record. **Careers** is the science and geospatial roles from the job pipeline, grouped into a few areas, each with an application stage (Saved, Applied, Interviewing, …). Stages are shared between devices. A warning appears if the pipeline hasn't run in the last day. |
-| **Deals** | At the top of the Food half, **Where to eat**: one recommended place and up to two alternatives, picked from every restaurant around you and not only the ones with a deal (see [Eat](#eat-where-should-i-eat)). Under it, verified and recurring food deals, shown only while they're running (weekday, date range and happy-hour windows from the sheet) and while the restaurant is open: a place that is shut, or closing within 30 minutes, is left out, and one closing within the hour is marked. Rockies game-day deals show the day after a qualifying game, checked against MLB's Stats API. Every deal that isn't dine-in only has **Order ahead**, the place Eat picks always has it, and **Order elsewhere** beside the Food / Sales switch takes a typed place: Muse decides what to order and builds the cart, you say go or veto it, and nothing is paid until you say go (see [Ordering ahead, through Muse](#claude-connector-mcp)). Also here: food emails that were moved out of the feeds card, the gear watch, and dismiss/restore. |
+| **Deals** | At the top of the Food half, **Where to eat**: one recommended place and up to two alternatives, picked from every restaurant around you and not only the ones with a deal (see [Eat](#eat-where-should-i-eat)). Under it, verified and recurring food deals, shown only while they're running (weekday, date range and happy-hour windows from the sheet) and while the restaurant is open: a place that is shut, or closing within 30 minutes, is left out, and one closing within the hour is marked. Rockies game-day deals show the day after a qualifying game, checked against MLB's Stats API. Every deal that isn't dine-in only has **Order ahead**, the place Eat picks always has it, and **Order elsewhere** beside the Food / Sales switch takes a typed place: Claude on the PC decides what to order and builds the cart, you say go or veto it, and nothing is paid until you say go (see [Ordering ahead, with Claude on the PC](#claude-connector-mcp)). Also here: food emails that were moved out of the feeds card, the gear watch, and dismiss/restore. |
 
 Some Pulse pieces need a little more explanation:
 
-- **Feed.** One list of RSS stories, newsletter mail and Instagram posts, newest first. Mixed feeds sort by actual
+- **Feed.** One list of RSS stories and newsletter mail, newest first. Mixed feeds sort by actual
   publication time, including timestamps from different time zones; mail is interleaved with stories rather than
   collected at the top. There are no source or topic filters, but the list has three orders: Newest, Topic and
   Source. The last two put the same rows in groups, the group with the latest story first, and show the first
@@ -844,7 +844,7 @@ The routes that change something also refuse cross-origin requests. Every server
 | `outdoors` | The Outdoors card: CAIC avalanche forecast, Front Range snow, USGS river flows and weather or park alerts |
 | `personal-calendar`, `personal-tasks` | Your calendars, Google Tasks and DoMORE overlay, and marking a task done |
 | `personal-email` | Unread Gmail for the feeds card: read a thread's body, mark read/unread, unsubscribe, list auto-dismissed mail |
-| `instagram`, `instagram/image` | Instagram posts handed over by Muse, as feed rows; the PC's saved copy of each picture |
+| `instagram/image` | The picture of the Instagram post a drop or an event card was found in, fetched and kept by the PC |
 | `rss-article` | A story's page as text and pictures for the reader |
 | `now-thought`, `now-intent` | The Now card's thought and conversation; its Hungry / Another / I ate choices |
 | `notify`, `notify/setup` | Send a phone alert through ntfy; set the topic up from the page |
@@ -995,114 +995,60 @@ counts (no subjects or senders), and the brief's health block (the latest five w
   and the reason, and nothing of the items. New rows reach the dashboard with the next snapshot (within 15 minutes). The chat's reading of a post is not
   re-verified beyond those checks, so a wrong date in a post is a wrong date in the ledger: dismiss it with the row's
   x. Post text is only ever stored as one clipped line per field; nothing in it is run.
-- **Muse (Meta's agent).** Muse has no connector form: you ask it in chat to build a custom connector, and it asks for
-  the key in its own secure prompt. So it gets a third entrance, plain `/mcp` with `Authorization: Bearer <key>`
-  (secret `MCP_MUSE_TOKEN`), which offers the same eighteen tools as `/mcp-private`, so Muse can read your calendar,
-  tickets and tasks and change the scent shelf (until 2026-10-05 it had the six snapshot tools only), plus five
-  of its own, covered in the next three items. The key is
-  in `%LOCALAPPDATA%\PulseAgent\leviops-mcp-muse-key.txt`. Tell Muse: *"Create a custom connector for my Pulse Ops MCP
-  server at `https://YOUR-WORKER.workers.dev/mcp`. It is a remote MCP server over streamable HTTP
-  (stateless, POST only) and uses a bearer token in the Authorization header."* A wrong key gets 401; with the secret
-  deleted the path is a 404 and Muse is cut off without touching Claude's connectors.
-- **Instagram, through Muse.** Instagram has no API for a personal home feed, and Muse is Meta's agent, so Muse is the
-  one thing that can read yours. For this its entrance has a tool the Claude connectors don't, `submit_instagram_digest`, which
-  takes up to 40 posts a call (account, caption, instagram.com link, picture link, time) and keeps them on the Worker for
-  a week, each post once (`edge-feed/src/instagram.js`). Captions are stored as capped
-  plain text, a link that isn't to instagram.com is dropped, and a picture is kept only as an https link to Meta's image
-  servers (`*.cdninstagram.com`, `*.fbcdn.net`). A post sent again with its `imageUrl` gains the picture, and the tool
-  tells Muse how many new posts came without one. `GET /instagram` with the write token reads them back; `/snapshot`
-  and the connectors never serve them.
-  On the dashboard the posts are rows of the Pulse feed, mixed in by time with stories and newsletters
-  (`app/instagramFeed.ts`, `api/instagram`, local only). Full posters and stitched carousels uploaded by Muse are also accepted as jpg, png or webp files under `https://muse.ai/files/`; other hosts and Muse pages are refused. Rejected image links are reported even when the post already exists. Saved images revalidate on reload, so a replaced crop does not stay cached for a day. Muse cannot supply pictures (its
-  Instagram tools return none for a feed post), so the PC asks Instagram for each post's link preview, the public
-  oEmbed answer a chat app unfurls a pasted link with: one request per post, under the name `PulseOps-LinkPreview`,
-  giving the preview picture and the caption in full (Muse's copy is cut short). A post from a private account has no
-  preview and stays a caption. Meta's picture links are signed and stop working within days, and its servers won't
-  show them inside another site's page, so the PC downloads each picture once into
-  `%LOCALAPPDATA%\PulseOps\instagram-images` (cleared after 8 days) and the feed shows that copy
-  (`api/instagram/image`). Opening a row shows the picture and the whole caption, with "Open on Instagram".
-  Ask Muse: *"Read my Instagram home feed and send the new posts from accounts I follow to Pulse Ops with
-  submit_instagram_digest, each with its post link."*
-- **Mail, through Muse.** When the PC's own Gmail read fails, the Inbox falls back to the list of unread threads
-  Muse last handed over with `submit_email_digest` (`edge-feed/src/email.js`,
-  `app/museEmail.ts`). Muse has to be asked, or scheduled, to send it.
-- **A thought, through Muse.** Muse knows things the PC cannot (your Instagram, what you told it in chat), and
-  nothing outside can call Muse, so it hands a thought over: `submit_thought`, on the Muse entrance only, takes a
-  lead of at most 80 characters, one optional quiet line and how many minutes it is worth saying (two hours unless
-  it says, twelve at most). There is one at a time; a new one replaces the last and `withdraw` takes it back
-  (`edge-feed/src/thought.js`, read back by `GET /thought` with the write token). The
-  dashboard looks every two minutes and draws it in the thought panel headed **Muse**, in place of a thought you
-  did not ask for and with no model call (`app/museThought.ts`). The panel's rules hold: a
-  thought that only repeats your screen is not drawn, it leaves when its time is up, and **Another** waves it off
-  for good. What now? is still answered by the dashboard's own model, and that answer keeps the panel until Muse
-  hands over something newer. Ask Muse: *"Put that on my Pulse Ops
-  dashboard with submit_thought."*
-- **Ordering ahead, with Claude on the PC.** By default the order is built on your own PC, by the signed-in Claude
-  command-line tool working in your own Chrome through the Claude extension
-  (`app/orderAgent.ts`, `app/orderAgentPrompt.ts`). The server
-  starts it the moment your tap arrives, so nobody has to message an agent first, and because it is your browser
-  it orders as you: your signed-in restaurant accounts, their rewards and favorites, and the card you already
-  have on file. It is told what you ordered at the place before (from your own receipts), what you have said
-  about ordering, and its own note on the site from last time. It signs in only with your Google account, never
-  types a password, a code or a card number, and stops at the pay screen. Your go is sent to it as a new message
-  only after you gave it; it then checks the bag, the total to the cent and the card, and presses the button once.
+- **Ordering ahead, with Claude on the PC.** **Order ahead** on a food deal or on the place Eat picks (its card in
+  the Deals lane, and Where to eat on the Now card), or **Order elsewhere** with a typed place, leaves one order on
+  the Worker (`edge-feed/src/order.js`, `/orders` with the write token: its own KV key, one
+  order at a time, never served by `/snapshot` or the connectors). The tap opens nothing; on a phone the order's card
+  has **Drive now**. The order is built on your own PC, by the signed-in Claude command-line tool working in your
+  own Chrome through the Claude extension (`app/orderAgent.ts`,
+  `app/orderAgentPrompt.ts`). The server starts it the moment your tap arrives, so nobody
+  has to message an agent first, and because it is your browser it orders as you: your signed-in restaurant
+  accounts, their rewards and favorites, and the card you already have on file. It is told what you ordered at the
+  place before (from your own receipts), what you have said about ordering, and its own note on the site from last
+  time. It signs in only with your Google account, never types a password, a code or a card number, and stops at the
+  pay screen. Your go is sent to it as a new message only after you gave it; it then checks the bag, the total to
+  the cent and the card, and presses the button once.
   The conversation is kept on your PC, so an order outlives a restart of the dashboard (every deploy is one): a
   build that was cut off is carried on with in the same conversation, and a cart held at the pay screen can still
   be given its go or vetoed. A restart never pays. An order the new server first sees already at "go" is not
   placed, a conversation is given one go in its life, and if a go was on its way when the server stopped you are
-  told that nobody knows whether it went through.
-  When Claude is out of usage or signed out, the order goes to Muse instead, and so does every order for the next
-  hour; your phone says so, and Open Muse on the order's card starts it. Set `ORDER_AGENT=muse` to leave all orders
-  to Muse, as below. The design, what was measured and what is
-  still unproven (a real paid order, above all) are in `docs/order-assistant.md`.
-- **Ordering ahead, through Muse.** Muse has a browser, so it can fill a restaurant's cart while you drive there.
-  **Order ahead** on a food deal or on the place Eat picks (its card in the Deals lane, and Where to eat on the Now
-  card), or **Order elsewhere** with a typed place, opens Maps and
-  leaves one order on the Worker (`edge-feed/src/order.js`, `/orders` with the write
-  token: its own KV key, one order at a time, never served by `/snapshot` or the Claude connectors). Three tools,
-  on the Muse entrance only, move it along:
+  told that nobody knows whether it went through. When Claude is out of usage or signed out, the order fails and
+  says so. The design, what was measured and what is still unproven (a real paid order, above all) are in
+  `docs/order-assistant.md`.
 
-  | Tool | Does |
-  |---|---|
-  | `get_order_request` | The waiting order (restaurant, the deal or what you want, or that the choice is Muse's, the ordering page when one is on file, anything you vetoed), where it stands and Muse's one next step |
-  | `report_order` | Muse's status: `building`, `ready` with what is in the cart and the total the pay screen shows, `placed` with the total charged and the pickup time, or `failed` with a one-line reason |
-  | `wait_for_go` | Watches about 25 seconds and answers GO, WAIT (call again), VETO (build a different order at the same place) or STOP (cancelled or timed out: don't pay, empty the cart) |
-
-  **Muse decides what to order; you say go or veto.** A deal is ordered as the deal, a typed order goes by what
+  **Claude decides what to order; you say go or veto.** A deal is ordered as the deal, a typed order goes by what
   you typed, and a place with nothing named (the pick from Eat, or Order elsewhere with the second field left
-  empty) is Muse's to choose from: one meal for one person, going by what you had there last time. Whatever is
-  left open, Muse picks. The GO card shows what it chose and the total. **Veto** under the GO button, "veto" or
-  "something else" said aloud, or the VETO button on the phone alert turns that cart down: Muse takes it out,
+  empty) is Claude's to choose from: one meal for one person, going by what you had there last time. Whatever is
+  left open, Claude picks. The GO card shows what it chose and the total. **Veto** under the GO button, "veto" or
+  "something else" said aloud, or the VETO button on the phone alert turns that cart down: Claude takes it out,
   builds a different order at the same place and shows you the new one, which alerts again. It never shows you
   a cart you vetoed, and after five vetoes the one on screen is go or cancel.
 
-  **Nothing is paid without your go.** Muse stops at the last screen before paying and reports the cart and the
-  total; that is what you approve. Only this PC can write the go or the veto (`api/order-ahead`): the full-screen
-  GO card, "go" said to the Now microphone or the ask box, or the GO button on the phone alert. No tool can write
-  either, `wait_for_go` is the only thing that releases the payment, and a `placed` report is refused unless the
-  go was given. A go or a veto names the cart it is about, so a button on an old alert, tapped after Muse has
-  shown a newer cart, is refused. Muse is told to report `failed`, not pay, if the total on screen has changed,
-  and never to order outside the deal or what you typed. Deal text is passed as data, one clipped line per field.
+  **Nothing is paid without your go.** Claude stops at the last screen before paying and reports the cart and the
+  total through the PC (`/orders` `report`); that is what you approve. Only this PC can write the go or the veto
+  (`api/order-ahead`): the full-screen GO card, "go" said to the Now microphone or the ask box, or the GO button on
+  the phone alert. A `placed` report is refused unless the go was given. A go or a veto names the cart it is about,
+  so a button on an old alert, tapped after a newer cart was shown, is refused. Claude is told to report `failed`,
+  not pay, if the total on screen has changed, and never to order outside the deal or what you typed. Deal text is
+  passed as data, one clipped line per field.
 
   Every wait has an end, and each ends as failed, never placed: 15 minutes to reach the pay screen (again after
   each veto), 40 minutes held for your go, 10 minutes to confirm after it (that last one says to check with the
   restaurant before ordering again). A new order replaces an open one, except one already being placed. If the PC
   can't reach the Worker, nothing is sent and the card says so.
 
-  A deal's link goes along as the ordering page only when it is one (Toast, so far); otherwise Muse finds the
+  A deal's link goes along as the ordering page only when it is one (Toast, so far); otherwise Claude finds the
   restaurant's own pickup ordering, not a delivery app, or reports failed. Deals tagged dine-in only have no
   Order ahead. A pick from Eat always has it, at one tap: its deal when it has one that can be picked up, otherwise
-  the place and its address alone, and Muse chooses the meal. What you had is kept per place in `%LOCALAPPDATA%\PulseOps\order-usual.json` and sent with the
-  next order there.
-
-  Nothing outside Muse can start it, only a message from you. In Pulse Mobile the tap opens Muse with "order
-  ahead" typed, one Send away, and Maps opens when you come back. On the PC the tap copies "order ahead" and
-  opens Muse's web app in a new tab in place of Maps: paste it and send (Muse's web app takes no message from a
-  link). Until Muse picks the order up, the card on the PC says so and has **Open Muse** to do that again.
-  Anywhere else (a phone's own browser), tell Muse "order ahead" yourself. The dashboard half is `app/orderAhead.ts`,
+  the place and its address alone, and Claude chooses the meal. What you had is kept per place in `%LOCALAPPDATA%\PulseOps\order-usual.json` and sent with the
+  next order there. The dashboard half is `app/orderAhead.ts`,
   `app/orderAheadServer.ts` and `app/OrderGo.tsx`.
-- **Rotating a token.** In `edge-feed`, run `npx wrangler secret put MCP_PRIVATE_TOKEN` (or `MCP_TOKEN`,
-  `MCP_MUSE_TOKEN`), then update the connector and the URL or key file. Deleting the secret turns the endpoint off (404).
+- **Muse, taken out.** Muse (Meta's agent) had its own entrance (plain `/mcp` with a bearer key) from 2026-10-05,
+  handed over your Instagram home feed, unread mail and thoughts for the thought panel, and built orders until
+  Claude on the PC took that over. It was taken out on 2026-10-13: its key was deleted from the Worker, and plain
+  `/mcp` answers 404 whatever key comes with it.
+- **Rotating a token.** In `edge-feed`, run `npx wrangler secret put MCP_PRIVATE_TOKEN` (or `MCP_TOKEN`), then
+  update the connector and the URL. Deleting the secret turns the endpoint off (404).
 - **Testing locally.** In `edge-feed`, run
   `npx wrangler dev --local --var MCP_TOKEN:test --var MCP_PRIVATE_TOKEN:priv --var WRITE_TOKEN:seed`, POST a snapshot
   to `/snapshot` with `Authorization: Bearer seed`, then point an MCP client at `http://127.0.0.1:8787/mcp/test`.
