@@ -1,7 +1,7 @@
 # Pulse Ops
 
 Pulse Ops was formerly named **Levi Ops**. This repository is the sanitized public mirror. This README describes
-the app as it runs today (2026-10-13); the code in this mirror is an older sanitized snapshot, so files the text names
+the app as it runs today (2026-10-17); the code in this mirror is an older sanitized snapshot, so files the text names
 may be missing here, and hostnames, user paths and account identifiers are replaced with placeholders.
 
 For ongoing work with ChatGPT or Codex, follow [AGENTS.md](AGENTS.md).
@@ -731,6 +731,31 @@ typing in a field or holding Ctrl, Alt or ⌘.
 | ? | Show the key list |
 | Mouse Back / Forward | Back closes whatever is open on top, as Esc does, one thing a press. Forward opens the next email |
 | Esc | Close what is open on top, one thing a press: a panel or the help list first, and the wallpaper's portal last, once nothing is over it; on a lane over the wallpaper it closes the lane and the feed beside it |
+
+### Snip key: Ctrl+Alt+C, anywhere on the PC
+
+Ctrl+Alt+C takes Gyazo's place (2026-10-17). It opens Windows' own snipping overlay, the one Win+Shift+S opens; once a
+region is drawn, the picture is uploaded, a link to it is on the clipboard and a Windows notification says so (a click on
+it opens the picture). The link opens for anyone it is sent to. Esc, or closing the overlay, uploads nothing.
+
+- **How it runs.** `scripts/pulse-snip.ahk` (AutoHotkey v2) saves the snip as PNG and posts it
+  to this PC's `/api/snip` (local server only), which sends it to the live feed Worker's `/snap` with the write token
+  (`app/snipServer.ts`, under the `snip` call cap). The Worker keeps each picture as its own KV key
+  (`snap:<id>`, a random 12-character id) and serves it at `/s/<id>.png` on the Worker's own address; nothing else in
+  the namespace can be reached that way (`edge-feed/src/snap.js`). The script only takes a
+  picture that reaches the clipboard while the overlay it opened is up or just closing, so an image copied some other
+  way is never uploaded.
+- **Install.** After the deploy that brings the script, `powershell -File scripts\install_snip_hotkey.ps1` adds the
+  "Pulse Snip" Startup shortcut (it runs the script from the live folder at each sign-in), removes Gyazo from the
+  programs started at sign-in, stops Gyazo's running copy so the key is free, and starts the script. Gyazo stays
+  installed until it is uninstalled from Settings > Apps. A deploy does not restart the running script: run the install
+  again after a change to it.
+- **If an upload fails** (the dashboard is down, the Worker refused it), the notification says why, and the snip stays on
+  the clipboard and in `%LOCALAPPDATA%\PulseOps\snips`.
+- **Taking one down.** `DELETE /snap/<id>` on the Worker with the write token; the link stops working (a browser that
+  opened it may keep its copy for up to a day).
+- **Limits.** 20 MB a picture. On Cloudflare's free plan KV takes 1,000 writes a day for the whole Worker and 1 GB in
+  all, a few thousand snips.
 
 ## Setup
 
