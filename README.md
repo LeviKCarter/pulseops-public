@@ -734,24 +734,25 @@ typing in a field or holding Ctrl, Alt or ⌘.
 
 ### Snip key: Ctrl+Alt+C, anywhere on the PC
 
-Ctrl+Alt+C takes Gyazo's place (2026-10-17). It opens Windows' own snipping overlay, the one Win+Shift+S opens; once a
-region is drawn, the picture is uploaded, a link to it is on the clipboard and a Windows notification says so (a click on
-it opens the picture). The link opens for anyone it is sent to. Esc, or closing the overlay, uploads nothing.
+Ctrl+Alt+C takes Gyazo's place (2026-10-17). It dims every screen; drag a rectangle (it shows clear while you drag)
+and on release the region is taken, uploaded, a link to it is on the clipboard and a Windows notification says so (a
+click on it opens the picture). The link opens for anyone it is sent to. Esc, a right-click or a click without a drag
+takes nothing, and no click reaches the window under the dimmed screen.
 
 - **How it runs.** `scripts/pulse-snip.ahk` (AutoHotkey v2) saves the snip as PNG and posts it
   to this PC's `/api/snip` (local server only), which sends it to the live feed Worker's `/snap` with the write token
   (`app/snipServer.ts`, under the `snip` call cap). The Worker keeps each picture as its own KV key
   (`snap:<id>`, a random 12-character id) and serves it at `/s/<id>.png` on the Worker's own address; nothing else in
-  the namespace can be reached that way (`edge-feed/src/snap.js`). The script only takes a
-  picture that reaches the clipboard while the overlay it opened is up or just closing, so an image copied some other
-  way is never uploaded.
+  the namespace can be reached that way (`edge-feed/src/snap.js`). The selection is the
+  script's own rather than Windows' snipping overlay (Win+Shift+S): from Snipping Tool 11.2608 that overlay waits for
+  its Capture button after a region is drawn, and the clipboard is never read, so nothing copied is ever uploaded.
 - **Install.** After the deploy that brings the script, `powershell -File scripts\install_snip_hotkey.ps1` adds the
   "Pulse Snip" Startup shortcut (it runs the script from the live folder at each sign-in), removes Gyazo from the
   programs started at sign-in, stops Gyazo's running copy so the key is free, and starts the script. Gyazo stays
   installed until it is uninstalled from Settings > Apps. A deploy does not restart the running script: run the install
   again after a change to it.
-- **If an upload fails** (the dashboard is down, the Worker refused it), the notification says why, and the snip stays on
-  the clipboard and in `%LOCALAPPDATA%\PulseOps\snips`.
+- **If an upload fails** (the dashboard is down, the Worker refused it), the notification says why, and the snip stays in
+  `%LOCALAPPDATA%\PulseOps\snips`.
 - **Taking one down.** `DELETE /snap/<id>` on the Worker with the write token; the link stops working (a browser that
   opened it may keep its copy for up to a day).
 - **Limits.** 20 MB a picture. On Cloudflare's free plan KV takes 1,000 writes a day for the whole Worker and 1 GB in
