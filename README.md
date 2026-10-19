@@ -1,7 +1,7 @@
 # Pulse Ops
 
 Pulse Ops was formerly named **Levi Ops**. This repository is the sanitized public mirror. This README describes
-the app as it runs today (2026-10-17); the code in this mirror is an older sanitized snapshot, so files the text names
+the app as it runs today (2026-10-19); the code in this mirror is an older sanitized snapshot, so files the text names
 may be missing here, and hostnames, user paths and account identifiers are replaced with placeholders.
 
 For ongoing work with ChatGPT or Codex, follow [AGENTS.md](AGENTS.md).
@@ -569,8 +569,8 @@ Some Pulse pieces need a little more explanation:
   pattern, color drift, color split, melt, fringe: from off to one and a half times what the art
   asks for) and a switch for the glass cards and the feed's portals. **Auto**, on by default, has the sliders move by
   themselves, slowly, with the art: less pattern on busy art, more on quiet art. The dose has a row of its own that Auto leaves alone: a **Level** slider from 0 to 6 with its number (at 5 the patterns have depth and lie on everything, never covering the picture; at 6 they start to take it over, lit in its own colors, and what they are keeps changing by itself, and with the song when one is followed; a followed song shapes the patterns at the lower levels too), and a **Wave** switch (on, the dose rises to that level and sinks to a third of it, over and over; off, it holds there), and the level it is at right now shows beside the look's name. Moving a slider turns Auto off with every slider where it was. **Desktop** sets the PC's own desktop background: **Blackbody** (a shuffled
-  slideshow of the pictures in `Pictures\Blackbody\desktop`, 30 minutes a slide), **Bing** (Bing Wallpaper's daily
-  picture) or **Auto**, the default, which is Bing from sunrise to sunset and Blackbody through the night. With Auto
+  slideshow of the pictures in `Pictures\Blackbody\desktop`, 30 minutes a slide), **Bing** (Bing's picture of the
+  day, fetched from bing.com at each switch and kept in `%LOCALAPPDATA%\PulseOps\bing`; no Bing app needed) or **Auto**, the default, which is Bing from sunrise to sunset and Blackbody through the night. With Auto
   on, the one the sun has up is outlined; picking Blackbody or Bing by hand ends Auto until Auto is pressed again. The
   scheduled task **Pulse Ops Desktop Wallpaper**, registered once from `scripts/` like the other tasks
   ([`CLAUDE.md`](CLAUDE.md) names each script), asks the server every 5 minutes. The server switches once at each sunrise and sunset and runs nothing in between, so a picture set
