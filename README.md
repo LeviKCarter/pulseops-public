@@ -590,8 +590,11 @@ Some Pulse pieces need a little more explanation:
   **Install ntfy**, tap **Connect this phone**, allow notifications, then return and use **Test notification**.
   Manual subscription shows the same server and topic if the app link cannot open. A successful test means ntfy
   accepted the message; check the phone for receipt. The existing security-email alerts use this topic, the same
-  40-per-day cap and 24-hour email-id deduplication. These alerts are triggered when the dashboard reads security
-  mail; this does not add a background inbox-monitoring worker.
+  40-per-day cap and email-id deduplication (each id once in 14 days, kept in `phone-alerts-sent.json` beside the
+  setup file so a restart of :3000 does not send them again). These alerts are triggered when the dashboard reads security
+  mail; this does not add a background inbox-monitoring worker. Alerts are quiet (in the notification list, no sound
+  or buzz) unless they need you: an order waiting on GO, PAY or the card code, an order that failed, a security email,
+  a Claude Code answer that asks you something, and the Test notification.
   Setup lives in `%LOCALAPPDATA%\PulseOps\phone-alerts.json` (or `~/.leviops/phone-alerts.json` without LOCALAPPDATA),
   outside the repository and deployment checkout. Existing `NTFY_TOPIC` / `NTFY_SERVER` environment settings keep
   precedence; `PHONE_ALERTS_FILE` optionally overrides the runtime file. Setup reuses an existing topic and never
