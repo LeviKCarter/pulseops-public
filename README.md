@@ -1,7 +1,7 @@
 # Pulse Ops
 
 Pulse Ops was formerly named **Levi Ops**. This repository is the sanitized public mirror. This README describes
-the app as it runs today (2026-10-19); the code in this mirror is an older sanitized snapshot, so files the text names
+the app as it runs today (2026-10-20); the code in this mirror is an older sanitized snapshot, so files the text names
 may be missing here, and hostnames, user paths and account identifiers are replaced with placeholders.
 
 For ongoing work with ChatGPT or Codex, follow [AGENTS.md](AGENTS.md).
@@ -706,7 +706,7 @@ typing in a field or holding Ctrl, Alt or ⌘.
 | T | On the wallpaper: bring the feed up or put it away, as the wheel does; 2 / 3 then move a pick through it, C opens the pick and V / B scroll it. Beside an open lane it works the feed and leaves the lane. Off the wallpaper it does nothing |
 | Shift+T | On the wallpaper: open or close the portal, as the wheel up on the bare wallpaper opens it. Esc closes it too, once nothing is open over the wallpaper |
 | Y | Open or close the Vibe button's controls, as a click on the button does. Esc or a click elsewhere closes them too; with the portal open Esc closes them first, and the portal on the next press |
-| Hold Y | With the portal open: the next of its four looks on the art, as Next in the Vibe button does. It stays until the next hold: none moves on by itself. Held for half a second |
+| Hold Y | The visualizer, as M does; held again it brings the dashboard back to the music. With a video on the wallpaper, a hold puts the stations, concerts or the game's music back first. A controller's Y button does the same. Held for half a second |
 | A / S | Music volume down / up |
 | D | Next music stream (cycles Auto's picks for the current block); the next song and visual while a concert act plays |
 | Shift+D | Previous music stream, wrapping at the ends; the previous song and visual while a concert act plays |
